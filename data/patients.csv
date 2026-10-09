@@ -1,0 +1,51 @@
+patient_id,group,age,sex,bmi,years_since_diagnosis,hba1c,ldl,triglycerides,family_history,polygenic_risk,metformin,sulfonylurea,insulin,diet,activity,sleep_mean_h,wake_hour,resting_hr,walk_after_meal_prob,meal_skip_prob,meal_size,dose_miss_prob,note,insulin_resistance,fasting_glucose,hypo_strength
+P001,train,29,F,21.8,9,8.9,100,168,0,0.01,1,0,0,junk,sedentary,7.4,6.5,77,0.42,0.04,1.0,0.05,random patient,0.8,154,0.0
+P002,train,57,M,28.2,18,9.6,146,160,0,0.27,1,0,1,junk,light,7.1,6.5,64,0.12,0.07,1.0,0.05,random patient,1.49,171,0.75
+P003,train,43,F,24.2,20,7.9,85,209,1,0.82,1,1,0,millet,active,5.9,6.5,62,0.42,0.08,1.0,0.05,random patient,1.16,132,0.35
+P004,train,40,F,27.5,5,8.0,128,82,1,0.66,1,0,0,millet,light,6.6,6.5,70,0.1,0.07,1.0,0.05,random patient,1.33,134,0.0
+P005,train,68,F,25.0,11,8.3,96,221,1,0.76,1,0,1,rice_heavy,active,5.9,6.5,78,0.18,0.03,1.0,0.05,random patient,1.26,141,0.75
+P006,train,27,F,24.6,7,8.6,99,147,1,0.72,1,1,0,junk,sedentary,6.8,6.5,70,0.12,0.07,1.0,0.05,random patient,1.25,148,0.35
+P007,train,33,M,24.6,8,7.9,121,115,1,0.43,1,1,0,mixed,active,6.5,6.5,65,0.25,0.03,1.0,0.05,random patient,0.95,132,0.35
+P008,train,61,M,25.0,2,6.5,66,174,1,0.69,1,1,0,junk,light,8.1,6.5,69,0.34,0.01,1.0,0.05,random patient,1.04,99,0.35
+P009,train,65,F,32.6,0,8.3,82,146,1,0.87,1,0,0,rice_heavy,light,6.6,6.5,63,0.27,0.08,1.0,0.05,random patient,1.61,141,0.0
+P010,train,73,M,35.5,14,8.8,85,145,1,0.33,1,0,1,wheat,active,6.9,6.5,60,0.11,0.06,1.0,0.05,random patient,1.36,152,0.75
+P011,train,58,M,26.3,14,10.3,88,297,0,0.45,1,1,0,rice_heavy,active,6.1,6.5,64,0.18,0.05,1.0,0.05,random patient,1.31,187,0.35
+P012,train,73,M,23.6,3,7.1,157,179,1,0.46,1,0,0,rice_heavy,sedentary,7.0,6.5,71,0.35,0.04,1.0,0.05,random patient,0.99,113,0.0
+P013,train,62,F,27.3,15,7.1,98,257,1,0.9,1,0,0,rice_heavy,sedentary,6.1,6.5,81,0.49,0.05,1.0,0.05,random patient,1.21,113,0.0
+P014,train,64,M,28.0,3,7.7,84,96,0,0.0,1,0,0,mixed,light,5.7,6.5,77,0.11,0.01,1.0,0.05,random patient,1.08,127,0.0
+P015,train,29,F,25.0,8,9.1,103,184,0,0.5,1,1,0,mixed,sedentary,6.9,6.5,76,0.48,0.06,1.0,0.05,random patient,1.09,159,0.35
+P016,train,46,M,25.2,9,7.4,90,70,1,0.83,1,0,0,junk,active,8.5,6.5,73,0.24,0.04,1.0,0.05,random patient,1.26,120,0.0
+P017,train,30,F,18.6,10,6.5,197,99,1,0.46,1,0,0,mixed,sedentary,8.2,6.5,67,0.11,0.09,1.0,0.05,random patient,0.75,99,0.0
+P018,train,40,M,24.8,12,6.7,93,198,1,0.61,1,1,0,mixed,sedentary,6.8,6.5,68,0.44,0.09,1.0,0.05,random patient,1.04,104,0.35
+P019,train,50,M,39.2,3,9.9,117,103,1,0.71,1,1,0,wheat,sedentary,7.2,6.5,75,0.43,0.09,1.0,0.05,random patient,1.76,177,0.35
+P020,train,30,F,24.4,10,8.2,114,258,0,0.28,1,0,0,junk,light,7.0,6.5,68,0.11,0.05,1.0,0.05,random patient,1.05,138,0.0
+P021,train,55,M,19.6,4,8.6,149,204,1,0.64,1,0,0,wheat,sedentary,7.2,6.5,81,0.34,0.08,1.0,0.05,random patient,0.93,148,0.0
+P022,train,68,M,26.8,1,8.6,112,240,1,0.77,1,0,0,junk,sedentary,5.5,6.5,75,0.11,0.1,1.0,0.05,random patient,1.24,148,0.0
+P023,train,45,M,29.4,12,7.5,119,239,0,0.3,1,0,0,rice_heavy,light,7.0,6.5,76,0.41,0.05,1.0,0.05,random patient,0.96,122,0.0
+P024,train,63,M,23.8,17,6.9,92,218,1,0.71,1,0,0,junk,light,7.0,6.5,79,0.21,0.03,1.0,0.05,random patient,1.0,109,0.0
+P025,train,74,F,31.0,3,6.5,116,220,1,0.87,1,0,0,mixed,active,7.5,6.5,78,0.1,0.09,1.0,0.05,random patient,1.3,99,0.0
+P026,train,73,F,18.0,10,7.6,72,73,1,0.85,1,0,0,rice_heavy,active,7.0,6.5,66,0.1,0.1,1.0,0.05,random patient,0.89,125,0.0
+P027,train,59,F,28.6,5,8.5,116,201,0,0.2,1,0,0,rice_heavy,sedentary,7.0,6.5,77,0.46,0.07,1.0,0.05,random patient,1.16,145,0.0
+P028,train,35,M,26.0,3,6.5,89,214,0,0.08,0,0,0,rice_heavy,light,7.9,6.5,76,0.07,0.02,1.0,0.05,random patient,1.02,99,0.0
+P029,train,52,M,22.7,13,7.7,161,87,0,0.17,1,1,0,junk,light,7.2,6.5,64,0.37,0.02,1.0,0.05,random patient,0.81,127,0.35
+P030,train,70,F,24.1,7,7.2,120,249,0,0.27,1,0,0,millet,light,6.5,6.5,72,0.47,0.01,1.0,0.05,random patient,0.91,115,0.0
+P031,train,60,F,35.3,8,10.2,119,168,1,0.67,1,0,0,millet,light,5.5,6.5,80,0.19,0.0,1.0,0.05,random patient,1.7,184,0.0
+P032,train,55,M,35.2,3,6.6,115,207,1,0.59,1,0,0,wheat,light,6.8,6.5,72,0.21,0.05,1.0,0.05,random patient,1.56,102,0.0
+P033,train,53,F,29.1,18,8.6,129,235,1,0.53,1,0,1,mixed,sedentary,7.2,6.5,70,0.19,0.07,1.0,0.05,random patient,1.28,148,0.75
+P034,train,33,F,18.0,13,9.8,21,137,1,0.54,0,0,1,millet,sedentary,7.2,6.5,76,0.37,0.04,1.0,0.05,random patient,0.98,175,0.75
+P035,train,42,F,30.1,0,7.8,80,116,1,0.55,0,0,0,mixed,sedentary,7.9,6.5,78,0.09,0.08,1.0,0.05,random patient,1.32,129,0.0
+P036,train,45,M,33.5,19,7.7,129,137,0,0.37,1,1,0,junk,sedentary,5.5,6.5,70,0.43,0.06,1.0,0.05,random patient,1.35,127,0.35
+P037,train,45,F,25.8,14,8.6,126,187,1,0.76,1,0,1,mixed,light,6.6,6.5,66,0.43,0.03,1.0,0.05,random patient,1.16,148,0.75
+P038,train,54,F,26.2,20,8.9,105,130,1,0.79,1,0,1,millet,light,6.7,6.5,66,0.18,0.07,1.0,0.05,random patient,1.32,154,0.75
+P039,train,61,F,32.5,20,10.2,77,212,0,0.35,1,0,0,junk,light,6.1,6.5,81,0.49,0.1,1.0,0.05,random patient,1.55,184,0.0
+P040,train,58,F,34.7,20,8.3,134,184,1,0.46,0,0,0,wheat,light,7.8,6.5,69,0.3,0.08,1.0,0.05,random patient,1.54,141,0.0
+T01,test,27,F,21.5,0,6.6,123,121,1,0.49,1,0,0,millet,active,7.8,6.5,79,0.8,0.0,1.0,0.05,"young, newly diagnosed, athletic, well controlled",0.84,102,0.0
+T02,test,74,F,24.0,20,10.4,78,70,1,0.59,0,0,1,rice_heavy,sedentary,5.5,6.5,78,0.0,0.12,1.0,0.2,"elderly, 20 years diabetic, insulin, poor control, skips meals",1.25,189,0.75
+T03,test,45,F,38.5,6,9.2,99,161,1,0.9,1,0,0,rice_heavy,sedentary,6.0,6.5,76,0.02,0.09,1.3,0.05,"severely obese, strong insulin resistance, rice heavy",2.03,161,0.0
+T04,test,52,M,20.5,8,7.2,115,242,1,0.7,1,1,0,wheat,light,7.0,6.5,81,0.18,0.2,1.0,0.05,"lean (thin-fat) Indian patient on sulfonylurea, skips meals, hypo risk",0.74,115,0.35
+T05,test,38,M,29.0,3,8.1,70,220,0,0.42,1,0,0,junk,light,4.5,15.0,61,0.41,0.08,1.0,0.05,"night-shift worker, 4.5h sleep, junk food",1.32,136,0.0
+T06,test,60,F,25.5,12,7.0,133,259,0,0.22,1,0,1,millet,active,7.5,6.5,81,0.9,0.15,1.0,0.05,"super healthy lifestyle BUT on insulin, so walking + skipped meals cause lows",0.86,111,0.75
+T07,test,41,M,24.5,2,6.8,79,166,1,0.95,1,0,0,mixed,light,7.0,6.5,81,0.23,0.04,1.0,0.05,"mild now, but very high genetic risk",1.11,106,0.0
+T08,test,29,F,31.5,1,8.8,130,148,1,0.47,0,0,0,junk,sedentary,5.8,6.5,65,0.0,0.07,1.2,0.05,"early-onset, no medicine, junk food, no exercise",1.55,152,0.0
+T09,test,58,F,28.0,9,7.9,165,320,1,0.72,1,1,0,mixed,light,6.3,6.5,63,0.33,0.35,1.0,0.05,"high cholesterol, skips breakfast often, irregular eating",1.39,132,0.35
+T10,test,50,F,33.0,14,9.8,98,116,0,0.57,1,0,1,junk,sedentary,5.0,6.5,80,0.0,0.1,1.5,0.4,"festival-week eating, huge sweet meals, misses insulin doses: wild swings",1.48,175,0.75
