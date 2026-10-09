@@ -1,0 +1,1389 @@
+patient_id,remedy,meal,slot,peak_before,peak_after,peak_drop,min_above_before,min_above_after,min_above_drop
+T01,walk 10 min,idli_sambar,breakfast,113.83097,112.55344,1.2775345,0.0,0.0,0.0
+T01,walk 10 min,millet_khichdi,dinner,116.52957,115.73747,0.792099,0.0,0.0,0.0
+T01,walk 10 min,oats_upma,breakfast,114.81668,114.17921,0.63747406,0.0,0.0,0.0
+T01,walk 10 min,fruit_bowl,snack,102.4768,101.902115,0.57468414,0.0,0.0,0.0
+T01,walk 10 min,millet_dal_sabzi,lunch,113.4222,112.413635,1.0085678,0.0,0.0,0.0
+T01,walk 10 min,mithai_sweets,snack,116.85026,116.02029,0.8299713,0.0,0.0,0.0
+T01,walk 10 min,chai_biscuit,snack,106.62157,106.02297,0.59859467,0.0,0.0,0.0
+T01,walk 10 min,idli_sambar,breakfast,120.93071,119.665695,1.2650146,0.0,0.0,0.0
+T01,walk 10 min,roti_dal_sabzi,lunch,124.72571,123.48593,1.2397766,0.0,0.0,0.0
+T01,30% smaller portion,idli_sambar,breakfast,113.83097,108.116936,5.714035,0.0,0.0,0.0
+T01,30% smaller portion,millet_khichdi,dinner,116.52957,113.07872,3.4508514,0.0,0.0,0.0
+T01,30% smaller portion,oats_upma,breakfast,114.81668,112.52651,2.2901688,0.0,0.0,0.0
+T01,30% smaller portion,fruit_bowl,snack,102.4768,104.44033,-1.9635315,0.0,0.0,0.0
+T01,30% smaller portion,millet_dal_sabzi,lunch,113.4222,112.95616,0.46604156,0.0,0.0,0.0
+T01,30% smaller portion,mithai_sweets,snack,116.85026,112.38917,4.46109,0.0,0.0,0.0
+T01,30% smaller portion,chai_biscuit,snack,106.62157,103.78014,2.841423,0.0,0.0,0.0
+T01,30% smaller portion,idli_sambar,breakfast,120.93071,117.35796,3.5727463,0.0,0.0,0.0
+T01,30% smaller portion,roti_dal_sabzi,lunch,124.72571,117.64316,7.08255,0.0,0.0,0.0
+T01,low-GI swap (GI 50),idli_sambar,breakfast,113.83097,107.9583,5.872673,0.0,0.0,0.0
+T01,low-GI swap (GI 50),oats_upma,breakfast,114.81668,114.07242,0.7442627,0.0,0.0,0.0
+T01,low-GI swap (GI 50),mithai_sweets,snack,116.85026,111.08837,5.7618866,0.0,0.0,0.0
+T01,low-GI swap (GI 50),chai_biscuit,snack,106.62157,104.10246,2.519104,0.0,0.0,0.0
+T01,low-GI swap (GI 50),idli_sambar,breakfast,120.93071,117.02841,3.902298,0.0,0.0,0.0
+T01,low-GI swap (GI 50),roti_dal_sabzi,lunch,124.72571,122.70713,2.0185776,0.0,0.0,0.0
+T01,walk + smaller portion,idli_sambar,breakfast,113.83097,107.10868,6.72229,0.0,0.0,0.0
+T01,walk + smaller portion,millet_khichdi,dinner,116.52957,112.36276,4.166809,0.0,0.0,0.0
+T01,walk + smaller portion,oats_upma,breakfast,114.81668,111.99347,2.8232117,0.0,0.0,0.0
+T01,walk + smaller portion,fruit_bowl,snack,102.4768,103.88133,-1.4045334,0.0,0.0,0.0
+T01,walk + smaller portion,millet_dal_sabzi,lunch,113.4222,112.29523,1.126976,0.0,0.0,0.0
+T01,walk + smaller portion,mithai_sweets,snack,116.85026,111.78593,5.064331,0.0,0.0,0.0
+T01,walk + smaller portion,chai_biscuit,snack,106.62157,103.109436,3.5121307,0.0,0.0,0.0
+T01,walk + smaller portion,idli_sambar,breakfast,120.93071,116.43318,4.497528,0.0,0.0,0.0
+T01,walk + smaller portion,roti_dal_sabzi,lunch,124.72571,116.98344,7.7422714,0.0,0.0,0.0
+T02,walk 10 min,veg_biryani,lunch,228.68839,227.41296,1.2754211,75.0,75.0,0.0
+T02,walk 10 min,roasted_chana,snack,180.98483,181.68561,-0.70077515,5.0,10.0,-5.0
+T02,walk 10 min,white_rice_dal_sabzi,dinner,224.00667,222.78491,1.221756,70.0,70.0,0.0
+T02,walk 10 min,sweet_pongal,breakfast,220.02931,219.65494,0.3743744,70.0,70.0,0.0
+T02,walk 10 min,curd_rice,lunch,234.5333,234.13202,0.40127563,115.0,115.0,0.0
+T02,walk 10 min,chai_biscuit,snack,204.47514,204.2105,0.26464844,120.0,120.0,0.0
+T02,walk 10 min,dosa_chutney,dinner,212.78032,212.61273,0.16758728,85.0,95.0,-10.0
+T02,walk 10 min,sweet_pongal,breakfast,218.59818,218.18999,0.40818787,70.0,75.0,-5.0
+T02,walk 10 min,veg_biryani,lunch,205.1628,203.89476,1.2680359,55.0,55.0,0.0
+T02,walk 10 min,samosa,snack,168.2382,168.05696,0.1812439,0.0,0.0,0.0
+T02,walk 10 min,white_rice_dal_sabzi,dinner,214.59816,213.68884,0.909317,60.0,60.0,0.0
+T02,walk 10 min,idli_sambar,breakfast,217.08243,216.77782,0.3046112,80.0,85.0,-5.0
+T02,walk 10 min,white_rice_dal_sabzi,lunch,238.81091,238.30153,0.50938416,85.0,85.0,0.0
+T02,walk 10 min,samosa,snack,158.97772,158.42038,0.5573425,0.0,0.0,0.0
+T02,walk 10 min,roti_dal_sabzi,dinner,191.0704,190.77055,0.29985046,40.0,40.0,0.0
+T02,walk 10 min,poha,breakfast,212.7109,211.97337,0.73753357,75.0,75.0,0.0
+T02,walk 10 min,veg_biryani,dinner,199.8048,198.54428,1.2605133,40.0,40.0,0.0
+T02,walk 10 min,poha,breakfast,212.15161,211.32887,0.82273865,75.0,75.0,0.0
+T02,walk 10 min,fruit_bowl,snack,175.07059,174.84824,0.22235107,0.0,0.0,0.0
+T02,walk 10 min,white_rice_dal_sabzi,dinner,216.00624,214.74496,1.2612762,60.0,60.0,0.0
+T02,walk 10 min,aloo_paratha,breakfast,205.90872,204.84445,1.06427,60.0,60.0,0.0
+T02,walk 10 min,veg_biryani,lunch,220.18129,218.88329,1.2980042,65.0,65.0,0.0
+T02,walk 10 min,chai_biscuit,snack,163.0774,162.52818,0.5492096,0.0,0.0,0.0
+T02,walk 10 min,ragi_dosa,breakfast,202.4766,202.25536,0.22123718,90.0,95.0,-5.0
+T02,walk 10 min,white_rice_dal_sabzi,lunch,220.74774,220.20569,0.5420532,65.0,65.0,0.0
+T02,walk 10 min,mithai_sweets,snack,165.47862,165.14726,0.33135986,0.0,0.0,0.0
+T02,walk 10 min,veg_biryani,lunch,262.16098,261.19,0.9709778,105.0,105.0,0.0
+T02,walk 10 min,mithai_sweets,snack,164.7139,164.26361,0.45028687,0.0,0.0,0.0
+T02,walk 10 min,white_rice_dal_sabzi,dinner,220.48419,219.69893,0.78526306,65.0,65.0,0.0
+T02,walk 10 min,veg_biryani,lunch,221.5183,221.08958,0.42871094,65.0,65.0,0.0
+T02,walk 10 min,fruit_bowl,snack,155.3795,154.69211,0.6873932,0.0,0.0,0.0
+T02,walk 10 min,white_rice_dal_sabzi,dinner,220.8248,219.81462,1.0101776,60.0,60.0,0.0
+T02,walk 10 min,ragi_dosa,breakfast,217.528,217.36449,0.16351318,120.0,120.0,0.0
+T02,walk 10 min,curd_rice,lunch,224.68488,224.04158,0.6432953,100.0,110.0,-10.0
+T02,walk 10 min,samosa,snack,182.56984,182.13548,0.4343567,15.0,10.0,5.0
+T02,walk 10 min,veg_biryani,dinner,237.62712,236.71283,0.9142914,80.0,80.0,0.0
+T02,walk 10 min,idli_sambar,breakfast,208.0564,207.8813,0.1750946,75.0,80.0,-5.0
+T02,walk 10 min,veg_biryani,lunch,244.891,243.59775,1.2932587,95.0,95.0,0.0
+T02,walk 10 min,chai_biscuit,snack,212.49329,212.41794,0.0753479,120.0,120.0,0.0
+T02,walk 10 min,sweet_pongal,breakfast,240.31711,239.96774,0.34936523,100.0,100.0,0.0
+T02,walk 10 min,white_rice_dal_sabzi,lunch,238.72675,238.16982,0.55693054,85.0,85.0,0.0
+T02,walk 10 min,chai_biscuit,snack,171.22392,171.13565,0.088272095,0.0,0.0,0.0
+T02,walk 10 min,veg_biryani,dinner,233.50081,232.71748,0.7833252,75.0,75.0,0.0
+T02,walk 10 min,white_rice_dal_sabzi,lunch,234.91501,233.86972,1.0452881,85.0,85.0,0.0
+T02,walk 10 min,samosa,snack,170.84084,170.75333,0.087509155,0.0,0.0,0.0
+T02,walk 10 min,veg_biryani,dinner,223.00352,221.786,1.2175293,65.0,60.0,5.0
+T02,30% smaller portion,veg_biryani,lunch,228.68839,213.062,15.626389,75.0,75.0,0.0
+T02,30% smaller portion,roasted_chana,snack,180.98483,181.04124,-0.056411743,5.0,5.0,0.0
+T02,30% smaller portion,white_rice_dal_sabzi,dinner,224.00667,211.11418,12.892487,70.0,65.0,5.0
+T02,30% smaller portion,sweet_pongal,breakfast,220.02931,210.66539,9.363922,70.0,70.0,0.0
+T02,30% smaller portion,curd_rice,lunch,234.5333,210.43011,24.10318,115.0,95.0,20.0
+T02,30% smaller portion,chai_biscuit,snack,204.47514,199.78404,4.691101,120.0,120.0,0.0
+T02,30% smaller portion,dosa_chutney,dinner,212.78032,208.43472,4.3455963,85.0,100.0,-15.0
+T02,30% smaller portion,sweet_pongal,breakfast,218.59818,208.86049,9.737686,70.0,70.0,0.0
+T02,30% smaller portion,veg_biryani,lunch,205.1628,191.4698,13.692993,55.0,50.0,5.0
+T02,30% smaller portion,samosa,snack,168.2382,169.03893,-0.8007202,0.0,0.0,0.0
+T02,30% smaller portion,white_rice_dal_sabzi,dinner,214.59816,205.00612,9.592041,60.0,60.0,0.0
+T02,30% smaller portion,idli_sambar,breakfast,217.08243,209.19925,7.8831787,80.0,85.0,-5.0
+T02,30% smaller portion,white_rice_dal_sabzi,lunch,238.81091,224.57693,14.233978,85.0,85.0,0.0
+T02,30% smaller portion,samosa,snack,158.97772,159.3244,-0.3466797,0.0,0.0,0.0
+T02,30% smaller portion,roti_dal_sabzi,dinner,191.0704,185.78685,5.283554,40.0,40.0,0.0
+T02,30% smaller portion,poha,breakfast,212.7109,206.47495,6.235962,75.0,75.0,0.0
+T02,30% smaller portion,veg_biryani,dinner,199.8048,186.44193,13.362869,40.0,25.0,15.0
+T02,30% smaller portion,poha,breakfast,212.15161,205.36508,6.7865295,75.0,75.0,0.0
+T02,30% smaller portion,fruit_bowl,snack,175.07059,175.16547,-0.09487915,0.0,0.0,0.0
+T02,30% smaller portion,white_rice_dal_sabzi,dinner,216.00624,202.63661,13.369629,60.0,50.0,10.0
+T02,30% smaller portion,aloo_paratha,breakfast,205.90872,200.39789,5.5108337,60.0,65.0,-5.0
+T02,30% smaller portion,veg_biryani,lunch,220.18129,206.68175,13.499542,65.0,60.0,5.0
+T02,30% smaller portion,chai_biscuit,snack,163.0774,162.84679,0.23060608,0.0,0.0,0.0
+T02,30% smaller portion,ragi_dosa,breakfast,202.4766,202.00188,0.4747162,90.0,100.0,-10.0
+T02,30% smaller portion,white_rice_dal_sabzi,lunch,220.74774,209.29385,11.453888,65.0,60.0,5.0
+T02,30% smaller portion,mithai_sweets,snack,165.47862,161.7136,3.76503,0.0,0.0,0.0
+T02,30% smaller portion,veg_biryani,lunch,262.16098,241.14836,21.012619,105.0,100.0,5.0
+T02,30% smaller portion,mithai_sweets,snack,164.7139,158.43324,6.280655,0.0,0.0,0.0
+T02,30% smaller portion,white_rice_dal_sabzi,dinner,220.48419,204.70895,15.775238,65.0,50.0,15.0
+T02,30% smaller portion,veg_biryani,lunch,221.5183,205.96974,15.548553,65.0,60.0,5.0
+T02,30% smaller portion,fruit_bowl,snack,155.3795,155.09753,0.28196716,0.0,0.0,0.0
+T02,30% smaller portion,white_rice_dal_sabzi,dinner,220.8248,206.92719,13.897614,60.0,55.0,5.0
+T02,30% smaller portion,ragi_dosa,breakfast,217.528,211.73532,5.792679,120.0,120.0,0.0
+T02,30% smaller portion,curd_rice,lunch,224.68488,216.79242,7.892456,100.0,120.0,-20.0
+T02,30% smaller portion,samosa,snack,182.56984,176.51277,6.057068,15.0,0.0,15.0
+T02,30% smaller portion,veg_biryani,dinner,237.62712,223.70485,13.922272,80.0,75.0,5.0
+T02,30% smaller portion,idli_sambar,breakfast,208.0564,205.21773,2.8386688,75.0,85.0,-10.0
+T02,30% smaller portion,veg_biryani,lunch,244.891,223.00249,21.88852,95.0,85.0,10.0
+T02,30% smaller portion,chai_biscuit,snack,212.49329,209.46994,3.023346,120.0,120.0,0.0
+T02,30% smaller portion,sweet_pongal,breakfast,240.31711,228.77654,11.540573,100.0,100.0,0.0
+T02,30% smaller portion,white_rice_dal_sabzi,lunch,238.72675,213.48566,25.241089,85.0,70.0,15.0
+T02,30% smaller portion,chai_biscuit,snack,171.22392,173.57043,-2.3465118,0.0,0.0,0.0
+T02,30% smaller portion,veg_biryani,dinner,233.50081,218.56061,14.940201,75.0,70.0,5.0
+T02,30% smaller portion,white_rice_dal_sabzi,lunch,234.91501,214.50801,20.406998,85.0,75.0,10.0
+T02,30% smaller portion,samosa,snack,170.84084,171.29834,-0.45750427,0.0,0.0,0.0
+T02,30% smaller portion,veg_biryani,dinner,223.00352,206.98232,16.02121,65.0,55.0,10.0
+T02,low-GI swap (GI 50),veg_biryani,lunch,228.68839,214.68588,14.002502,75.0,70.0,5.0
+T02,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,224.00667,210.07613,13.930542,70.0,60.0,10.0
+T02,low-GI swap (GI 50),sweet_pongal,breakfast,220.02931,208.91226,11.11705,70.0,65.0,5.0
+T02,low-GI swap (GI 50),curd_rice,lunch,234.5333,213.18663,21.346664,115.0,100.0,15.0
+T02,low-GI swap (GI 50),chai_biscuit,snack,204.47514,200.81145,3.6636963,120.0,120.0,0.0
+T02,low-GI swap (GI 50),dosa_chutney,dinner,212.78032,209.01936,3.7609558,85.0,110.0,-25.0
+T02,low-GI swap (GI 50),sweet_pongal,breakfast,218.59818,206.9916,11.606583,70.0,70.0,0.0
+T02,low-GI swap (GI 50),veg_biryani,lunch,205.1628,192.87863,12.284164,55.0,45.0,10.0
+T02,low-GI swap (GI 50),samosa,snack,168.2382,169.60506,-1.3668518,0.0,0.0,0.0
+T02,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,214.59816,204.00754,10.590622,60.0,55.0,5.0
+T02,low-GI swap (GI 50),idli_sambar,breakfast,217.08243,209.65254,7.429886,80.0,90.0,-10.0
+T02,low-GI swap (GI 50),white_rice_dal_sabzi,lunch,238.81091,223.32042,15.490494,85.0,75.0,10.0
+T02,low-GI swap (GI 50),samosa,snack,158.97772,159.79424,-0.81651306,0.0,0.0,0.0
+T02,low-GI swap (GI 50),roti_dal_sabzi,dinner,191.0704,189.46994,1.6004639,40.0,40.0,0.0
+T02,low-GI swap (GI 50),poha,breakfast,212.7109,207.75987,4.9510345,75.0,75.0,0.0
+T02,low-GI swap (GI 50),veg_biryani,dinner,199.8048,187.77336,12.031433,40.0,25.0,15.0
+T02,low-GI swap (GI 50),poha,breakfast,212.15161,206.88634,5.265274,75.0,75.0,0.0
+T02,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,216.00624,201.69452,14.311722,60.0,50.0,10.0
+T02,low-GI swap (GI 50),aloo_paratha,breakfast,205.90872,200.66135,5.2473755,60.0,65.0,-5.0
+T02,low-GI swap (GI 50),veg_biryani,lunch,220.18129,207.8145,12.366791,65.0,55.0,10.0
+T02,low-GI swap (GI 50),chai_biscuit,snack,163.0774,163.99258,-0.91519165,0.0,0.0,0.0
+T02,low-GI swap (GI 50),white_rice_dal_sabzi,lunch,220.74774,208.33723,12.410507,65.0,60.0,5.0
+T02,low-GI swap (GI 50),mithai_sweets,snack,165.47862,164.57697,0.9016571,0.0,0.0,0.0
+T02,low-GI swap (GI 50),veg_biryani,lunch,262.16098,242.88179,19.27919,105.0,90.0,15.0
+T02,low-GI swap (GI 50),mithai_sweets,snack,164.7139,157.03807,7.675827,0.0,0.0,0.0
+T02,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,220.48419,203.23428,17.249908,65.0,50.0,15.0
+T02,low-GI swap (GI 50),veg_biryani,lunch,221.5183,206.80591,14.712387,65.0,55.0,10.0
+T02,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,220.8248,206.09723,14.72757,60.0,50.0,10.0
+T02,low-GI swap (GI 50),curd_rice,lunch,224.68488,217.69086,6.9940186,100.0,120.0,-20.0
+T02,low-GI swap (GI 50),samosa,snack,182.56984,179.16754,3.402298,15.0,0.0,15.0
+T02,low-GI swap (GI 50),veg_biryani,dinner,237.62712,224.97403,12.653091,80.0,75.0,5.0
+T02,low-GI swap (GI 50),idli_sambar,breakfast,208.0564,205.4487,2.6076965,75.0,90.0,-15.0
+T02,low-GI swap (GI 50),veg_biryani,lunch,244.891,224.92671,19.964294,95.0,80.0,15.0
+T02,low-GI swap (GI 50),chai_biscuit,snack,212.49329,210.2531,2.2401886,120.0,120.0,0.0
+T02,low-GI swap (GI 50),sweet_pongal,breakfast,240.31711,226.54326,13.7738495,100.0,100.0,0.0
+T02,low-GI swap (GI 50),white_rice_dal_sabzi,lunch,238.72675,210.94919,27.777557,85.0,60.0,25.0
+T02,low-GI swap (GI 50),chai_biscuit,snack,171.22392,173.08315,-1.8592224,0.0,0.0,0.0
+T02,low-GI swap (GI 50),veg_biryani,dinner,233.50081,219.88617,13.614639,75.0,65.0,10.0
+T02,low-GI swap (GI 50),white_rice_dal_sabzi,lunch,234.91501,212.53386,22.38115,85.0,70.0,15.0
+T02,low-GI swap (GI 50),samosa,snack,170.84084,171.81403,-0.9731903,0.0,0.0,0.0
+T02,low-GI swap (GI 50),veg_biryani,dinner,223.00352,208.56319,14.440338,65.0,55.0,10.0
+T02,walk + smaller portion,veg_biryani,lunch,228.68839,211.8704,16.817978,75.0,75.0,0.0
+T02,walk + smaller portion,roasted_chana,snack,180.98483,181.69437,-0.7095337,5.0,10.0,-5.0
+T02,walk + smaller portion,white_rice_dal_sabzi,dinner,224.00667,210.07358,13.93309,70.0,65.0,5.0
+T02,walk + smaller portion,sweet_pongal,breakfast,220.02931,210.23213,9.79718,70.0,70.0,0.0
+T02,walk + smaller portion,curd_rice,lunch,234.5333,210.08136,24.451935,115.0,100.0,15.0
+T02,walk + smaller portion,chai_biscuit,snack,204.47514,199.51802,4.957123,120.0,120.0,0.0
+T02,walk + smaller portion,dosa_chutney,dinner,212.78032,208.13649,4.6438293,85.0,110.0,-25.0
+T02,walk + smaller portion,sweet_pongal,breakfast,218.59818,208.4046,10.193573,70.0,75.0,-5.0
+T02,walk + smaller portion,veg_biryani,lunch,205.1628,190.31163,14.851166,55.0,45.0,10.0
+T02,walk + smaller portion,samosa,snack,168.2382,168.6031,-0.36489868,0.0,0.0,0.0
+T02,walk + smaller portion,white_rice_dal_sabzi,dinner,214.59816,204.68263,9.915527,60.0,60.0,0.0
+T02,walk + smaller portion,idli_sambar,breakfast,217.08243,208.99934,8.083084,80.0,90.0,-10.0
+T02,walk + smaller portion,white_rice_dal_sabzi,lunch,238.81091,224.03165,14.779266,85.0,85.0,0.0
+T02,walk + smaller portion,samosa,snack,158.97772,158.77177,0.20594788,0.0,0.0,0.0
+T02,walk + smaller portion,roti_dal_sabzi,dinner,191.0704,185.45776,5.6126404,40.0,40.0,0.0
+T02,walk + smaller portion,poha,breakfast,212.7109,206.30634,6.4045715,75.0,80.0,-5.0
+T02,walk + smaller portion,veg_biryani,dinner,199.8048,186.0145,13.790298,40.0,25.0,15.0
+T02,walk + smaller portion,poha,breakfast,212.15161,205.05547,7.0961456,75.0,80.0,-5.0
+T02,walk + smaller portion,fruit_bowl,snack,175.07059,174.9493,0.121292114,0.0,0.0,0.0
+T02,walk + smaller portion,white_rice_dal_sabzi,dinner,216.00624,201.43362,14.572617,60.0,50.0,10.0
+T02,walk + smaller portion,aloo_paratha,breakfast,205.90872,200.18701,5.72171,60.0,70.0,-10.0
+T02,walk + smaller portion,veg_biryani,lunch,220.18129,205.9584,14.222885,65.0,60.0,5.0
+T02,walk + smaller portion,chai_biscuit,snack,163.0774,162.30362,0.7737732,0.0,0.0,0.0
+T02,walk + smaller portion,ragi_dosa,breakfast,202.4766,201.7324,0.7441864,90.0,105.0,-15.0
+T02,walk + smaller portion,white_rice_dal_sabzi,lunch,220.74774,208.77556,11.972183,65.0,60.0,5.0
+T02,walk + smaller portion,mithai_sweets,snack,165.47862,161.94069,3.5379333,0.0,0.0,0.0
+T02,walk + smaller portion,veg_biryani,lunch,262.16098,240.53966,21.621323,105.0,105.0,0.0
+T02,walk + smaller portion,mithai_sweets,snack,164.7139,158.19547,6.5184326,0.0,0.0,0.0
+T02,walk + smaller portion,white_rice_dal_sabzi,dinner,220.48419,204.29756,16.18663,65.0,50.0,15.0
+T02,walk + smaller portion,veg_biryani,lunch,221.5183,205.77016,15.748138,65.0,60.0,5.0
+T02,walk + smaller portion,fruit_bowl,snack,155.3795,154.3955,0.9840088,0.0,0.0,0.0
+T02,walk + smaller portion,white_rice_dal_sabzi,dinner,220.8248,206.49315,14.33165,60.0,55.0,5.0
+T02,walk + smaller portion,ragi_dosa,breakfast,217.528,211.50682,6.021179,120.0,120.0,0.0
+T02,walk + smaller portion,curd_rice,lunch,224.68488,216.45099,8.233887,100.0,120.0,-20.0
+T02,walk + smaller portion,samosa,snack,182.56984,176.30402,6.2658234,15.0,0.0,15.0
+T02,walk + smaller portion,veg_biryani,dinner,237.62712,223.05882,14.568298,80.0,80.0,0.0
+T02,walk + smaller portion,idli_sambar,breakfast,208.0564,204.98106,3.0753326,75.0,90.0,-15.0
+T02,walk + smaller portion,veg_biryani,lunch,244.891,222.23619,22.654816,95.0,90.0,5.0
+T02,walk + smaller portion,chai_biscuit,snack,212.49329,209.39532,3.0979614,120.0,120.0,0.0
+T02,walk + smaller portion,sweet_pongal,breakfast,240.31711,228.44566,11.871445,100.0,110.0,-10.0
+T02,walk + smaller portion,white_rice_dal_sabzi,lunch,238.72675,213.07155,25.655197,85.0,70.0,15.0
+T02,walk + smaller portion,chai_biscuit,snack,171.22392,173.46597,-2.2420502,0.0,0.0,0.0
+T02,walk + smaller portion,veg_biryani,dinner,233.50081,218.14633,15.354477,75.0,70.0,5.0
+T02,walk + smaller portion,white_rice_dal_sabzi,lunch,234.91501,213.79498,21.120026,85.0,75.0,10.0
+T02,walk + smaller portion,samosa,snack,170.84084,170.99321,-0.15237427,0.0,0.0,0.0
+T02,walk + smaller portion,veg_biryani,dinner,223.00352,205.99927,17.004257,65.0,50.0,15.0
+T03,walk 10 min,sweet_pongal,breakfast,249.82416,247.37178,2.4523773,120.0,120.0,0.0
+T03,walk 10 min,veg_biryani,lunch,270.96158,267.65244,3.309143,120.0,120.0,0.0
+T03,walk 10 min,chai_biscuit,snack,184.33209,183.19377,1.1383209,45.0,40.0,5.0
+T03,walk 10 min,white_rice_dal_sabzi,dinner,283.80908,281.83624,1.9728394,120.0,120.0,0.0
+T03,walk 10 min,oats_upma,breakfast,191.8967,190.03796,1.8587341,65.0,65.0,0.0
+T03,walk 10 min,roasted_chana,snack,174.4426,172.64043,1.8021698,0.0,0.0,0.0
+T03,walk 10 min,roti_dal_sabzi,dinner,229.2018,226.58638,2.6154175,120.0,120.0,0.0
+T03,walk 10 min,poha,breakfast,242.11664,239.74225,2.3743896,120.0,120.0,0.0
+T03,walk 10 min,curd_rice,lunch,271.9525,269.70648,2.2460327,120.0,120.0,0.0
+T03,walk 10 min,chai_biscuit,snack,207.74654,207.21646,0.5300751,115.0,110.0,5.0
+T03,walk 10 min,white_rice_dal_sabzi,dinner,283.50903,281.7235,1.7855225,120.0,120.0,0.0
+T03,walk 10 min,idli_sambar,breakfast,223.91188,221.6909,2.2209778,120.0,120.0,0.0
+T03,walk 10 min,white_rice_dal_sabzi,lunch,304.15225,301.74042,2.4118347,120.0,120.0,0.0
+T03,walk 10 min,mithai_sweets,snack,232.23705,231.70872,0.5283203,120.0,120.0,0.0
+T03,walk 10 min,veg_biryani,dinner,307.70462,305.65558,2.0490417,120.0,120.0,0.0
+T03,walk 10 min,poha,breakfast,239.72618,237.30783,2.4183502,120.0,120.0,0.0
+T03,walk 10 min,curd_rice,lunch,262.8513,260.42923,2.422058,120.0,120.0,0.0
+T03,walk 10 min,roasted_chana,snack,180.61794,180.41306,0.20487976,20.0,10.0,10.0
+T03,walk 10 min,veg_biryani,dinner,321.45477,319.797,1.6577759,120.0,120.0,0.0
+T03,walk 10 min,poha,breakfast,238.41856,236.0199,2.3986664,120.0,120.0,0.0
+T03,walk 10 min,curd_rice,lunch,252.00674,249.61417,2.3925781,120.0,120.0,0.0
+T03,walk 10 min,roasted_chana,snack,188.33133,187.68933,0.6419983,95.0,90.0,5.0
+T03,walk 10 min,veg_biryani,dinner,304.8531,303.16443,1.6886597,120.0,120.0,0.0
+T03,walk 10 min,poha,breakfast,229.22551,226.79593,2.4295807,120.0,120.0,0.0
+T03,walk 10 min,veg_biryani,lunch,292.0574,290.02563,2.0317688,120.0,120.0,0.0
+T03,walk 10 min,samosa,snack,208.29245,208.02385,0.26860046,100.0,100.0,0.0
+T03,walk 10 min,dosa_chutney,dinner,236.18196,233.77809,2.4038696,120.0,120.0,0.0
+T03,walk 10 min,oats_upma,breakfast,204.79628,202.58012,2.216156,95.0,90.0,5.0
+T03,walk 10 min,veg_biryani,lunch,306.7156,304.4999,2.2156982,120.0,120.0,0.0
+T03,walk 10 min,roasted_chana,snack,185.09747,184.91443,0.18304443,40.0,35.0,5.0
+T03,walk 10 min,white_rice_dal_sabzi,dinner,297.7918,295.73862,2.0531921,120.0,120.0,0.0
+T03,walk 10 min,idli_sambar,breakfast,228.8361,226.38203,2.454071,120.0,120.0,0.0
+T03,walk 10 min,roasted_chana,snack,177.34209,175.48177,1.860321,0.0,0.0,0.0
+T03,walk 10 min,white_rice_dal_sabzi,dinner,261.92664,259.11966,2.8069763,120.0,120.0,0.0
+T03,walk 10 min,oats_upma,breakfast,205.38905,204.06126,1.3277893,100.0,100.0,0.0
+T03,walk 10 min,veg_biryani,lunch,298.3661,296.24768,2.1184082,120.0,120.0,0.0
+T03,walk 10 min,sweet_pongal,breakfast,249.04428,246.66405,2.3802338,120.0,120.0,0.0
+T03,walk 10 min,millet_dal_sabzi,lunch,216.87236,215.54158,1.33078,120.0,120.0,0.0
+T03,walk 10 min,chai_biscuit,snack,187.62297,186.9432,0.6797638,55.0,50.0,5.0
+T03,walk 10 min,dosa_chutney,dinner,234.4057,231.86655,2.539154,120.0,120.0,0.0
+T03,walk 10 min,idli_sambar,breakfast,242.91522,240.53072,2.3845062,120.0,120.0,0.0
+T03,walk 10 min,curd_rice,lunch,285.3054,282.90747,2.3979187,120.0,120.0,0.0
+T03,walk 10 min,chai_biscuit,snack,221.80191,221.504,0.2979126,120.0,120.0,0.0
+T03,walk 10 min,roti_dal_sabzi,dinner,252.90573,250.6955,2.2102356,120.0,120.0,0.0
+T03,walk 10 min,idli_sambar,breakfast,222.83162,220.37901,2.4526062,120.0,120.0,0.0
+T03,walk 10 min,veg_biryani,lunch,283.89307,281.59122,2.3018494,120.0,120.0,0.0
+T03,walk 10 min,chai_biscuit,snack,191.29773,190.54466,0.753067,75.0,70.0,5.0
+T03,walk 10 min,idli_sambar,breakfast,234.75429,232.23697,2.5173187,120.0,120.0,0.0
+T03,walk 10 min,veg_biryani,lunch,324.92828,322.90454,2.0237427,120.0,120.0,0.0
+T03,walk 10 min,chai_biscuit,snack,202.34315,201.41022,0.9329376,85.0,90.0,-5.0
+T03,walk 10 min,roti_dal_sabzi,dinner,242.3418,239.91444,2.427353,120.0,120.0,0.0
+T03,30% smaller portion,sweet_pongal,breakfast,249.82416,223.53607,26.288086,120.0,115.0,5.0
+T03,30% smaller portion,veg_biryani,lunch,270.96158,236.91331,34.048264,120.0,120.0,0.0
+T03,30% smaller portion,chai_biscuit,snack,184.33209,178.36295,5.9691467,45.0,0.0,45.0
+T03,30% smaller portion,white_rice_dal_sabzi,dinner,283.80908,250.05037,33.758713,120.0,120.0,0.0
+T03,30% smaller portion,oats_upma,breakfast,191.8967,184.73541,7.1612854,65.0,55.0,10.0
+T03,30% smaller portion,roasted_chana,snack,174.4426,173.5382,0.9044037,0.0,0.0,0.0
+T03,30% smaller portion,roti_dal_sabzi,dinner,229.2018,208.64072,20.56108,120.0,100.0,20.0
+T03,30% smaller portion,poha,breakfast,242.11664,223.44374,18.672897,120.0,120.0,0.0
+T03,30% smaller portion,curd_rice,lunch,271.9525,242.13852,29.813995,120.0,120.0,0.0
+T03,30% smaller portion,chai_biscuit,snack,207.74654,199.50105,8.245483,115.0,95.0,20.0
+T03,30% smaller portion,white_rice_dal_sabzi,dinner,283.50903,252.42816,31.080872,120.0,120.0,0.0
+T03,30% smaller portion,idli_sambar,breakfast,223.91188,206.57956,17.332321,120.0,100.0,20.0
+T03,30% smaller portion,white_rice_dal_sabzi,lunch,304.15225,267.3118,36.840454,120.0,120.0,0.0
+T03,30% smaller portion,mithai_sweets,snack,232.23705,214.43051,17.806534,120.0,120.0,0.0
+T03,30% smaller portion,veg_biryani,dinner,307.70462,272.2555,35.449127,120.0,120.0,0.0
+T03,30% smaller portion,poha,breakfast,239.72618,219.11743,20.60875,120.0,120.0,0.0
+T03,30% smaller portion,curd_rice,lunch,262.8513,233.46805,29.38324,120.0,120.0,0.0
+T03,30% smaller portion,roasted_chana,snack,180.61794,177.81848,2.7994537,20.0,0.0,20.0
+T03,30% smaller portion,veg_biryani,dinner,321.45477,280.36093,41.09384,120.0,120.0,0.0
+T03,30% smaller portion,poha,breakfast,238.41856,218.37228,20.04628,120.0,120.0,0.0
+T03,30% smaller portion,curd_rice,lunch,252.00674,226.3679,25.63884,120.0,120.0,0.0
+T03,30% smaller portion,roasted_chana,snack,188.33133,187.56364,0.76768494,95.0,100.0,-5.0
+T03,30% smaller portion,veg_biryani,dinner,304.8531,268.08124,36.77185,120.0,120.0,0.0
+T03,30% smaller portion,poha,breakfast,229.22551,211.2639,17.961609,120.0,105.0,15.0
+T03,30% smaller portion,veg_biryani,lunch,292.0574,258.20578,33.851624,120.0,120.0,0.0
+T03,30% smaller portion,samosa,snack,208.29245,198.58034,9.712112,100.0,80.0,20.0
+T03,30% smaller portion,dosa_chutney,dinner,236.18196,216.28087,19.901093,120.0,120.0,0.0
+T03,30% smaller portion,oats_upma,breakfast,204.79628,193.34796,11.4483185,95.0,75.0,20.0
+T03,30% smaller portion,veg_biryani,lunch,306.7156,266.8142,39.901398,120.0,120.0,0.0
+T03,30% smaller portion,roasted_chana,snack,185.09747,182.16164,2.9358368,40.0,25.0,15.0
+T03,30% smaller portion,white_rice_dal_sabzi,dinner,297.7918,261.76852,36.023285,120.0,120.0,0.0
+T03,30% smaller portion,idli_sambar,breakfast,228.8361,209.91595,18.92015,120.0,100.0,20.0
+T03,30% smaller portion,roasted_chana,snack,177.34209,175.67807,1.6640167,0.0,0.0,0.0
+T03,30% smaller portion,white_rice_dal_sabzi,dinner,261.92664,233.12314,28.803497,120.0,120.0,0.0
+T03,30% smaller portion,oats_upma,breakfast,205.38905,196.63191,8.757141,100.0,95.0,5.0
+T03,30% smaller portion,veg_biryani,lunch,298.3661,260.68277,37.68332,120.0,120.0,0.0
+T03,30% smaller portion,sweet_pongal,breakfast,249.04428,227.18784,21.856445,120.0,120.0,0.0
+T03,30% smaller portion,millet_dal_sabzi,lunch,216.87236,205.08543,11.786926,120.0,120.0,0.0
+T03,30% smaller portion,chai_biscuit,snack,187.62297,180.46729,7.1556854,55.0,15.0,40.0
+T03,30% smaller portion,dosa_chutney,dinner,234.4057,213.16168,21.244019,120.0,110.0,10.0
+T03,30% smaller portion,idli_sambar,breakfast,242.91522,224.18352,18.731705,120.0,120.0,0.0
+T03,30% smaller portion,curd_rice,lunch,285.3054,250.28564,35.019745,120.0,120.0,0.0
+T03,30% smaller portion,chai_biscuit,snack,221.80191,214.83817,6.963745,120.0,120.0,0.0
+T03,30% smaller portion,roti_dal_sabzi,dinner,252.90573,228.97586,23.92987,120.0,120.0,0.0
+T03,30% smaller portion,idli_sambar,breakfast,222.83162,206.18756,16.644058,120.0,95.0,25.0
+T03,30% smaller portion,veg_biryani,lunch,283.89307,248.3818,35.51126,120.0,120.0,0.0
+T03,30% smaller portion,chai_biscuit,snack,191.29773,184.63684,6.6608887,75.0,50.0,25.0
+T03,30% smaller portion,idli_sambar,breakfast,234.75429,218.01833,16.735962,120.0,120.0,0.0
+T03,30% smaller portion,veg_biryani,lunch,324.92828,280.5503,44.37799,120.0,120.0,0.0
+T03,30% smaller portion,chai_biscuit,snack,202.34315,195.21472,7.128433,85.0,65.0,20.0
+T03,30% smaller portion,roti_dal_sabzi,dinner,242.3418,224.29738,18.044418,120.0,120.0,0.0
+T03,low-GI swap (GI 50),sweet_pongal,breakfast,249.82416,220.13573,29.68843,120.0,110.0,10.0
+T03,low-GI swap (GI 50),veg_biryani,lunch,270.96158,242.58041,28.381165,120.0,120.0,0.0
+T03,low-GI swap (GI 50),chai_biscuit,snack,184.33209,179.1372,5.1948853,45.0,0.0,45.0
+T03,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,283.80908,249.3232,34.485886,120.0,120.0,0.0
+T03,low-GI swap (GI 50),oats_upma,breakfast,191.8967,189.34999,2.5467072,65.0,65.0,0.0
+T03,low-GI swap (GI 50),roti_dal_sabzi,dinner,229.2018,223.68248,5.5193176,120.0,120.0,0.0
+T03,low-GI swap (GI 50),poha,breakfast,242.11664,228.5426,13.574036,120.0,120.0,0.0
+T03,low-GI swap (GI 50),curd_rice,lunch,271.9525,248.42091,23.5316,120.0,120.0,0.0
+T03,low-GI swap (GI 50),chai_biscuit,snack,207.74654,201.11034,6.6362,115.0,100.0,15.0
+T03,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,283.50903,251.57318,31.935852,120.0,120.0,0.0
+T03,low-GI swap (GI 50),idli_sambar,breakfast,223.91188,207.55614,16.355743,120.0,100.0,20.0
+T03,low-GI swap (GI 50),white_rice_dal_sabzi,lunch,304.15225,266.86948,37.282776,120.0,120.0,0.0
+T03,low-GI swap (GI 50),mithai_sweets,snack,232.23705,209.65396,22.583084,120.0,120.0,0.0
+T03,low-GI swap (GI 50),veg_biryani,dinner,307.70462,277.01807,30.686554,120.0,120.0,0.0
+T03,low-GI swap (GI 50),poha,breakfast,239.72618,224.92554,14.800644,120.0,120.0,0.0
+T03,low-GI swap (GI 50),curd_rice,lunch,262.8513,239.16122,23.690063,120.0,120.0,0.0
+T03,low-GI swap (GI 50),veg_biryani,dinner,321.45477,285.38373,36.071045,120.0,120.0,0.0
+T03,low-GI swap (GI 50),poha,breakfast,238.41856,223.91554,14.503021,120.0,120.0,0.0
+T03,low-GI swap (GI 50),curd_rice,lunch,252.00674,231.15823,20.84851,120.0,120.0,0.0
+T03,low-GI swap (GI 50),veg_biryani,dinner,304.8531,272.94006,31.913025,120.0,120.0,0.0
+T03,low-GI swap (GI 50),poha,breakfast,229.22551,215.77437,13.451141,120.0,115.0,5.0
+T03,low-GI swap (GI 50),veg_biryani,lunch,292.0574,263.34714,28.710266,120.0,120.0,0.0
+T03,low-GI swap (GI 50),samosa,snack,208.29245,202.83342,5.45903,100.0,90.0,10.0
+T03,low-GI swap (GI 50),dosa_chutney,dinner,236.18196,219.75002,16.431946,120.0,120.0,0.0
+T03,low-GI swap (GI 50),oats_upma,breakfast,204.79628,201.25958,3.5366974,95.0,90.0,5.0
+T03,low-GI swap (GI 50),veg_biryani,lunch,306.7156,272.53104,34.18457,120.0,120.0,0.0
+T03,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,297.7918,261.0674,36.724396,120.0,120.0,0.0
+T03,low-GI swap (GI 50),idli_sambar,breakfast,228.8361,211.58199,17.25412,120.0,100.0,20.0
+T03,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,261.92664,232.49043,29.436203,120.0,120.0,0.0
+T03,low-GI swap (GI 50),oats_upma,breakfast,205.38905,202.36687,3.0221863,100.0,95.0,5.0
+T03,low-GI swap (GI 50),veg_biryani,lunch,298.3661,266.03293,32.33316,120.0,120.0,0.0
+T03,low-GI swap (GI 50),sweet_pongal,breakfast,249.04428,223.45908,25.585205,120.0,120.0,0.0
+T03,low-GI swap (GI 50),chai_biscuit,snack,187.62297,181.58218,6.0407867,55.0,30.0,25.0
+T03,low-GI swap (GI 50),dosa_chutney,dinner,234.4057,216.71634,17.689362,120.0,110.0,10.0
+T03,low-GI swap (GI 50),idli_sambar,breakfast,242.91522,225.17493,17.740295,120.0,120.0,0.0
+T03,low-GI swap (GI 50),curd_rice,lunch,285.3054,257.20557,28.099823,120.0,120.0,0.0
+T03,low-GI swap (GI 50),chai_biscuit,snack,221.80191,216.34912,5.4527893,120.0,120.0,0.0
+T03,low-GI swap (GI 50),roti_dal_sabzi,dinner,252.90573,246.27074,6.6349945,120.0,120.0,0.0
+T03,low-GI swap (GI 50),idli_sambar,breakfast,222.83162,206.77466,16.056961,120.0,100.0,20.0
+T03,low-GI swap (GI 50),veg_biryani,lunch,283.89307,253.80376,30.08931,120.0,120.0,0.0
+T03,low-GI swap (GI 50),chai_biscuit,snack,191.29773,185.62773,5.669998,75.0,55.0,20.0
+T03,low-GI swap (GI 50),idli_sambar,breakfast,234.75429,218.59615,16.158142,120.0,120.0,0.0
+T03,low-GI swap (GI 50),veg_biryani,lunch,324.92828,286.43576,38.492523,120.0,120.0,0.0
+T03,low-GI swap (GI 50),chai_biscuit,snack,202.34315,196.49269,5.850464,85.0,70.0,15.0
+T03,low-GI swap (GI 50),roti_dal_sabzi,dinner,242.3418,237.64874,4.693054,120.0,120.0,0.0
+T03,walk + smaller portion,sweet_pongal,breakfast,249.82416,221.09842,28.725739,120.0,115.0,5.0
+T03,walk + smaller portion,veg_biryani,lunch,270.96158,234.28546,36.676117,120.0,120.0,0.0
+T03,walk + smaller portion,chai_biscuit,snack,184.33209,177.38405,6.948044,45.0,0.0,45.0
+T03,walk + smaller portion,white_rice_dal_sabzi,dinner,283.80908,247.73843,36.07065,120.0,120.0,0.0
+T03,walk + smaller portion,oats_upma,breakfast,191.8967,183.91501,7.9816895,65.0,55.0,10.0
+T03,walk + smaller portion,roasted_chana,snack,174.4426,171.87163,2.5709686,0.0,0.0,0.0
+T03,walk + smaller portion,roti_dal_sabzi,dinner,229.2018,206.66881,22.53299,120.0,95.0,25.0
+T03,walk + smaller portion,poha,breakfast,242.11664,221.10652,21.010117,120.0,120.0,0.0
+T03,walk + smaller portion,curd_rice,lunch,271.9525,240.37537,31.577148,120.0,120.0,0.0
+T03,walk + smaller portion,chai_biscuit,snack,207.74654,199.06523,8.681305,115.0,95.0,20.0
+T03,walk + smaller portion,white_rice_dal_sabzi,dinner,283.50903,250.13991,33.369125,120.0,120.0,0.0
+T03,walk + smaller portion,idli_sambar,breakfast,223.91188,204.55371,19.35817,120.0,95.0,25.0
+T03,walk + smaller portion,white_rice_dal_sabzi,lunch,304.15225,264.98557,39.166687,120.0,120.0,0.0
+T03,walk + smaller portion,mithai_sweets,snack,232.23705,213.9742,18.262848,120.0,120.0,0.0
+T03,walk + smaller portion,veg_biryani,dinner,307.70462,269.6852,38.01941,120.0,120.0,0.0
+T03,walk + smaller portion,poha,breakfast,239.72618,216.66997,23.056213,120.0,120.0,0.0
+T03,walk + smaller portion,curd_rice,lunch,262.8513,231.73691,31.11438,120.0,120.0,0.0
+T03,walk + smaller portion,roasted_chana,snack,180.61794,177.64174,2.9761963,20.0,0.0,20.0
+T03,walk + smaller portion,veg_biryani,dinner,321.45477,277.87506,43.579712,120.0,120.0,0.0
+T03,walk + smaller portion,poha,breakfast,238.41856,216.00143,22.41713,120.0,120.0,0.0
+T03,walk + smaller portion,curd_rice,lunch,252.00674,225.05011,26.956635,120.0,120.0,0.0
+T03,walk + smaller portion,roasted_chana,snack,188.33133,186.84698,1.4843445,95.0,95.0,0.0
+T03,walk + smaller portion,veg_biryani,dinner,304.8531,265.76776,39.085327,120.0,120.0,0.0
+T03,walk + smaller portion,poha,breakfast,229.22551,208.93878,20.286728,120.0,105.0,15.0
+T03,walk + smaller portion,veg_biryani,lunch,292.0574,255.98073,36.076675,120.0,120.0,0.0
+T03,walk + smaller portion,samosa,snack,208.29245,198.3365,9.955948,100.0,80.0,20.0
+T03,walk + smaller portion,dosa_chutney,dinner,236.18196,213.86935,22.312607,120.0,115.0,5.0
+T03,walk + smaller portion,oats_upma,breakfast,204.79628,191.61649,13.179794,95.0,70.0,25.0
+T03,walk + smaller portion,veg_biryani,lunch,306.7156,264.50348,42.212128,120.0,120.0,0.0
+T03,walk + smaller portion,roasted_chana,snack,185.09747,181.98515,3.11232,40.0,20.0,20.0
+T03,walk + smaller portion,white_rice_dal_sabzi,dinner,297.7918,259.20288,38.58893,120.0,120.0,0.0
+T03,walk + smaller portion,idli_sambar,breakfast,228.8361,207.48183,21.354279,120.0,95.0,25.0
+T03,walk + smaller portion,roasted_chana,snack,177.34209,174.15634,3.1857452,0.0,0.0,0.0
+T03,walk + smaller portion,white_rice_dal_sabzi,dinner,261.92664,230.59383,31.33281,120.0,120.0,0.0
+T03,walk + smaller portion,oats_upma,breakfast,205.38905,195.80286,9.586197,100.0,100.0,0.0
+T03,walk + smaller portion,veg_biryani,lunch,298.3661,258.51187,39.854218,120.0,120.0,0.0
+T03,walk + smaller portion,sweet_pongal,breakfast,249.04428,224.69908,24.3452,120.0,120.0,0.0
+T03,walk + smaller portion,millet_dal_sabzi,lunch,216.87236,204.23918,12.633179,120.0,120.0,0.0
+T03,walk + smaller portion,chai_biscuit,snack,187.62297,179.7802,7.8427734,55.0,0.0,55.0
+T03,walk + smaller portion,dosa_chutney,dinner,234.4057,210.81425,23.591446,120.0,105.0,15.0
+T03,walk + smaller portion,idli_sambar,breakfast,242.91522,221.87802,21.0372,120.0,120.0,0.0
+T03,walk + smaller portion,curd_rice,lunch,285.3054,248.00235,37.30304,120.0,120.0,0.0
+T03,walk + smaller portion,chai_biscuit,snack,221.80191,214.56491,7.2369995,120.0,120.0,0.0
+T03,walk + smaller portion,roti_dal_sabzi,dinner,252.90573,227.37138,25.534348,120.0,120.0,0.0
+T03,walk + smaller portion,idli_sambar,breakfast,222.83162,203.9398,18.891815,120.0,95.0,25.0
+T03,walk + smaller portion,veg_biryani,lunch,283.89307,245.99506,37.89801,120.0,120.0,0.0
+T03,walk + smaller portion,chai_biscuit,snack,191.29773,183.91272,7.38501,75.0,45.0,30.0
+T03,walk + smaller portion,idli_sambar,breakfast,234.75429,215.54811,19.206177,120.0,120.0,0.0
+T03,walk + smaller portion,veg_biryani,lunch,324.92828,278.12952,46.798767,120.0,120.0,0.0
+T03,walk + smaller portion,chai_biscuit,snack,202.34315,194.48738,7.855774,85.0,65.0,20.0
+T03,walk + smaller portion,roti_dal_sabzi,dinner,242.3418,222.45807,19.883728,120.0,120.0,0.0
+T04,walk 10 min,curd_rice,lunch,110.81244,109.98471,0.8277283,0.0,0.0,0.0
+T04,walk 10 min,samosa,snack,106.66221,106.50704,0.15516663,0.0,0.0,0.0
+T04,walk 10 min,roti_dal_sabzi,dinner,112.50161,112.05019,0.45141602,0.0,0.0,0.0
+T04,walk 10 min,roti_dal_sabzi,lunch,117.238754,116.66186,0.57689667,0.0,0.0,0.0
+T04,walk 10 min,idli_sambar,breakfast,131.42216,130.97871,0.44345093,0.0,0.0,0.0
+T04,walk 10 min,roti_dal_sabzi,lunch,126.80353,126.39233,0.41120148,0.0,0.0,0.0
+T04,walk 10 min,roasted_chana,snack,116.852684,116.735344,0.11734009,0.0,0.0,0.0
+T04,walk 10 min,roti_dal_sabzi,lunch,119.347145,118.5585,0.7886429,0.0,0.0,0.0
+T04,walk 10 min,dosa_chutney,dinner,109.701,109.24597,0.45502472,0.0,0.0,0.0
+T04,walk 10 min,oats_upma,breakfast,116.7852,116.57108,0.21411896,0.0,0.0,0.0
+T04,walk 10 min,roti_dal_sabzi,lunch,118.84489,118.03392,0.8109665,0.0,0.0,0.0
+T04,walk 10 min,white_rice_dal_sabzi,dinner,136.71977,135.79686,0.9229126,0.0,0.0,0.0
+T04,walk 10 min,millet_dal_sabzi,lunch,106.54676,105.839806,0.70695496,0.0,0.0,0.0
+T04,walk 10 min,dosa_chutney,dinner,110.90839,110.414505,0.49388123,0.0,0.0,0.0
+T04,walk 10 min,poha,breakfast,125.40117,124.85299,0.5481796,0.0,0.0,0.0
+T04,walk 10 min,roti_dal_sabzi,lunch,118.69646,118.14447,0.5519867,0.0,0.0,0.0
+T04,walk 10 min,mithai_sweets,snack,110.271385,109.75252,0.5188675,0.0,0.0,0.0
+T04,walk 10 min,poha,breakfast,111.13353,110.72004,0.4134903,0.0,0.0,0.0
+T04,walk 10 min,millet_dal_sabzi,lunch,114.849236,114.12703,0.7222061,0.0,0.0,0.0
+T04,walk 10 min,mithai_sweets,snack,110.25828,109.77682,0.48146057,0.0,0.0,0.0
+T04,walk 10 min,roti_dal_sabzi,dinner,101.92269,101.38922,0.53347015,0.0,0.0,0.0
+T04,walk 10 min,ragi_dosa,breakfast,111.45055,111.38274,0.06781006,0.0,0.0,0.0
+T04,walk 10 min,fruit_bowl,snack,104.29203,104.020805,0.27122498,0.0,0.0,0.0
+T04,walk 10 min,roti_dal_sabzi,dinner,117.358025,116.87308,0.4849472,0.0,0.0,0.0
+T04,walk 10 min,sweet_pongal,breakfast,131.00603,130.218,0.7880249,0.0,0.0,0.0
+T04,walk 10 min,roti_dal_sabzi,lunch,102.743744,101.99048,0.7532654,0.0,0.0,0.0
+T04,walk 10 min,aloo_paratha,breakfast,130.8439,130.41585,0.4280548,0.0,0.0,0.0
+T04,walk 10 min,roti_dal_sabzi,lunch,121.02673,120.47823,0.54850006,0.0,0.0,0.0
+T04,walk 10 min,dosa_chutney,dinner,115.783104,115.31349,0.46961212,0.0,0.0,0.0
+T04,walk 10 min,poha,breakfast,117.55279,116.761856,0.7909317,0.0,0.0,0.0
+T04,walk 10 min,roti_dal_sabzi,lunch,122.41163,121.99616,0.4154663,0.0,0.0,0.0
+T04,walk 10 min,poha,breakfast,113.150246,112.3911,0.75914764,0.0,0.0,0.0
+T04,walk 10 min,roasted_chana,snack,105.4906,105.172714,0.31788635,0.0,0.0,0.0
+T04,walk 10 min,roti_dal_sabzi,dinner,115.83091,115.380974,0.4499359,0.0,0.0,0.0
+T04,30% smaller portion,curd_rice,lunch,110.81244,107.42438,3.3880615,0.0,0.0,0.0
+T04,30% smaller portion,samosa,snack,106.66221,107.21016,-0.54795074,0.0,0.0,0.0
+T04,30% smaller portion,roti_dal_sabzi,dinner,112.50161,107.52699,4.974617,0.0,0.0,0.0
+T04,30% smaller portion,roti_dal_sabzi,lunch,117.238754,112.137436,5.1013184,0.0,0.0,0.0
+T04,30% smaller portion,idli_sambar,breakfast,131.42216,128.18542,3.23674,0.0,0.0,0.0
+T04,30% smaller portion,roti_dal_sabzi,lunch,126.80353,124.14327,2.6602554,0.0,0.0,0.0
+T04,30% smaller portion,roasted_chana,snack,116.852684,114.827934,2.0247498,0.0,0.0,0.0
+T04,30% smaller portion,roti_dal_sabzi,lunch,119.347145,116.346695,3.0004501,0.0,0.0,0.0
+T04,30% smaller portion,dosa_chutney,dinner,109.701,105.20682,4.494179,0.0,0.0,0.0
+T04,30% smaller portion,oats_upma,breakfast,116.7852,115.49888,1.2863235,0.0,0.0,0.0
+T04,30% smaller portion,roti_dal_sabzi,lunch,118.84489,114.543915,4.300972,0.0,0.0,0.0
+T04,30% smaller portion,white_rice_dal_sabzi,dinner,136.71977,129.71588,7.003891,0.0,0.0,0.0
+T04,30% smaller portion,millet_dal_sabzi,lunch,106.54676,107.775696,-1.2289352,0.0,0.0,0.0
+T04,30% smaller portion,dosa_chutney,dinner,110.90839,107.48065,3.4277344,0.0,0.0,0.0
+T04,30% smaller portion,poha,breakfast,125.40117,121.068985,4.332184,0.0,0.0,0.0
+T04,30% smaller portion,roti_dal_sabzi,lunch,118.69646,117.59407,1.1023865,0.0,0.0,0.0
+T04,30% smaller portion,mithai_sweets,snack,110.271385,105.90415,4.3672333,0.0,0.0,0.0
+T04,30% smaller portion,poha,breakfast,111.13353,109.41212,1.7214127,0.0,0.0,0.0
+T04,30% smaller portion,millet_dal_sabzi,lunch,114.849236,114.55669,0.29254913,0.0,0.0,0.0
+T04,30% smaller portion,mithai_sweets,snack,110.25828,107.50286,2.7554169,0.0,0.0,0.0
+T04,30% smaller portion,roti_dal_sabzi,dinner,101.92269,99.60689,2.3158035,0.0,0.0,0.0
+T04,30% smaller portion,ragi_dosa,breakfast,111.45055,111.087845,0.36270142,0.0,0.0,0.0
+T04,30% smaller portion,fruit_bowl,snack,104.29203,105.18602,-0.89398956,0.0,0.0,0.0
+T04,30% smaller portion,roti_dal_sabzi,dinner,117.358025,113.30044,4.0575867,0.0,0.0,0.0
+T04,30% smaller portion,sweet_pongal,breakfast,131.00603,126.01953,4.986496,0.0,0.0,0.0
+T04,30% smaller portion,roti_dal_sabzi,lunch,102.743744,102.53601,0.20773315,0.0,0.0,0.0
+T04,30% smaller portion,aloo_paratha,breakfast,130.8439,126.1877,4.656204,0.0,0.0,0.0
+T04,30% smaller portion,roti_dal_sabzi,lunch,121.02673,119.014496,2.0122375,0.0,0.0,0.0
+T04,30% smaller portion,dosa_chutney,dinner,115.783104,110.05531,5.727791,0.0,0.0,0.0
+T04,30% smaller portion,poha,breakfast,117.55279,116.004555,1.548233,0.0,0.0,0.0
+T04,30% smaller portion,roti_dal_sabzi,lunch,122.41163,114.475494,7.9361343,0.0,0.0,0.0
+T04,30% smaller portion,poha,breakfast,113.150246,110.56732,2.582924,0.0,0.0,0.0
+T04,30% smaller portion,roasted_chana,snack,105.4906,105.66811,-0.17751312,0.0,0.0,0.0
+T04,30% smaller portion,roti_dal_sabzi,dinner,115.83091,114.587265,1.2436447,0.0,0.0,0.0
+T04,low-GI swap (GI 50),curd_rice,lunch,110.81244,107.40552,3.4069214,0.0,0.0,0.0
+T04,low-GI swap (GI 50),samosa,snack,106.66221,107.432526,-0.7703171,0.0,0.0,0.0
+T04,low-GI swap (GI 50),roti_dal_sabzi,dinner,112.50161,110.996254,1.5053558,0.0,0.0,0.0
+T04,low-GI swap (GI 50),roti_dal_sabzi,lunch,117.238754,115.51397,1.7247849,0.0,0.0,0.0
+T04,low-GI swap (GI 50),idli_sambar,breakfast,131.42216,128.25006,3.172104,0.0,0.0,0.0
+T04,low-GI swap (GI 50),roti_dal_sabzi,lunch,126.80353,125.92634,0.87718964,0.0,0.0,0.0
+T04,low-GI swap (GI 50),roti_dal_sabzi,lunch,119.347145,117.99063,1.356514,0.0,0.0,0.0
+T04,low-GI swap (GI 50),dosa_chutney,dinner,109.701,105.68998,4.011017,0.0,0.0,0.0
+T04,low-GI swap (GI 50),oats_upma,breakfast,116.7852,116.49789,0.28731537,0.0,0.0,0.0
+T04,low-GI swap (GI 50),roti_dal_sabzi,lunch,118.84489,117.01569,1.8291931,0.0,0.0,0.0
+T04,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,136.71977,129.35551,7.364258,0.0,0.0,0.0
+T04,low-GI swap (GI 50),dosa_chutney,dinner,110.90839,107.88676,3.0216293,0.0,0.0,0.0
+T04,low-GI swap (GI 50),poha,breakfast,125.40117,121.99,3.411171,0.0,0.0,0.0
+T04,low-GI swap (GI 50),roti_dal_sabzi,lunch,118.69646,118.2277,0.46875763,0.0,0.0,0.0
+T04,low-GI swap (GI 50),mithai_sweets,snack,110.271385,104.97641,5.2949753,0.0,0.0,0.0
+T04,low-GI swap (GI 50),poha,breakfast,111.13353,109.7923,1.3412323,0.0,0.0,0.0
+T04,low-GI swap (GI 50),mithai_sweets,snack,110.25828,108.23501,2.0232697,0.0,0.0,0.0
+T04,low-GI swap (GI 50),roti_dal_sabzi,dinner,101.92269,101.258804,0.663887,0.0,0.0,0.0
+T04,low-GI swap (GI 50),roti_dal_sabzi,dinner,117.358025,116.087875,1.2701492,0.0,0.0,0.0
+T04,low-GI swap (GI 50),sweet_pongal,breakfast,131.00603,125.233986,5.7720413,0.0,0.0,0.0
+T04,low-GI swap (GI 50),roti_dal_sabzi,lunch,102.743744,102.48815,0.25559235,0.0,0.0,0.0
+T04,low-GI swap (GI 50),aloo_paratha,breakfast,130.8439,126.3988,4.445099,0.0,0.0,0.0
+T04,low-GI swap (GI 50),roti_dal_sabzi,lunch,121.02673,120.174515,0.8522186,0.0,0.0,0.0
+T04,low-GI swap (GI 50),dosa_chutney,dinner,115.783104,110.73257,5.050537,0.0,0.0,0.0
+T04,low-GI swap (GI 50),poha,breakfast,117.55279,116.264946,1.2878418,0.0,0.0,0.0
+T04,low-GI swap (GI 50),roti_dal_sabzi,lunch,122.41163,119.861206,2.5504227,0.0,0.0,0.0
+T04,low-GI swap (GI 50),poha,breakfast,113.150246,111.06802,2.082222,0.0,0.0,0.0
+T04,low-GI swap (GI 50),roti_dal_sabzi,dinner,115.83091,115.49537,0.33554077,0.0,0.0,0.0
+T04,walk + smaller portion,curd_rice,lunch,110.81244,106.65828,4.1541595,0.0,0.0,0.0
+T04,walk + smaller portion,samosa,snack,106.66221,106.90115,-0.238945,0.0,0.0,0.0
+T04,walk + smaller portion,roti_dal_sabzi,dinner,112.50161,106.95096,5.5506516,0.0,0.0,0.0
+T04,walk + smaller portion,roti_dal_sabzi,lunch,117.238754,111.4369,5.801857,0.0,0.0,0.0
+T04,walk + smaller portion,idli_sambar,breakfast,131.42216,127.95803,3.4641342,0.0,0.0,0.0
+T04,walk + smaller portion,roti_dal_sabzi,lunch,126.80353,123.75969,3.0438385,0.0,0.0,0.0
+T04,walk + smaller portion,roasted_chana,snack,116.852684,114.98033,1.8723526,0.0,0.0,0.0
+T04,walk + smaller portion,roti_dal_sabzi,lunch,119.347145,115.62428,3.7228622,0.0,0.0,0.0
+T04,walk + smaller portion,dosa_chutney,dinner,109.701,104.638664,5.062332,0.0,0.0,0.0
+T04,walk + smaller portion,oats_upma,breakfast,116.7852,115.30728,1.4779205,0.0,0.0,0.0
+T04,walk + smaller portion,roti_dal_sabzi,lunch,118.84489,113.80442,5.0404663,0.0,0.0,0.0
+T04,walk + smaller portion,white_rice_dal_sabzi,dinner,136.71977,128.86034,7.859436,0.0,0.0,0.0
+T04,walk + smaller portion,millet_dal_sabzi,lunch,106.54676,107.210915,-0.66415405,0.0,0.0,0.0
+T04,walk + smaller portion,dosa_chutney,dinner,110.90839,107.043976,3.8644104,0.0,0.0,0.0
+T04,walk + smaller portion,poha,breakfast,125.40117,120.864716,4.5364532,0.0,0.0,0.0
+T04,walk + smaller portion,roti_dal_sabzi,lunch,118.69646,116.92547,1.7709885,0.0,0.0,0.0
+T04,walk + smaller portion,mithai_sweets,snack,110.271385,105.68791,4.583473,0.0,0.0,0.0
+T04,walk + smaller portion,poha,breakfast,111.13353,109.049034,2.0844955,0.0,0.0,0.0
+T04,walk + smaller portion,millet_dal_sabzi,lunch,114.849236,114.04895,0.80028534,0.0,0.0,0.0
+T04,walk + smaller portion,mithai_sweets,snack,110.25828,107.16754,3.0907364,0.0,0.0,0.0
+T04,walk + smaller portion,roti_dal_sabzi,dinner,101.92269,99.00965,2.9130402,0.0,0.0,0.0
+T04,walk + smaller portion,ragi_dosa,breakfast,111.45055,111.023026,0.42752075,0.0,0.0,0.0
+T04,walk + smaller portion,fruit_bowl,snack,104.29203,104.84052,-0.54849243,0.0,0.0,0.0
+T04,walk + smaller portion,roti_dal_sabzi,dinner,117.358025,112.81872,4.5393066,0.0,0.0,0.0
+T04,walk + smaller portion,sweet_pongal,breakfast,131.00603,125.20489,5.80114,0.0,0.0,0.0
+T04,walk + smaller portion,roti_dal_sabzi,lunch,102.743744,101.82193,0.92181396,0.0,0.0,0.0
+T04,walk + smaller portion,aloo_paratha,breakfast,130.8439,125.99162,4.8522797,0.0,0.0,0.0
+T04,walk + smaller portion,roti_dal_sabzi,lunch,121.02673,118.327225,2.6995087,0.0,0.0,0.0
+T04,walk + smaller portion,dosa_chutney,dinner,115.783104,109.48026,6.302841,0.0,0.0,0.0
+T04,walk + smaller portion,poha,breakfast,117.55279,115.67137,1.8814163,0.0,0.0,0.0
+T04,walk + smaller portion,roti_dal_sabzi,lunch,122.41163,113.997635,8.413994,0.0,0.0,0.0
+T04,walk + smaller portion,poha,breakfast,113.150246,110.26296,2.8872833,0.0,0.0,0.0
+T04,walk + smaller portion,roasted_chana,snack,105.4906,105.55125,-0.060646057,0.0,0.0,0.0
+T04,walk + smaller portion,roti_dal_sabzi,dinner,115.83091,114.1193,1.7116089,0.0,0.0,0.0
+T05,walk 10 min,oats_upma,breakfast,158.37868,157.57048,0.808197,0.0,0.0,0.0
+T05,walk 10 min,millet_dal_sabzi,lunch,167.15013,165.68037,1.4697571,0.0,0.0,0.0
+T05,walk 10 min,veg_biryani,dinner,213.08247,211.52162,1.560852,80.0,80.0,0.0
+T05,walk 10 min,ragi_dosa,breakfast,155.0867,154.22491,0.8617859,0.0,0.0,0.0
+T05,walk 10 min,millet_khichdi,dinner,186.46667,185.55205,0.9146271,40.0,35.0,5.0
+T05,walk 10 min,poha,breakfast,176.81584,174.82109,1.994751,0.0,0.0,0.0
+T05,walk 10 min,millet_dal_sabzi,lunch,175.5232,174.0659,1.4572906,0.0,0.0,0.0
+T05,walk 10 min,roasted_chana,snack,153.49736,153.45747,0.039886475,0.0,0.0,0.0
+T05,walk 10 min,veg_biryani,dinner,233.724,232.3508,1.3731995,115.0,115.0,0.0
+T05,walk 10 min,poha,breakfast,189.40143,188.91081,0.49061584,50.0,45.0,5.0
+T05,walk 10 min,oats_upma,breakfast,159.9219,159.01587,0.9060364,0.0,0.0,0.0
+T05,walk 10 min,curd_rice,lunch,198.90169,196.91664,1.9850464,75.0,70.0,5.0
+T05,walk 10 min,veg_biryani,dinner,210.34753,208.93053,1.4170074,80.0,75.0,5.0
+T05,walk 10 min,chai_biscuit,snack,162.46451,161.20549,1.259018,0.0,0.0,0.0
+T05,walk 10 min,millet_dal_sabzi,lunch,175.95155,174.40503,1.546524,0.0,0.0,0.0
+T05,walk 10 min,samosa,snack,167.71924,167.07364,0.64559937,0.0,0.0,0.0
+T05,walk 10 min,aloo_paratha,breakfast,191.55692,189.48672,2.0701904,55.0,50.0,5.0
+T05,walk 10 min,roasted_chana,snack,162.74287,162.67012,0.072753906,0.0,0.0,0.0
+T05,walk 10 min,veg_biryani,lunch,234.90288,232.72513,2.1777496,110.0,105.0,5.0
+T05,walk 10 min,veg_biryani,dinner,208.12204,205.45401,2.6680298,80.0,75.0,5.0
+T05,walk 10 min,sweet_pongal,breakfast,192.27808,190.88672,1.3913574,55.0,50.0,5.0
+T05,walk 10 min,millet_khichdi,dinner,182.28352,181.33485,0.94866943,25.0,20.0,5.0
+T05,walk 10 min,chai_biscuit,snack,170.0151,169.63513,0.37997437,0.0,0.0,0.0
+T05,walk 10 min,veg_biryani,dinner,243.05537,241.83289,1.2224884,120.0,120.0,0.0
+T05,walk 10 min,oats_upma,breakfast,173.75996,172.84436,0.91560364,0.0,0.0,0.0
+T05,walk 10 min,white_rice_dal_sabzi,lunch,227.21368,225.0728,2.1408844,105.0,105.0,0.0
+T05,walk 10 min,ragi_dosa,breakfast,164.33224,163.34988,0.98236084,0.0,0.0,0.0
+T05,walk 10 min,roti_dal_sabzi,lunch,165.56718,164.10898,1.4582062,0.0,0.0,0.0
+T05,walk 10 min,chai_biscuit,snack,166.39166,165.86522,0.5264435,0.0,0.0,0.0
+T05,walk 10 min,sweet_pongal,breakfast,193.43794,191.3878,2.0501404,60.0,55.0,5.0
+T05,30% smaller portion,oats_upma,breakfast,158.37868,152.59962,5.7790527,0.0,0.0,0.0
+T05,30% smaller portion,millet_dal_sabzi,lunch,167.15013,160.31725,6.8328857,0.0,0.0,0.0
+T05,30% smaller portion,veg_biryani,dinner,213.08247,192.88327,20.199203,80.0,55.0,25.0
+T05,30% smaller portion,ragi_dosa,breakfast,155.0867,152.14134,2.9453583,0.0,0.0,0.0
+T05,30% smaller portion,millet_khichdi,dinner,186.46667,178.5739,7.8927765,40.0,0.0,40.0
+T05,30% smaller portion,poha,breakfast,176.81584,170.09564,6.7201996,0.0,0.0,0.0
+T05,30% smaller portion,millet_dal_sabzi,lunch,175.5232,167.31691,8.206284,0.0,0.0,0.0
+T05,30% smaller portion,roasted_chana,snack,153.49736,152.09818,1.3991852,0.0,0.0,0.0
+T05,30% smaller portion,veg_biryani,dinner,233.724,213.02298,20.70102,115.0,90.0,25.0
+T05,30% smaller portion,poha,breakfast,189.40143,181.4702,7.9312286,50.0,25.0,25.0
+T05,30% smaller portion,oats_upma,breakfast,159.9219,155.46191,4.4599915,0.0,0.0,0.0
+T05,30% smaller portion,curd_rice,lunch,198.90169,182.87326,16.028427,75.0,35.0,40.0
+T05,30% smaller portion,veg_biryani,dinner,210.34753,193.01529,17.332245,80.0,50.0,30.0
+T05,30% smaller portion,chai_biscuit,snack,162.46451,158.48433,3.9801788,0.0,0.0,0.0
+T05,30% smaller portion,millet_dal_sabzi,lunch,175.95155,167.92773,8.023819,0.0,0.0,0.0
+T05,30% smaller portion,samosa,snack,167.71924,163.50543,4.213806,0.0,0.0,0.0
+T05,30% smaller portion,aloo_paratha,breakfast,191.55692,178.2002,13.35672,55.0,0.0,55.0
+T05,30% smaller portion,roasted_chana,snack,162.74287,161.91658,0.82629395,0.0,0.0,0.0
+T05,30% smaller portion,veg_biryani,lunch,234.90288,210.97063,23.932251,110.0,85.0,25.0
+T05,30% smaller portion,veg_biryani,dinner,208.12204,189.81499,18.307053,80.0,50.0,30.0
+T05,30% smaller portion,sweet_pongal,breakfast,192.27808,176.58752,15.690552,55.0,0.0,55.0
+T05,30% smaller portion,millet_khichdi,dinner,182.28352,176.05933,6.2241974,25.0,0.0,25.0
+T05,30% smaller portion,chai_biscuit,snack,170.0151,166.25853,3.7565765,0.0,0.0,0.0
+T05,30% smaller portion,veg_biryani,dinner,243.05537,222.07843,20.976944,120.0,95.0,25.0
+T05,30% smaller portion,oats_upma,breakfast,173.75996,168.41786,5.342102,0.0,0.0,0.0
+T05,30% smaller portion,white_rice_dal_sabzi,lunch,227.21368,204.47171,22.741974,105.0,80.0,25.0
+T05,30% smaller portion,ragi_dosa,breakfast,164.33224,158.51422,5.8180237,0.0,0.0,0.0
+T05,30% smaller portion,roti_dal_sabzi,lunch,165.56718,158.07825,7.4889374,0.0,0.0,0.0
+T05,30% smaller portion,chai_biscuit,snack,166.39166,162.55225,3.8394165,0.0,0.0,0.0
+T05,30% smaller portion,sweet_pongal,breakfast,193.43794,180.2512,13.186737,60.0,5.0,55.0
+T05,low-GI swap (GI 50),oats_upma,breakfast,158.37868,156.50671,1.8719635,0.0,0.0,0.0
+T05,low-GI swap (GI 50),veg_biryani,dinner,213.08247,196.06316,17.019318,80.0,60.0,20.0
+T05,low-GI swap (GI 50),poha,breakfast,176.81584,171.36838,5.447464,0.0,0.0,0.0
+T05,low-GI swap (GI 50),veg_biryani,dinner,233.724,215.14742,18.576584,115.0,90.0,25.0
+T05,low-GI swap (GI 50),poha,breakfast,189.40143,183.26779,6.1336365,50.0,30.0,20.0
+T05,low-GI swap (GI 50),oats_upma,breakfast,159.9219,158.38564,1.5362701,0.0,0.0,0.0
+T05,low-GI swap (GI 50),curd_rice,lunch,198.90169,185.57321,13.328476,75.0,45.0,30.0
+T05,low-GI swap (GI 50),veg_biryani,dinner,210.34753,194.8755,15.472031,80.0,55.0,25.0
+T05,low-GI swap (GI 50),chai_biscuit,snack,162.46451,158.6881,3.776413,0.0,0.0,0.0
+T05,low-GI swap (GI 50),samosa,snack,167.71924,165.20027,2.5189667,0.0,0.0,0.0
+T05,low-GI swap (GI 50),aloo_paratha,breakfast,191.55692,179.41035,12.146561,55.0,0.0,55.0
+T05,low-GI swap (GI 50),veg_biryani,lunch,234.90288,214.65,20.252884,110.0,90.0,20.0
+T05,low-GI swap (GI 50),veg_biryani,dinner,208.12204,192.8558,15.266235,80.0,60.0,20.0
+T05,low-GI swap (GI 50),sweet_pongal,breakfast,192.27808,173.97888,18.299194,55.0,0.0,55.0
+T05,low-GI swap (GI 50),chai_biscuit,snack,170.0151,166.9029,3.1122131,0.0,0.0,0.0
+T05,low-GI swap (GI 50),veg_biryani,dinner,243.05537,224.35912,18.696259,120.0,100.0,20.0
+T05,low-GI swap (GI 50),oats_upma,breakfast,173.75996,172.00058,1.7593842,0.0,0.0,0.0
+T05,low-GI swap (GI 50),white_rice_dal_sabzi,lunch,227.21368,203.53615,23.677536,105.0,80.0,25.0
+T05,low-GI swap (GI 50),roti_dal_sabzi,lunch,165.56718,163.37358,2.1936035,0.0,0.0,0.0
+T05,low-GI swap (GI 50),chai_biscuit,snack,166.39166,163.14362,3.2480469,0.0,0.0,0.0
+T05,low-GI swap (GI 50),sweet_pongal,breakfast,193.43794,177.54016,15.897781,60.0,0.0,60.0
+T05,walk + smaller portion,oats_upma,breakfast,158.37868,151.77028,6.6083984,0.0,0.0,0.0
+T05,walk + smaller portion,millet_dal_sabzi,lunch,167.15013,159.26178,7.8883514,0.0,0.0,0.0
+T05,walk + smaller portion,veg_biryani,dinner,213.08247,191.313,21.76947,80.0,45.0,35.0
+T05,walk + smaller portion,ragi_dosa,breakfast,155.0867,151.2988,3.7879028,0.0,0.0,0.0
+T05,walk + smaller portion,millet_khichdi,dinner,186.46667,177.83774,8.628937,40.0,0.0,40.0
+T05,walk + smaller portion,poha,breakfast,176.81584,168.53719,8.278656,0.0,0.0,0.0
+T05,walk + smaller portion,millet_dal_sabzi,lunch,175.5232,166.27356,9.249634,0.0,0.0,0.0
+T05,walk + smaller portion,roasted_chana,snack,153.49736,152.0404,1.456955,0.0,0.0,0.0
+T05,walk + smaller portion,veg_biryani,dinner,233.724,211.59673,22.127274,115.0,85.0,30.0
+T05,walk + smaller portion,poha,breakfast,189.40143,181.00822,8.393204,50.0,20.0,30.0
+T05,walk + smaller portion,oats_upma,breakfast,159.9219,154.54031,5.381592,0.0,0.0,0.0
+T05,walk + smaller portion,curd_rice,lunch,198.90169,181.12575,17.77594,75.0,20.0,55.0
+T05,walk + smaller portion,veg_biryani,dinner,210.34753,191.74847,18.59906,80.0,50.0,30.0
+T05,walk + smaller portion,chai_biscuit,snack,162.46451,157.22377,5.240738,0.0,0.0,0.0
+T05,walk + smaller portion,millet_dal_sabzi,lunch,175.95155,167.13846,8.813095,0.0,0.0,0.0
+T05,walk + smaller portion,samosa,snack,167.71924,163.02621,4.6930237,0.0,0.0,0.0
+T05,walk + smaller portion,aloo_paratha,breakfast,191.55692,176.16898,15.387939,55.0,0.0,55.0
+T05,walk + smaller portion,roasted_chana,snack,162.74287,161.84738,0.89549255,0.0,0.0,0.0
+T05,walk + smaller portion,veg_biryani,lunch,234.90288,209.04793,25.85495,110.0,85.0,25.0
+T05,walk + smaller portion,veg_biryani,dinner,208.12204,187.24388,20.878159,80.0,40.0,40.0
+T05,walk + smaller portion,sweet_pongal,breakfast,192.27808,175.66138,16.6167,55.0,0.0,55.0
+T05,walk + smaller portion,millet_khichdi,dinner,182.28352,175.26968,7.0138397,25.0,0.0,25.0
+T05,walk + smaller portion,chai_biscuit,snack,170.0151,165.97903,4.036072,0.0,0.0,0.0
+T05,walk + smaller portion,veg_biryani,dinner,243.05537,220.96152,22.093857,120.0,95.0,25.0
+T05,walk + smaller portion,oats_upma,breakfast,173.75996,167.61415,6.145813,0.0,0.0,0.0
+T05,walk + smaller portion,white_rice_dal_sabzi,lunch,227.21368,202.53801,24.675674,105.0,80.0,25.0
+T05,walk + smaller portion,ragi_dosa,breakfast,164.33224,157.60379,6.7284546,0.0,0.0,0.0
+T05,walk + smaller portion,roti_dal_sabzi,lunch,165.56718,156.66655,8.900635,0.0,0.0,0.0
+T05,walk + smaller portion,chai_biscuit,snack,166.39166,162.09473,4.296936,0.0,0.0,0.0
+T05,walk + smaller portion,sweet_pongal,breakfast,193.43794,178.60387,14.834076,60.0,0.0,60.0
+T06,walk 10 min,millet_dal_sabzi,lunch,98.97729,98.42822,0.54906464,0.0,0.0,0.0
+T06,walk 10 min,chai_biscuit,snack,106.53169,106.244,0.2876892,0.0,0.0,0.0
+T06,walk 10 min,poha,breakfast,107.734535,107.37151,0.36302185,0.0,0.0,0.0
+T06,walk 10 min,millet_dal_sabzi,lunch,96.2746,95.63822,0.6363754,0.0,0.0,0.0
+T06,walk 10 min,millet_khichdi,dinner,93.51561,93.21102,0.30458832,0.0,0.0,0.0
+T06,walk 10 min,ragi_dosa,breakfast,103.30388,102.92388,0.37999725,0.0,0.0,0.0
+T06,walk 10 min,millet_dal_sabzi,lunch,85.24959,84.71597,0.5336151,0.0,0.0,0.0
+T06,walk 10 min,roasted_chana,snack,110.34127,110.48257,-0.14129639,0.0,0.0,0.0
+T06,walk 10 min,veg_biryani,dinner,115.37422,114.00565,1.3685684,0.0,0.0,0.0
+T06,30% smaller portion,millet_dal_sabzi,lunch,98.97729,101.59807,-2.620781,0.0,0.0,0.0
+T06,30% smaller portion,chai_biscuit,snack,106.53169,106.75139,-0.21969604,0.0,0.0,0.0
+T06,30% smaller portion,poha,breakfast,107.734535,105.85565,1.8788834,0.0,0.0,0.0
+T06,30% smaller portion,millet_dal_sabzi,lunch,96.2746,101.37573,-5.1011353,0.0,0.0,0.0
+T06,30% smaller portion,millet_khichdi,dinner,93.51561,92.73577,0.77983856,0.0,0.0,0.0
+T06,30% smaller portion,ragi_dosa,breakfast,103.30388,103.18794,0.11593628,0.0,0.0,0.0
+T06,30% smaller portion,millet_dal_sabzi,lunch,85.24959,86.08353,-0.8339386,0.0,0.0,0.0
+T06,30% smaller portion,roasted_chana,snack,110.34127,110.40514,-0.06387329,0.0,0.0,0.0
+T06,30% smaller portion,veg_biryani,dinner,115.37422,106.85482,8.519402,0.0,0.0,0.0
+T06,low-GI swap (GI 50),chai_biscuit,snack,106.53169,107.98903,-1.4573364,0.0,0.0,0.0
+T06,low-GI swap (GI 50),poha,breakfast,107.734535,106.32438,1.4101562,0.0,0.0,0.0
+T06,low-GI swap (GI 50),veg_biryani,dinner,115.37422,108.121086,7.2531357,0.0,0.0,0.0
+T06,walk + smaller portion,millet_dal_sabzi,lunch,98.97729,101.067314,-2.0900269,0.0,0.0,0.0
+T06,walk + smaller portion,chai_biscuit,snack,106.53169,106.51166,0.02003479,0.0,0.0,0.0
+T06,walk + smaller portion,poha,breakfast,107.734535,105.4829,2.2516327,0.0,0.0,0.0
+T06,walk + smaller portion,millet_dal_sabzi,lunch,96.2746,100.93796,-4.6633606,0.0,0.0,0.0
+T06,walk + smaller portion,millet_khichdi,dinner,93.51561,93.73209,-0.21648407,0.0,0.0,0.0
+T06,walk + smaller portion,ragi_dosa,breakfast,103.30388,102.813515,0.49036407,0.0,0.0,0.0
+T06,walk + smaller portion,millet_dal_sabzi,lunch,85.24959,85.58506,-0.3354721,0.0,0.0,0.0
+T06,walk + smaller portion,roasted_chana,snack,110.34127,110.54225,-0.20098114,0.0,0.0,0.0
+T06,walk + smaller portion,veg_biryani,dinner,115.37422,106.597916,8.776306,0.0,0.0,0.0
+T07,walk 10 min,white_rice_dal_sabzi,lunch,156.3457,154.40678,1.9389191,0.0,0.0,0.0
+T07,walk 10 min,fruit_bowl,snack,120.33756,119.93248,0.4050827,0.0,0.0,0.0
+T07,walk 10 min,white_rice_dal_sabzi,dinner,157.94672,155.99919,1.947525,0.0,0.0,0.0
+T07,walk 10 min,poha,breakfast,129.9055,128.6139,1.2915955,0.0,0.0,0.0
+T07,walk 10 min,millet_dal_sabzi,lunch,127.97452,126.81987,1.1546478,0.0,0.0,0.0
+T07,walk 10 min,fruit_bowl,snack,114.54722,113.90297,0.64424896,0.0,0.0,0.0
+T07,walk 10 min,oats_upma,breakfast,122.13065,121.76347,0.36717987,0.0,0.0,0.0
+T07,walk 10 min,white_rice_dal_sabzi,lunch,158.69226,156.69444,1.997818,0.0,0.0,0.0
+T07,walk 10 min,samosa,snack,121.91063,121.48198,0.4286499,0.0,0.0,0.0
+T07,walk 10 min,aloo_paratha,breakfast,143.16571,141.12383,2.0418854,0.0,0.0,0.0
+T07,walk 10 min,roasted_chana,snack,111.93408,111.17684,0.7572403,0.0,0.0,0.0
+T07,walk 10 min,millet_khichdi,dinner,119.9093,119.01442,0.8948822,0.0,0.0,0.0
+T07,walk 10 min,ragi_dosa,breakfast,123.71355,122.967545,0.7460022,0.0,0.0,0.0
+T07,walk 10 min,roti_dal_sabzi,lunch,134.43129,133.36934,1.0619507,0.0,0.0,0.0
+T07,walk 10 min,samosa,snack,128.03545,126.50452,1.5309296,0.0,0.0,0.0
+T07,walk 10 min,veg_biryani,dinner,167.84044,165.8728,1.9676361,0.0,0.0,0.0
+T07,walk 10 min,ragi_dosa,breakfast,123.98804,122.83656,1.151474,0.0,0.0,0.0
+T07,walk 10 min,white_rice_dal_sabzi,lunch,149.30534,147.91232,1.3930206,0.0,0.0,0.0
+T07,walk 10 min,mithai_sweets,snack,132.13435,131.23607,0.8982849,0.0,0.0,0.0
+T07,walk 10 min,white_rice_dal_sabzi,dinner,163.8522,161.9147,1.9375,0.0,0.0,0.0
+T07,walk 10 min,ragi_dosa,breakfast,124.35819,123.87372,0.48447418,0.0,0.0,0.0
+T07,walk 10 min,veg_biryani,lunch,160.69865,158.72495,1.9737091,0.0,0.0,0.0
+T07,walk 10 min,chai_biscuit,snack,125.23207,124.89786,0.33421326,0.0,0.0,0.0
+T07,walk 10 min,dosa_chutney,dinner,133.73152,132.29947,1.4320526,0.0,0.0,0.0
+T07,walk 10 min,oats_upma,breakfast,122.27265,121.90309,0.36956024,0.0,0.0,0.0
+T07,walk 10 min,roasted_chana,snack,109.40978,109.12101,0.28877258,0.0,0.0,0.0
+T07,walk 10 min,roti_dal_sabzi,dinner,125.46266,124.05905,1.4036102,0.0,0.0,0.0
+T07,walk 10 min,poha,breakfast,138.92476,137.62726,1.2975006,0.0,0.0,0.0
+T07,walk 10 min,roti_dal_sabzi,lunch,128.98956,127.83986,1.149704,0.0,0.0,0.0
+T07,walk 10 min,chai_biscuit,snack,120.42529,119.90715,0.5181427,0.0,0.0,0.0
+T07,walk 10 min,dosa_chutney,dinner,132.38065,131.39845,0.982193,0.0,0.0,0.0
+T07,walk 10 min,aloo_paratha,breakfast,140.09866,138.748,1.3506622,0.0,0.0,0.0
+T07,walk 10 min,roti_dal_sabzi,lunch,132.17595,131.02382,1.1521301,0.0,0.0,0.0
+T07,walk 10 min,mithai_sweets,snack,133.5771,132.68636,0.8907471,0.0,0.0,0.0
+T07,walk 10 min,millet_khichdi,dinner,128.3006,126.957565,1.3430328,0.0,0.0,0.0
+T07,walk 10 min,sweet_pongal,breakfast,145.53671,143.50285,2.0338593,0.0,0.0,0.0
+T07,walk 10 min,curd_rice,lunch,139.52658,138.20216,1.3244171,0.0,0.0,0.0
+T07,walk 10 min,mithai_sweets,snack,130.9492,129.99635,0.95285034,0.0,0.0,0.0
+T07,walk 10 min,white_rice_dal_sabzi,dinner,152.21342,150.25865,1.954773,0.0,0.0,0.0
+T07,walk 10 min,chai_biscuit,snack,117.47985,116.54094,0.93891144,0.0,0.0,0.0
+T07,walk 10 min,veg_biryani,dinner,156.80281,154.86473,1.9380798,0.0,0.0,0.0
+T07,walk 10 min,roti_dal_sabzi,lunch,126.20079,125.009125,1.1916656,0.0,0.0,0.0
+T07,walk 10 min,samosa,snack,126.31837,125.333336,0.9850311,0.0,0.0,0.0
+T07,walk 10 min,veg_biryani,dinner,159.54295,157.62433,1.9186249,0.0,0.0,0.0
+T07,walk 10 min,veg_biryani,lunch,164.9219,162.84999,2.0719147,0.0,0.0,0.0
+T07,walk 10 min,roasted_chana,snack,111.66147,111.63694,0.024528503,0.0,0.0,0.0
+T07,walk 10 min,veg_biryani,dinner,170.1401,168.20816,1.9319458,0.0,0.0,0.0
+T07,30% smaller portion,white_rice_dal_sabzi,lunch,156.3457,140.57904,15.766663,0.0,0.0,0.0
+T07,30% smaller portion,fruit_bowl,snack,120.33756,119.944145,0.39341736,0.0,0.0,0.0
+T07,30% smaller portion,white_rice_dal_sabzi,dinner,157.94672,140.4482,17.49852,0.0,0.0,0.0
+T07,30% smaller portion,poha,breakfast,129.9055,125.101616,4.8038864,0.0,0.0,0.0
+T07,30% smaller portion,millet_dal_sabzi,lunch,127.97452,123.65319,4.321327,0.0,0.0,0.0
+T07,30% smaller portion,fruit_bowl,snack,114.54722,112.91386,1.6333618,0.0,0.0,0.0
+T07,30% smaller portion,oats_upma,breakfast,122.13065,119.729744,2.4009094,0.0,0.0,0.0
+T07,30% smaller portion,white_rice_dal_sabzi,lunch,158.69226,141.04752,17.644745,0.0,0.0,0.0
+T07,30% smaller portion,samosa,snack,121.91063,119.50636,2.4042664,0.0,0.0,0.0
+T07,30% smaller portion,aloo_paratha,breakfast,143.16571,131.66605,11.499664,0.0,0.0,0.0
+T07,30% smaller portion,roasted_chana,snack,111.93408,111.9315,0.0025787354,0.0,0.0,0.0
+T07,30% smaller portion,millet_khichdi,dinner,119.9093,115.54518,4.3641205,0.0,0.0,0.0
+T07,30% smaller portion,ragi_dosa,breakfast,123.71355,121.08717,2.6263733,0.0,0.0,0.0
+T07,30% smaller portion,roti_dal_sabzi,lunch,134.43129,128.90231,5.5289764,0.0,0.0,0.0
+T07,30% smaller portion,samosa,snack,128.03545,124.18298,3.8524628,0.0,0.0,0.0
+T07,30% smaller portion,veg_biryani,dinner,167.84044,149.14609,18.694351,0.0,0.0,0.0
+T07,30% smaller portion,ragi_dosa,breakfast,123.98804,119.47206,4.515976,0.0,0.0,0.0
+T07,30% smaller portion,white_rice_dal_sabzi,lunch,149.30534,136.83382,12.471527,0.0,0.0,0.0
+T07,30% smaller portion,mithai_sweets,snack,132.13435,125.0488,7.085556,0.0,0.0,0.0
+T07,30% smaller portion,white_rice_dal_sabzi,dinner,163.8522,147.11218,16.74002,0.0,0.0,0.0
+T07,30% smaller portion,ragi_dosa,breakfast,124.35819,122.27396,2.0842361,0.0,0.0,0.0
+T07,30% smaller portion,veg_biryani,lunch,160.69865,142.31392,18.384735,0.0,0.0,0.0
+T07,30% smaller portion,chai_biscuit,snack,125.23207,121.05608,4.1759872,0.0,0.0,0.0
+T07,30% smaller portion,dosa_chutney,dinner,133.73152,125.233406,8.498116,0.0,0.0,0.0
+T07,30% smaller portion,oats_upma,breakfast,122.27265,119.59115,2.6815033,0.0,0.0,0.0
+T07,30% smaller portion,roasted_chana,snack,109.40978,109.69105,-0.28126526,0.0,0.0,0.0
+T07,30% smaller portion,roti_dal_sabzi,dinner,125.46266,116.72263,8.740028,0.0,0.0,0.0
+T07,30% smaller portion,poha,breakfast,138.92476,132.28825,6.636505,0.0,0.0,0.0
+T07,30% smaller portion,roti_dal_sabzi,lunch,128.98956,123.85866,5.130905,0.0,0.0,0.0
+T07,30% smaller portion,chai_biscuit,snack,120.42529,116.39618,4.029114,0.0,0.0,0.0
+T07,30% smaller portion,dosa_chutney,dinner,132.38065,125.206055,7.174591,0.0,0.0,0.0
+T07,30% smaller portion,aloo_paratha,breakfast,140.09866,129.88652,10.212143,0.0,0.0,0.0
+T07,30% smaller portion,roti_dal_sabzi,lunch,132.17595,128.75015,3.4257965,0.0,0.0,0.0
+T07,30% smaller portion,mithai_sweets,snack,133.5771,127.93806,5.6390457,0.0,0.0,0.0
+T07,30% smaller portion,millet_khichdi,dinner,128.3006,122.25863,6.0419693,0.0,0.0,0.0
+T07,30% smaller portion,sweet_pongal,breakfast,145.53671,135.00928,10.527435,0.0,0.0,0.0
+T07,30% smaller portion,curd_rice,lunch,139.52658,128.49867,11.027908,0.0,0.0,0.0
+T07,30% smaller portion,mithai_sweets,snack,130.9492,123.991234,6.9579697,0.0,0.0,0.0
+T07,30% smaller portion,white_rice_dal_sabzi,dinner,152.21342,140.10062,12.112808,0.0,0.0,0.0
+T07,30% smaller portion,chai_biscuit,snack,117.47985,115.26557,2.2142792,0.0,0.0,0.0
+T07,30% smaller portion,veg_biryani,dinner,156.80281,140.2394,16.563416,0.0,0.0,0.0
+T07,30% smaller portion,roti_dal_sabzi,lunch,126.20079,120.134224,6.0665665,0.0,0.0,0.0
+T07,30% smaller portion,samosa,snack,126.31837,123.27104,3.0473251,0.0,0.0,0.0
+T07,30% smaller portion,veg_biryani,dinner,159.54295,144.4574,15.085556,0.0,0.0,0.0
+T07,30% smaller portion,veg_biryani,lunch,164.9219,148.03142,16.890488,0.0,0.0,0.0
+T07,30% smaller portion,roasted_chana,snack,111.66147,112.2343,-0.5728302,0.0,0.0,0.0
+T07,30% smaller portion,veg_biryani,dinner,170.1401,149.02809,21.112015,0.0,0.0,0.0
+T07,low-GI swap (GI 50),white_rice_dal_sabzi,lunch,156.3457,139.87334,16.472366,0.0,0.0,0.0
+T07,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,157.94672,139.92326,18.023453,0.0,0.0,0.0
+T07,low-GI swap (GI 50),poha,breakfast,129.9055,125.99242,3.913086,0.0,0.0,0.0
+T07,low-GI swap (GI 50),oats_upma,breakfast,122.13065,121.31173,0.81892395,0.0,0.0,0.0
+T07,low-GI swap (GI 50),white_rice_dal_sabzi,lunch,158.69226,140.32329,18.368973,0.0,0.0,0.0
+T07,low-GI swap (GI 50),samosa,snack,121.91063,120.49154,1.4190903,0.0,0.0,0.0
+T07,low-GI swap (GI 50),aloo_paratha,breakfast,143.16571,132.50166,10.664047,0.0,0.0,0.0
+T07,low-GI swap (GI 50),roti_dal_sabzi,lunch,134.43129,132.04074,2.3905487,0.0,0.0,0.0
+T07,low-GI swap (GI 50),samosa,snack,128.03545,125.64591,2.389534,0.0,0.0,0.0
+T07,low-GI swap (GI 50),veg_biryani,dinner,167.84044,151.75696,16.08348,0.0,0.0,0.0
+T07,low-GI swap (GI 50),white_rice_dal_sabzi,lunch,149.30534,136.26723,13.038116,0.0,0.0,0.0
+T07,low-GI swap (GI 50),mithai_sweets,snack,132.13435,122.65748,9.476875,0.0,0.0,0.0
+T07,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,163.8522,146.37244,17.479767,0.0,0.0,0.0
+T07,low-GI swap (GI 50),veg_biryani,lunch,160.69865,144.68272,16.01593,0.0,0.0,0.0
+T07,low-GI swap (GI 50),chai_biscuit,snack,125.23207,121.686646,3.5454254,0.0,0.0,0.0
+T07,low-GI swap (GI 50),dosa_chutney,dinner,133.73152,126.12344,7.608078,0.0,0.0,0.0
+T07,low-GI swap (GI 50),oats_upma,breakfast,122.27265,121.37746,0.895195,0.0,0.0,0.0
+T07,low-GI swap (GI 50),roti_dal_sabzi,dinner,125.46266,122.87665,2.5860138,0.0,0.0,0.0
+T07,low-GI swap (GI 50),poha,breakfast,138.92476,133.7509,5.1738586,0.0,0.0,0.0
+T07,low-GI swap (GI 50),roti_dal_sabzi,lunch,128.98956,126.99086,1.998703,0.0,0.0,0.0
+T07,low-GI swap (GI 50),chai_biscuit,snack,120.42529,117.127045,3.2982483,0.0,0.0,0.0
+T07,low-GI swap (GI 50),dosa_chutney,dinner,132.38065,126.04368,6.3369675,0.0,0.0,0.0
+T07,low-GI swap (GI 50),aloo_paratha,breakfast,140.09866,130.29128,9.807388,0.0,0.0,0.0
+T07,low-GI swap (GI 50),roti_dal_sabzi,lunch,132.17595,130.6239,1.5520477,0.0,0.0,0.0
+T07,low-GI swap (GI 50),mithai_sweets,snack,133.5771,125.62552,7.951584,0.0,0.0,0.0
+T07,low-GI swap (GI 50),sweet_pongal,breakfast,145.53671,133.23705,12.299667,0.0,0.0,0.0
+T07,low-GI swap (GI 50),curd_rice,lunch,139.52658,130.02588,9.500702,0.0,0.0,0.0
+T07,low-GI swap (GI 50),mithai_sweets,snack,130.9492,121.46604,9.483162,0.0,0.0,0.0
+T07,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,152.21342,139.33655,12.876877,0.0,0.0,0.0
+T07,low-GI swap (GI 50),chai_biscuit,snack,117.47985,115.79216,1.6876907,0.0,0.0,0.0
+T07,low-GI swap (GI 50),veg_biryani,dinner,156.80281,142.41934,14.383469,0.0,0.0,0.0
+T07,low-GI swap (GI 50),roti_dal_sabzi,lunch,126.20079,124.12537,2.0754242,0.0,0.0,0.0
+T07,low-GI swap (GI 50),samosa,snack,126.31837,124.365654,1.952713,0.0,0.0,0.0
+T07,low-GI swap (GI 50),veg_biryani,dinner,159.54295,146.59073,12.952225,0.0,0.0,0.0
+T07,low-GI swap (GI 50),veg_biryani,lunch,164.9219,150.04054,14.881363,0.0,0.0,0.0
+T07,low-GI swap (GI 50),veg_biryani,dinner,170.1401,152.14941,17.990692,0.0,0.0,0.0
+T07,walk + smaller portion,white_rice_dal_sabzi,lunch,156.3457,139.20816,17.137543,0.0,0.0,0.0
+T07,walk + smaller portion,fruit_bowl,snack,120.33756,119.522,0.8155594,0.0,0.0,0.0
+T07,walk + smaller portion,white_rice_dal_sabzi,dinner,157.94672,138.93387,19.012848,0.0,0.0,0.0
+T07,walk + smaller portion,poha,breakfast,129.9055,124.01019,5.8953094,0.0,0.0,0.0
+T07,walk + smaller portion,millet_dal_sabzi,lunch,127.97452,122.99119,4.98333,0.0,0.0,0.0
+T07,walk + smaller portion,fruit_bowl,snack,114.54722,112.50312,2.044098,0.0,0.0,0.0
+T07,walk + smaller portion,oats_upma,breakfast,122.13065,119.515274,2.6153793,0.0,0.0,0.0
+T07,walk + smaller portion,white_rice_dal_sabzi,lunch,158.69226,139.70247,18.989792,0.0,0.0,0.0
+T07,walk + smaller portion,samosa,snack,121.91063,119.09893,2.811699,0.0,0.0,0.0
+T07,walk + smaller portion,aloo_paratha,breakfast,143.16571,130.35242,12.813293,0.0,0.0,0.0
+T07,walk + smaller portion,roasted_chana,snack,111.93408,111.299095,0.6349869,0.0,0.0,0.0
+T07,walk + smaller portion,millet_khichdi,dinner,119.9093,115.02257,4.886734,0.0,0.0,0.0
+T07,walk + smaller portion,ragi_dosa,breakfast,123.71355,121.31574,2.3978043,0.0,0.0,0.0
+T07,walk + smaller portion,roti_dal_sabzi,lunch,134.43129,128.36433,6.0669556,0.0,0.0,0.0
+T07,walk + smaller portion,samosa,snack,128.03545,122.718216,5.31723,0.0,0.0,0.0
+T07,walk + smaller portion,veg_biryani,dinner,167.84044,147.66771,20.17273,0.0,0.0,0.0
+T07,walk + smaller portion,ragi_dosa,breakfast,123.98804,119.15614,4.831894,0.0,0.0,0.0
+T07,walk + smaller portion,white_rice_dal_sabzi,lunch,149.30534,135.61105,13.69429,0.0,0.0,0.0
+T07,walk + smaller portion,mithai_sweets,snack,132.13435,124.21304,7.9213104,0.0,0.0,0.0
+T07,walk + smaller portion,white_rice_dal_sabzi,dinner,163.8522,146.02278,17.829422,0.0,0.0,0.0
+T07,walk + smaller portion,ragi_dosa,breakfast,124.35819,122.28235,2.0758438,0.0,0.0,0.0
+T07,walk + smaller portion,veg_biryani,lunch,160.69865,140.91011,19.788544,0.0,0.0,0.0
+T07,walk + smaller portion,chai_biscuit,snack,125.23207,120.59391,4.6381607,0.0,0.0,0.0
+T07,walk + smaller portion,dosa_chutney,dinner,133.73152,124.31662,9.414902,0.0,0.0,0.0
+T07,walk + smaller portion,oats_upma,breakfast,122.27265,119.48973,2.7829208,0.0,0.0,0.0
+T07,walk + smaller portion,roasted_chana,snack,109.40978,109.40046,0.00932312,0.0,0.0,0.0
+T07,walk + smaller portion,roti_dal_sabzi,dinner,125.46266,116.3882,9.074463,0.0,0.0,0.0
+T07,walk + smaller portion,poha,breakfast,138.92476,131.09477,7.8299866,0.0,0.0,0.0
+T07,walk + smaller portion,roti_dal_sabzi,lunch,128.98956,122.99648,5.99308,0.0,0.0,0.0
+T07,walk + smaller portion,chai_biscuit,snack,120.42529,115.89122,4.534073,0.0,0.0,0.0
+T07,walk + smaller portion,dosa_chutney,dinner,132.38065,124.46509,7.915558,0.0,0.0,0.0
+T07,walk + smaller portion,aloo_paratha,breakfast,140.09866,128.63487,11.463791,0.0,0.0,0.0
+T07,walk + smaller portion,roti_dal_sabzi,lunch,132.17595,127.87125,4.3047028,0.0,0.0,0.0
+T07,walk + smaller portion,mithai_sweets,snack,133.5771,127.11019,6.4669113,0.0,0.0,0.0
+T07,walk + smaller portion,millet_khichdi,dinner,128.3006,121.61719,6.6834106,0.0,0.0,0.0
+T07,walk + smaller portion,sweet_pongal,breakfast,145.53671,133.6729,11.863815,0.0,0.0,0.0
+T07,walk + smaller portion,curd_rice,lunch,139.52658,127.24741,12.279167,0.0,0.0,0.0
+T07,walk + smaller portion,mithai_sweets,snack,130.9492,123.03316,7.916046,0.0,0.0,0.0
+T07,walk + smaller portion,white_rice_dal_sabzi,dinner,152.21342,138.72862,13.484802,0.0,0.0,0.0
+T07,walk + smaller portion,chai_biscuit,snack,117.47985,114.408554,3.0712967,0.0,0.0,0.0
+T07,walk + smaller portion,veg_biryani,dinner,156.80281,138.78014,18.022675,0.0,0.0,0.0
+T07,walk + smaller portion,roti_dal_sabzi,lunch,126.20079,119.23029,6.970497,0.0,0.0,0.0
+T07,walk + smaller portion,samosa,snack,126.31837,122.65422,3.6641464,0.0,0.0,0.0
+T07,walk + smaller portion,veg_biryani,dinner,159.54295,143.0157,16.527252,0.0,0.0,0.0
+T07,walk + smaller portion,veg_biryani,lunch,164.9219,146.66458,18.257324,0.0,0.0,0.0
+T07,walk + smaller portion,roasted_chana,snack,111.66147,112.207664,-0.546196,0.0,0.0,0.0
+T07,walk + smaller portion,veg_biryani,dinner,170.1401,147.29597,22.844131,0.0,0.0,0.0
+T08,walk 10 min,sweet_pongal,breakfast,242.46017,240.90237,1.5578003,120.0,120.0,0.0
+T08,walk 10 min,millet_dal_sabzi,lunch,214.52246,213.19087,1.3315887,100.0,100.0,0.0
+T08,walk 10 min,mithai_sweets,snack,216.5867,215.72992,0.856781,95.0,95.0,0.0
+T08,walk 10 min,veg_biryani,dinner,273.9001,272.21774,1.6823425,120.0,120.0,0.0
+T08,walk 10 min,sweet_pongal,breakfast,230.83093,229.27483,1.5561066,115.0,115.0,0.0
+T08,walk 10 min,curd_rice,lunch,250.42703,248.82463,1.6024017,120.0,120.0,0.0
+T08,walk 10 min,samosa,snack,184.57191,184.29887,0.27304077,35.0,30.0,5.0
+T08,walk 10 min,white_rice_dal_sabzi,dinner,252.06573,250.26706,1.7986755,120.0,120.0,0.0
+T08,walk 10 min,sweet_pongal,breakfast,248.20508,246.3732,1.8318787,120.0,120.0,0.0
+T08,walk 10 min,roti_dal_sabzi,lunch,212.36102,211.2579,1.1031189,100.0,100.0,0.0
+T08,walk 10 min,samosa,snack,183.67465,183.3181,0.35655212,35.0,30.0,5.0
+T08,walk 10 min,veg_biryani,dinner,269.09653,267.47678,1.619751,120.0,120.0,0.0
+T08,walk 10 min,aloo_paratha,breakfast,217.15175,215.16454,1.9872131,100.0,95.0,5.0
+T08,walk 10 min,veg_biryani,lunch,273.69327,271.28723,2.4060364,120.0,120.0,0.0
+T08,walk 10 min,samosa,snack,187.72864,187.477,0.2516327,45.0,40.0,5.0
+T08,walk 10 min,veg_biryani,dinner,254.17393,251.88379,2.2901459,120.0,120.0,0.0
+T08,walk 10 min,veg_biryani,lunch,273.72165,271.58646,2.1351929,120.0,120.0,0.0
+T08,walk 10 min,samosa,snack,195.10161,194.84894,0.2526703,65.0,60.0,5.0
+T08,walk 10 min,dosa_chutney,dinner,229.49713,228.20726,1.2898712,120.0,120.0,0.0
+T08,walk 10 min,aloo_paratha,breakfast,231.10062,229.49924,1.6013794,120.0,120.0,0.0
+T08,walk 10 min,veg_biryani,lunch,260.2651,258.48706,1.7780457,120.0,120.0,0.0
+T08,walk 10 min,mithai_sweets,snack,219.41864,219.04823,0.3704071,100.0,95.0,5.0
+T08,walk 10 min,veg_biryani,dinner,284.47983,282.99103,1.4888,120.0,120.0,0.0
+T08,walk 10 min,aloo_paratha,breakfast,223.72374,221.27492,2.448822,105.0,105.0,0.0
+T08,walk 10 min,roti_dal_sabzi,lunch,204.07138,202.80405,1.267334,80.0,80.0,0.0
+T08,walk 10 min,chai_biscuit,snack,179.37737,178.78497,0.59239197,0.0,0.0,0.0
+T08,walk 10 min,veg_biryani,dinner,237.9381,235.71489,2.2232056,115.0,115.0,0.0
+T08,walk 10 min,aloo_paratha,breakfast,221.20605,219.16774,2.0383148,105.0,100.0,5.0
+T08,walk 10 min,curd_rice,lunch,238.30756,236.3525,1.9550629,120.0,120.0,0.0
+T08,walk 10 min,chai_biscuit,snack,189.79962,189.55045,0.24917603,45.0,40.0,5.0
+T08,walk 10 min,veg_biryani,dinner,265.21936,263.71942,1.499939,120.0,120.0,0.0
+T08,walk 10 min,aloo_paratha,breakfast,228.11563,225.82921,2.2864227,110.0,110.0,0.0
+T08,walk 10 min,roti_dal_sabzi,lunch,201.11203,199.78198,1.3300476,80.0,80.0,0.0
+T08,walk 10 min,roasted_chana,snack,162.80406,162.6012,0.2028656,0.0,0.0,0.0
+T08,walk 10 min,dosa_chutney,dinner,209.75467,208.23456,1.5201111,90.0,85.0,5.0
+T08,walk 10 min,sweet_pongal,breakfast,233.13824,231.53517,1.6030731,120.0,120.0,0.0
+T08,walk 10 min,veg_biryani,lunch,273.24786,271.39426,1.8536072,120.0,120.0,0.0
+T08,walk 10 min,mithai_sweets,snack,228.24391,227.65492,0.58898926,120.0,120.0,0.0
+T08,walk 10 min,veg_biryani,dinner,269.06747,267.63596,1.4315186,120.0,120.0,0.0
+T08,walk 10 min,poha,breakfast,207.6313,205.56387,2.0674286,90.0,85.0,5.0
+T08,walk 10 min,white_rice_dal_sabzi,lunch,249.0843,247.59906,1.4852448,120.0,120.0,0.0
+T08,walk 10 min,chai_biscuit,snack,184.44504,184.19838,0.24665833,30.0,30.0,0.0
+T08,walk 10 min,white_rice_dal_sabzi,dinner,270.6412,268.97525,1.6659546,120.0,120.0,0.0
+T08,walk 10 min,ragi_dosa,breakfast,192.19614,191.36815,0.8279877,60.0,55.0,5.0
+T08,walk 10 min,white_rice_dal_sabzi,lunch,272.93402,271.18304,1.7509766,120.0,120.0,0.0
+T08,walk 10 min,chai_biscuit,snack,185.24167,184.99911,0.24255371,35.0,30.0,5.0
+T08,walk 10 min,veg_biryani,dinner,263.8874,262.09003,1.7973633,120.0,120.0,0.0
+T08,walk 10 min,sweet_pongal,breakfast,242.13445,240.19986,1.9345856,120.0,120.0,0.0
+T08,walk 10 min,veg_biryani,lunch,261.79822,259.9193,1.8789062,120.0,120.0,0.0
+T08,walk 10 min,mithai_sweets,snack,213.6237,212.99232,0.6313782,95.0,95.0,0.0
+T08,walk 10 min,roti_dal_sabzi,dinner,217.85568,215.87363,1.9820557,100.0,95.0,5.0
+T08,walk 10 min,idli_sambar,breakfast,199.0692,196.96803,2.1011658,75.0,70.0,5.0
+T08,walk 10 min,millet_dal_sabzi,lunch,199.44743,198.17258,1.2748566,75.0,75.0,0.0
+T08,walk 10 min,roasted_chana,snack,161.61504,161.27438,0.34065247,0.0,0.0,0.0
+T08,walk 10 min,veg_biryani,dinner,253.5384,251.42825,2.1101532,120.0,120.0,0.0
+T08,30% smaller portion,sweet_pongal,breakfast,242.46017,218.69789,23.762283,120.0,105.0,15.0
+T08,30% smaller portion,millet_dal_sabzi,lunch,214.52246,199.1465,15.375961,100.0,85.0,15.0
+T08,30% smaller portion,mithai_sweets,snack,216.5867,199.53018,17.056519,95.0,75.0,20.0
+T08,30% smaller portion,veg_biryani,dinner,273.9001,240.42014,33.47995,120.0,120.0,0.0
+T08,30% smaller portion,sweet_pongal,breakfast,230.83093,211.32649,19.50444,115.0,90.0,25.0
+T08,30% smaller portion,curd_rice,lunch,250.42703,224.95427,25.472763,120.0,120.0,0.0
+T08,30% smaller portion,samosa,snack,184.57191,178.20947,6.362442,35.0,0.0,35.0
+T08,30% smaller portion,white_rice_dal_sabzi,dinner,252.06573,226.23598,25.829758,120.0,115.0,5.0
+T08,30% smaller portion,sweet_pongal,breakfast,248.20508,223.51675,24.688324,120.0,110.0,10.0
+T08,30% smaller portion,roti_dal_sabzi,lunch,212.36102,198.3402,14.020828,100.0,90.0,10.0
+T08,30% smaller portion,samosa,snack,183.67465,177.87872,5.795929,35.0,0.0,35.0
+T08,30% smaller portion,veg_biryani,dinner,269.09653,236.7739,32.32263,120.0,120.0,0.0
+T08,30% smaller portion,aloo_paratha,breakfast,217.15175,200.41512,16.736633,100.0,75.0,25.0
+T08,30% smaller portion,veg_biryani,lunch,273.69327,239.72073,33.972534,120.0,120.0,0.0
+T08,30% smaller portion,samosa,snack,187.72864,181.2783,6.4503326,45.0,20.0,25.0
+T08,30% smaller portion,veg_biryani,dinner,254.17393,226.44778,27.72615,120.0,110.0,10.0
+T08,30% smaller portion,veg_biryani,lunch,273.72165,242.01753,31.704117,120.0,120.0,0.0
+T08,30% smaller portion,samosa,snack,195.10161,188.62352,6.4780884,65.0,50.0,15.0
+T08,30% smaller portion,dosa_chutney,dinner,229.49713,213.29185,16.205276,120.0,100.0,20.0
+T08,30% smaller portion,aloo_paratha,breakfast,231.10062,209.89822,21.202393,120.0,90.0,30.0
+T08,30% smaller portion,veg_biryani,lunch,260.2651,231.07657,29.188538,120.0,120.0,0.0
+T08,30% smaller portion,mithai_sweets,snack,219.41864,204.64465,14.773987,100.0,80.0,20.0
+T08,30% smaller portion,veg_biryani,dinner,284.47983,251.19182,33.28801,120.0,120.0,0.0
+T08,30% smaller portion,aloo_paratha,breakfast,223.72374,203.69351,20.030228,105.0,80.0,25.0
+T08,30% smaller portion,roti_dal_sabzi,lunch,204.07138,190.31357,13.7578125,80.0,60.0,20.0
+T08,30% smaller portion,chai_biscuit,snack,179.37737,174.11957,5.2577972,0.0,0.0,0.0
+T08,30% smaller portion,veg_biryani,dinner,237.9381,211.32782,26.610275,115.0,90.0,25.0
+T08,30% smaller portion,aloo_paratha,breakfast,221.20605,203.7886,17.41745,105.0,80.0,25.0
+T08,30% smaller portion,curd_rice,lunch,238.30756,213.52304,24.784515,120.0,95.0,25.0
+T08,30% smaller portion,chai_biscuit,snack,189.79962,182.54372,7.255905,45.0,20.0,25.0
+T08,30% smaller portion,veg_biryani,dinner,265.21936,234.63821,30.581146,120.0,120.0,0.0
+T08,30% smaller portion,aloo_paratha,breakfast,228.11563,208.43605,19.67958,110.0,90.0,20.0
+T08,30% smaller portion,roti_dal_sabzi,lunch,201.11203,188.6326,12.479431,80.0,65.0,15.0
+T08,30% smaller portion,roasted_chana,snack,162.80406,160.30719,2.496872,0.0,0.0,0.0
+T08,30% smaller portion,dosa_chutney,dinner,209.75467,194.08873,15.665939,90.0,60.0,30.0
+T08,30% smaller portion,sweet_pongal,breakfast,233.13824,212.3046,20.833649,120.0,95.0,25.0
+T08,30% smaller portion,veg_biryani,lunch,273.24786,242.19225,31.055618,120.0,120.0,0.0
+T08,30% smaller portion,mithai_sweets,snack,228.24391,213.60304,14.640869,120.0,85.0,35.0
+T08,30% smaller portion,veg_biryani,dinner,269.06747,239.06342,30.004059,120.0,120.0,0.0
+T08,30% smaller portion,poha,breakfast,207.6313,192.1845,15.446808,90.0,60.0,30.0
+T08,30% smaller portion,white_rice_dal_sabzi,lunch,249.0843,223.36523,25.71907,120.0,115.0,5.0
+T08,30% smaller portion,chai_biscuit,snack,184.44504,179.83253,4.612503,30.0,0.0,30.0
+T08,30% smaller portion,white_rice_dal_sabzi,dinner,270.6412,242.69641,27.944794,120.0,120.0,0.0
+T08,30% smaller portion,ragi_dosa,breakfast,192.19614,185.21556,6.9805756,60.0,45.0,15.0
+T08,30% smaller portion,white_rice_dal_sabzi,lunch,272.93402,240.97215,31.961868,120.0,120.0,0.0
+T08,30% smaller portion,chai_biscuit,snack,185.24167,179.46,5.781662,35.0,0.0,35.0
+T08,30% smaller portion,veg_biryani,dinner,263.8874,232.90541,30.98198,120.0,120.0,0.0
+T08,30% smaller portion,sweet_pongal,breakfast,242.13445,218.29129,23.843155,120.0,105.0,15.0
+T08,30% smaller portion,veg_biryani,lunch,261.79822,229.68564,32.11258,120.0,115.0,5.0
+T08,30% smaller portion,mithai_sweets,snack,213.6237,200.20453,13.419174,95.0,80.0,15.0
+T08,30% smaller portion,roti_dal_sabzi,dinner,217.85568,200.71028,17.145401,100.0,80.0,20.0
+T08,30% smaller portion,idli_sambar,breakfast,199.0692,186.9605,12.108704,75.0,45.0,30.0
+T08,30% smaller portion,millet_dal_sabzi,lunch,199.44743,186.79437,12.653061,75.0,50.0,25.0
+T08,30% smaller portion,roasted_chana,snack,161.61504,160.39787,1.2171631,0.0,0.0,0.0
+T08,30% smaller portion,veg_biryani,dinner,253.5384,227.06602,26.472382,120.0,110.0,10.0
+T08,low-GI swap (GI 50),sweet_pongal,breakfast,242.46017,215.16858,27.291595,120.0,100.0,20.0
+T08,low-GI swap (GI 50),mithai_sweets,snack,216.5867,195.17744,21.409256,95.0,70.0,25.0
+T08,low-GI swap (GI 50),veg_biryani,dinner,273.9001,245.4074,28.492691,120.0,120.0,0.0
+T08,low-GI swap (GI 50),sweet_pongal,breakfast,230.83093,207.94983,22.881104,115.0,85.0,30.0
+T08,low-GI swap (GI 50),curd_rice,lunch,250.42703,229.44412,20.98291,120.0,120.0,0.0
+T08,low-GI swap (GI 50),samosa,snack,184.57191,180.94057,3.6313477,35.0,15.0,20.0
+T08,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,252.06573,224.90771,27.15802,120.0,115.0,5.0
+T08,low-GI swap (GI 50),sweet_pongal,breakfast,248.20508,220.2056,27.999481,120.0,105.0,15.0
+T08,low-GI swap (GI 50),roti_dal_sabzi,lunch,212.36102,208.08301,4.278015,100.0,95.0,5.0
+T08,low-GI swap (GI 50),samosa,snack,183.67465,180.29063,3.384018,35.0,10.0,25.0
+T08,low-GI swap (GI 50),veg_biryani,dinner,269.09653,241.62299,27.473541,120.0,120.0,0.0
+T08,low-GI swap (GI 50),aloo_paratha,breakfast,217.15175,201.62924,15.522507,100.0,80.0,20.0
+T08,low-GI swap (GI 50),veg_biryani,lunch,273.69327,244.37833,29.314941,120.0,120.0,0.0
+T08,low-GI swap (GI 50),samosa,snack,187.72864,184.06108,3.6675568,45.0,30.0,15.0
+T08,low-GI swap (GI 50),veg_biryani,dinner,254.17393,230.73834,23.435593,120.0,110.0,10.0
+T08,low-GI swap (GI 50),veg_biryani,lunch,273.72165,246.11604,27.605606,120.0,120.0,0.0
+T08,low-GI swap (GI 50),samosa,snack,195.10161,191.43994,3.6616669,65.0,55.0,10.0
+T08,low-GI swap (GI 50),dosa_chutney,dinner,229.49713,215.18982,14.307312,120.0,105.0,15.0
+T08,low-GI swap (GI 50),aloo_paratha,breakfast,231.10062,211.89758,19.203033,120.0,95.0,25.0
+T08,low-GI swap (GI 50),veg_biryani,lunch,260.2651,234.80952,25.455582,120.0,120.0,0.0
+T08,low-GI swap (GI 50),mithai_sweets,snack,219.41864,200.9311,18.487534,100.0,75.0,25.0
+T08,low-GI swap (GI 50),veg_biryani,dinner,284.47983,255.96521,28.514618,120.0,120.0,0.0
+T08,low-GI swap (GI 50),aloo_paratha,breakfast,223.72374,206.4173,17.306442,105.0,85.0,20.0
+T08,low-GI swap (GI 50),roti_dal_sabzi,lunch,204.07138,200.13336,3.9380188,80.0,75.0,5.0
+T08,low-GI swap (GI 50),chai_biscuit,snack,179.37737,174.95448,4.422882,0.0,0.0,0.0
+T08,low-GI swap (GI 50),veg_biryani,dinner,237.9381,214.87253,23.065567,115.0,95.0,20.0
+T08,low-GI swap (GI 50),aloo_paratha,breakfast,221.20605,205.62698,15.579071,105.0,85.0,20.0
+T08,low-GI swap (GI 50),curd_rice,lunch,238.30756,218.4955,19.812057,120.0,100.0,20.0
+T08,low-GI swap (GI 50),chai_biscuit,snack,189.79962,184.05328,5.746338,45.0,25.0,20.0
+T08,low-GI swap (GI 50),veg_biryani,dinner,265.21936,238.30576,26.913605,120.0,120.0,0.0
+T08,low-GI swap (GI 50),aloo_paratha,breakfast,228.11563,210.93634,17.17929,110.0,90.0,20.0
+T08,low-GI swap (GI 50),roti_dal_sabzi,lunch,201.11203,197.43379,3.678238,80.0,75.0,5.0
+T08,low-GI swap (GI 50),dosa_chutney,dinner,209.75467,195.94946,13.805206,90.0,65.0,25.0
+T08,low-GI swap (GI 50),sweet_pongal,breakfast,233.13824,208.57727,24.560974,120.0,90.0,30.0
+T08,low-GI swap (GI 50),veg_biryani,lunch,273.24786,246.48686,26.761002,120.0,120.0,0.0
+T08,low-GI swap (GI 50),mithai_sweets,snack,228.24391,209.87462,18.369293,120.0,80.0,40.0
+T08,low-GI swap (GI 50),veg_biryani,dinner,269.06747,243.61523,25.45224,120.0,120.0,0.0
+T08,low-GI swap (GI 50),poha,breakfast,207.6313,196.02896,11.602341,90.0,70.0,20.0
+T08,low-GI swap (GI 50),white_rice_dal_sabzi,lunch,249.0843,221.49696,27.587341,120.0,110.0,10.0
+T08,low-GI swap (GI 50),chai_biscuit,snack,184.44504,180.71982,3.7252197,30.0,10.0,20.0
+T08,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,270.6412,241.58284,29.058365,120.0,120.0,0.0
+T08,low-GI swap (GI 50),white_rice_dal_sabzi,lunch,272.93402,239.84709,33.08693,120.0,120.0,0.0
+T08,low-GI swap (GI 50),chai_biscuit,snack,185.24167,180.61674,4.6249237,35.0,10.0,25.0
+T08,low-GI swap (GI 50),veg_biryani,dinner,263.8874,237.61429,26.273102,120.0,120.0,0.0
+T08,low-GI swap (GI 50),sweet_pongal,breakfast,242.13445,215.22504,26.909409,120.0,100.0,20.0
+T08,low-GI swap (GI 50),veg_biryani,lunch,261.79822,233.95688,27.84134,120.0,115.0,5.0
+T08,low-GI swap (GI 50),mithai_sweets,snack,213.6237,196.58379,17.039917,95.0,75.0,20.0
+T08,low-GI swap (GI 50),roti_dal_sabzi,dinner,217.85568,213.06886,4.7868195,100.0,95.0,5.0
+T08,low-GI swap (GI 50),idli_sambar,breakfast,199.0692,187.16592,11.903275,75.0,50.0,25.0
+T08,low-GI swap (GI 50),veg_biryani,dinner,253.5384,230.86288,22.675522,120.0,115.0,5.0
+T08,walk + smaller portion,sweet_pongal,breakfast,242.46017,216.84659,25.613586,120.0,100.0,20.0
+T08,walk + smaller portion,millet_dal_sabzi,lunch,214.52246,198.14787,16.374588,100.0,85.0,15.0
+T08,walk + smaller portion,mithai_sweets,snack,216.5867,198.6675,17.919205,95.0,75.0,20.0
+T08,walk + smaller portion,veg_biryani,dinner,273.9001,238.20612,35.69397,120.0,120.0,0.0
+T08,walk + smaller portion,sweet_pongal,breakfast,230.83093,209.76479,21.066147,115.0,85.0,30.0
+T08,walk + smaller portion,curd_rice,lunch,250.42703,223.92389,26.503143,120.0,120.0,0.0
+T08,walk + smaller portion,samosa,snack,184.57191,177.94983,6.6220856,35.0,0.0,35.0
+T08,walk + smaller portion,white_rice_dal_sabzi,dinner,252.06573,224.43959,27.626144,120.0,115.0,5.0
+T08,walk + smaller portion,sweet_pongal,breakfast,248.20508,221.77022,26.43486,120.0,105.0,15.0
+T08,walk + smaller portion,roti_dal_sabzi,lunch,212.36102,197.48534,14.875687,100.0,90.0,10.0
+T08,walk + smaller portion,samosa,snack,183.67465,177.62303,6.0516205,35.0,0.0,35.0
+T08,walk + smaller portion,veg_biryani,dinner,269.09653,234.466,34.630524,120.0,120.0,0.0
+T08,walk + smaller portion,aloo_paratha,breakfast,217.15175,198.53586,18.61589,100.0,70.0,30.0
+T08,walk + smaller portion,veg_biryani,lunch,273.69327,237.74248,35.95079,120.0,120.0,0.0
+T08,walk + smaller portion,samosa,snack,187.72864,181.04546,6.683182,45.0,15.0,30.0
+T08,walk + smaller portion,veg_biryani,dinner,254.17393,224.33147,29.842468,120.0,105.0,15.0
+T08,walk + smaller portion,veg_biryani,lunch,273.72165,240.30183,33.419815,120.0,120.0,0.0
+T08,walk + smaller portion,samosa,snack,195.10161,188.38477,6.7168427,65.0,45.0,20.0
+T08,walk + smaller portion,dosa_chutney,dinner,229.49713,212.41257,17.084564,120.0,100.0,20.0
+T08,walk + smaller portion,aloo_paratha,breakfast,231.10062,208.31787,22.782745,120.0,85.0,35.0
+T08,walk + smaller portion,veg_biryani,lunch,260.2651,229.46416,30.80095,120.0,120.0,0.0
+T08,walk + smaller portion,mithai_sweets,snack,219.41864,204.38652,15.03212,100.0,75.0,25.0
+T08,walk + smaller portion,veg_biryani,dinner,284.47983,249.706,34.773834,120.0,120.0,0.0
+T08,walk + smaller portion,aloo_paratha,breakfast,223.72374,201.65024,22.073502,105.0,75.0,30.0
+T08,walk + smaller portion,roti_dal_sabzi,lunch,204.07138,189.21884,14.852539,80.0,55.0,25.0
+T08,walk + smaller portion,chai_biscuit,snack,179.37737,173.49553,5.881836,0.0,0.0,0.0
+T08,walk + smaller portion,veg_biryani,dinner,237.9381,209.13635,28.801743,115.0,85.0,30.0
+T08,walk + smaller portion,aloo_paratha,breakfast,221.20605,201.75563,19.450424,105.0,75.0,30.0
+T08,walk + smaller portion,curd_rice,lunch,238.30756,212.22047,26.087082,120.0,95.0,25.0
+T08,walk + smaller portion,chai_biscuit,snack,189.79962,182.31236,7.487259,45.0,20.0,25.0
+T08,walk + smaller portion,veg_biryani,dinner,265.21936,232.56036,32.658997,120.0,115.0,5.0
+T08,walk + smaller portion,aloo_paratha,breakfast,228.11563,206.40271,21.712921,110.0,85.0,25.0
+T08,walk + smaller portion,roti_dal_sabzi,lunch,201.11203,187.51796,13.59407,80.0,60.0,20.0
+T08,walk + smaller portion,roasted_chana,snack,162.80406,161.023,1.7810669,0.0,0.0,0.0
+T08,walk + smaller portion,dosa_chutney,dinner,209.75467,193.10608,16.64859,90.0,60.0,30.0
+T08,walk + smaller portion,sweet_pongal,breakfast,233.13824,210.51527,22.62297,120.0,90.0,30.0
+T08,walk + smaller portion,veg_biryani,lunch,273.24786,240.56844,32.67943,120.0,120.0,0.0
+T08,walk + smaller portion,mithai_sweets,snack,228.24391,213.1417,15.102219,120.0,85.0,35.0
+T08,walk + smaller portion,veg_biryani,dinner,269.06747,237.43553,31.631943,120.0,120.0,0.0
+T08,walk + smaller portion,poha,breakfast,207.6313,190.71922,16.912079,90.0,55.0,35.0
+T08,walk + smaller portion,white_rice_dal_sabzi,lunch,249.0843,222.35483,26.729477,120.0,115.0,5.0
+T08,walk + smaller portion,chai_biscuit,snack,184.44504,179.60431,4.8407288,30.0,0.0,30.0
+T08,walk + smaller portion,white_rice_dal_sabzi,dinner,270.6412,241.17339,29.46782,120.0,120.0,0.0
+T08,walk + smaller portion,ragi_dosa,breakfast,192.19614,184.41519,7.780945,60.0,45.0,15.0
+T08,walk + smaller portion,white_rice_dal_sabzi,lunch,272.93402,239.34981,33.584213,120.0,120.0,0.0
+T08,walk + smaller portion,chai_biscuit,snack,185.24167,179.2362,6.0054626,35.0,0.0,35.0
+T08,walk + smaller portion,veg_biryani,dinner,263.8874,231.08887,32.798523,120.0,115.0,5.0
+T08,walk + smaller portion,sweet_pongal,breakfast,242.13445,216.48035,25.654099,120.0,100.0,20.0
+T08,walk + smaller portion,veg_biryani,lunch,261.79822,227.92131,33.876907,120.0,110.0,10.0
+T08,walk + smaller portion,mithai_sweets,snack,213.6237,199.6946,13.929108,95.0,75.0,20.0
+T08,walk + smaller portion,roti_dal_sabzi,dinner,217.85568,199.44746,18.408218,100.0,75.0,25.0
+T08,walk + smaller portion,idli_sambar,breakfast,199.0692,185.59839,13.47081,75.0,40.0,35.0
+T08,walk + smaller portion,millet_dal_sabzi,lunch,199.44743,185.71042,13.737015,75.0,45.0,30.0
+T08,walk + smaller portion,roasted_chana,snack,161.61504,160.03389,1.5811462,0.0,0.0,0.0
+T08,walk + smaller portion,veg_biryani,dinner,253.5384,225.20291,28.335495,120.0,110.0,10.0
+T09,walk 10 min,chai_biscuit,snack,136.04373,135.37373,0.66999817,0.0,0.0,0.0
+T09,walk 10 min,white_rice_dal_sabzi,dinner,170.18808,169.34637,0.8417053,0.0,0.0,0.0
+T09,walk 10 min,roasted_chana,snack,136.73322,137.92941,-1.1961975,0.0,0.0,0.0
+T09,walk 10 min,roti_dal_sabzi,dinner,158.56975,158.00316,0.56658936,0.0,0.0,0.0
+T09,walk 10 min,ragi_dosa,breakfast,144.62883,144.06427,0.56455994,0.0,0.0,0.0
+T09,walk 10 min,dosa_chutney,dinner,157.00772,156.20444,0.8032837,0.0,0.0,0.0
+T09,walk 10 min,poha,breakfast,158.72523,157.91193,0.8133087,0.0,0.0,0.0
+T09,walk 10 min,sweet_pongal,breakfast,173.46852,172.33655,1.1319733,0.0,0.0,0.0
+T09,walk 10 min,mithai_sweets,snack,153.30145,151.73389,1.5675659,0.0,0.0,0.0
+T09,walk 10 min,ragi_dosa,breakfast,147.98488,147.4233,0.5615845,0.0,0.0,0.0
+T09,walk 10 min,fruit_bowl,snack,124.76496,125.34339,-0.5784302,0.0,0.0,0.0
+T09,walk 10 min,roti_dal_sabzi,dinner,158.20888,157.39125,0.81762695,0.0,0.0,0.0
+T09,walk 10 min,veg_biryani,lunch,179.64941,178.37866,1.270752,0.0,0.0,0.0
+T09,walk 10 min,mithai_sweets,snack,122.239815,121.7615,0.47831726,0.0,0.0,0.0
+T09,walk 10 min,veg_biryani,dinner,173.66774,172.28287,1.3848724,0.0,0.0,0.0
+T09,walk 10 min,idli_sambar,breakfast,151.49211,150.6726,0.8195038,0.0,0.0,0.0
+T09,walk 10 min,fruit_bowl,snack,136.40306,135.85213,0.55093384,0.0,0.0,0.0
+T09,walk 10 min,poha,breakfast,143.92424,143.10684,0.8173981,0.0,0.0,0.0
+T09,walk 10 min,veg_biryani,lunch,166.80983,165.75087,1.05896,0.0,0.0,0.0
+T09,walk 10 min,dosa_chutney,dinner,130.10309,129.04477,1.0583191,0.0,0.0,0.0
+T09,walk 10 min,oats_upma,breakfast,144.18791,143.65938,0.52853394,0.0,0.0,0.0
+T09,walk 10 min,white_rice_dal_sabzi,lunch,188.18445,187.33954,0.84490967,30.0,25.0,5.0
+T09,walk 10 min,samosa,snack,127.631096,127.411736,0.21936035,0.0,0.0,0.0
+T09,walk 10 min,poha,breakfast,150.52933,149.74152,0.7878113,0.0,0.0,0.0
+T09,walk 10 min,veg_biryani,lunch,182.82867,181.78543,1.0432434,20.0,20.0,0.0
+T09,walk 10 min,chai_biscuit,snack,122.91065,122.73607,0.17458344,0.0,0.0,0.0
+T09,walk 10 min,idli_sambar,breakfast,164.28091,163.48647,0.79444885,0.0,0.0,0.0
+T09,walk 10 min,oats_upma,breakfast,137.98491,137.43065,0.55426025,0.0,0.0,0.0
+T09,walk 10 min,roti_dal_sabzi,dinner,150.21649,149.383,0.8334961,0.0,0.0,0.0
+T09,30% smaller portion,chai_biscuit,snack,136.04373,131.55194,4.491791,0.0,0.0,0.0
+T09,30% smaller portion,white_rice_dal_sabzi,dinner,170.18808,156.45718,13.730896,0.0,0.0,0.0
+T09,30% smaller portion,roasted_chana,snack,136.73322,137.15758,-0.42436218,0.0,0.0,0.0
+T09,30% smaller portion,roti_dal_sabzi,dinner,158.56975,150.43597,8.133774,0.0,0.0,0.0
+T09,30% smaller portion,ragi_dosa,breakfast,144.62883,141.63747,2.9913635,0.0,0.0,0.0
+T09,30% smaller portion,dosa_chutney,dinner,157.00772,150.07953,6.928192,0.0,0.0,0.0
+T09,30% smaller portion,poha,breakfast,158.72523,152.8157,5.9095306,0.0,0.0,0.0
+T09,30% smaller portion,sweet_pongal,breakfast,173.46852,160.47067,12.9978485,0.0,0.0,0.0
+T09,30% smaller portion,mithai_sweets,snack,153.30145,144.6307,8.670746,0.0,0.0,0.0
+T09,30% smaller portion,ragi_dosa,breakfast,147.98488,143.82602,4.1588593,0.0,0.0,0.0
+T09,30% smaller portion,fruit_bowl,snack,124.76496,125.083435,-0.31847382,0.0,0.0,0.0
+T09,30% smaller portion,roti_dal_sabzi,dinner,158.20888,149.67467,8.53421,0.0,0.0,0.0
+T09,30% smaller portion,veg_biryani,lunch,179.64941,160.91908,18.730331,0.0,0.0,0.0
+T09,30% smaller portion,mithai_sweets,snack,122.239815,115.68766,6.5521545,0.0,0.0,0.0
+T09,30% smaller portion,veg_biryani,dinner,173.66774,157.0025,16.665237,0.0,0.0,0.0
+T09,30% smaller portion,idli_sambar,breakfast,151.49211,143.37308,8.119034,0.0,0.0,0.0
+T09,30% smaller portion,fruit_bowl,snack,136.40306,133.46533,2.937729,0.0,0.0,0.0
+T09,30% smaller portion,poha,breakfast,143.92424,137.45468,6.4695587,0.0,0.0,0.0
+T09,30% smaller portion,veg_biryani,lunch,166.80983,153.44493,13.364899,0.0,0.0,0.0
+T09,30% smaller portion,dosa_chutney,dinner,130.10309,123.34498,6.75811,0.0,0.0,0.0
+T09,30% smaller portion,oats_upma,breakfast,144.18791,143.48,0.70791626,0.0,0.0,0.0
+T09,30% smaller portion,white_rice_dal_sabzi,lunch,188.18445,171.3129,16.871552,30.0,0.0,30.0
+T09,30% smaller portion,samosa,snack,127.631096,120.7185,6.9125977,0.0,0.0,0.0
+T09,30% smaller portion,poha,breakfast,150.52933,145.01357,5.5157623,0.0,0.0,0.0
+T09,30% smaller portion,veg_biryani,lunch,182.82867,165.55559,17.273087,20.0,0.0,20.0
+T09,30% smaller portion,chai_biscuit,snack,122.91065,121.173225,1.7374268,0.0,0.0,0.0
+T09,30% smaller portion,idli_sambar,breakfast,164.28091,154.65013,9.630783,0.0,0.0,0.0
+T09,30% smaller portion,oats_upma,breakfast,137.98491,136.19437,1.7905426,0.0,0.0,0.0
+T09,30% smaller portion,roti_dal_sabzi,dinner,150.21649,138.3001,11.916397,0.0,0.0,0.0
+T09,low-GI swap (GI 50),chai_biscuit,snack,136.04373,132.31747,3.7262573,0.0,0.0,0.0
+T09,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,170.18808,155.12135,15.066727,0.0,0.0,0.0
+T09,low-GI swap (GI 50),roti_dal_sabzi,dinner,158.56975,156.0987,2.471054,0.0,0.0,0.0
+T09,low-GI swap (GI 50),dosa_chutney,dinner,157.00772,150.88443,6.123291,0.0,0.0,0.0
+T09,low-GI swap (GI 50),poha,breakfast,158.72523,154.2053,4.519928,0.0,0.0,0.0
+T09,low-GI swap (GI 50),sweet_pongal,breakfast,173.46852,158.21404,15.254486,0.0,0.0,0.0
+T09,low-GI swap (GI 50),mithai_sweets,snack,153.30145,141.89018,11.41127,0.0,0.0,0.0
+T09,low-GI swap (GI 50),roti_dal_sabzi,dinner,158.20888,155.78079,2.4280853,0.0,0.0,0.0
+T09,low-GI swap (GI 50),veg_biryani,lunch,179.64941,162.52678,17.122635,0.0,0.0,0.0
+T09,low-GI swap (GI 50),mithai_sweets,snack,122.239815,114.34955,7.8902664,0.0,0.0,0.0
+T09,low-GI swap (GI 50),veg_biryani,dinner,173.66774,158.6928,14.974945,0.0,0.0,0.0
+T09,low-GI swap (GI 50),idli_sambar,breakfast,151.49211,143.61365,7.8784637,0.0,0.0,0.0
+T09,low-GI swap (GI 50),poha,breakfast,143.92424,138.84976,5.074478,0.0,0.0,0.0
+T09,low-GI swap (GI 50),veg_biryani,lunch,166.80983,154.64828,12.161545,0.0,0.0,0.0
+T09,low-GI swap (GI 50),dosa_chutney,dinner,130.10309,124.2874,5.815689,0.0,0.0,0.0
+T09,low-GI swap (GI 50),oats_upma,breakfast,144.18791,143.84789,0.34002686,0.0,0.0,0.0
+T09,low-GI swap (GI 50),white_rice_dal_sabzi,lunch,188.18445,169.88663,18.297821,30.0,0.0,30.0
+T09,low-GI swap (GI 50),samosa,snack,127.631096,123.64642,3.9846725,0.0,0.0,0.0
+T09,low-GI swap (GI 50),poha,breakfast,150.52933,146.19273,4.3365936,0.0,0.0,0.0
+T09,low-GI swap (GI 50),veg_biryani,lunch,182.82867,166.89398,15.934692,20.0,0.0,20.0
+T09,low-GI swap (GI 50),chai_biscuit,snack,122.91065,121.561844,1.3488083,0.0,0.0,0.0
+T09,low-GI swap (GI 50),idli_sambar,breakfast,164.28091,155.00739,9.273529,0.0,0.0,0.0
+T09,low-GI swap (GI 50),oats_upma,breakfast,137.98491,137.37889,0.60601807,0.0,0.0,0.0
+T09,low-GI swap (GI 50),roti_dal_sabzi,dinner,150.21649,146.77481,3.441681,0.0,0.0,0.0
+T09,walk + smaller portion,chai_biscuit,snack,136.04373,131.05666,4.987076,0.0,0.0,0.0
+T09,walk + smaller portion,white_rice_dal_sabzi,dinner,170.18808,155.63344,14.554642,0.0,0.0,0.0
+T09,walk + smaller portion,roasted_chana,snack,136.73322,138.33763,-1.6044159,0.0,0.0,0.0
+T09,walk + smaller portion,roti_dal_sabzi,dinner,158.56975,150.01503,8.554718,0.0,0.0,0.0
+T09,walk + smaller portion,ragi_dosa,breakfast,144.62883,141.32227,3.3065643,0.0,0.0,0.0
+T09,walk + smaller portion,dosa_chutney,dinner,157.00772,149.31993,7.68779,0.0,0.0,0.0
+T09,walk + smaller portion,poha,breakfast,158.72523,152.04045,6.684784,0.0,0.0,0.0
+T09,walk + smaller portion,sweet_pongal,breakfast,173.46852,159.70177,13.766754,0.0,0.0,0.0
+T09,walk + smaller portion,mithai_sweets,snack,153.30145,143.06079,10.240662,0.0,0.0,0.0
+T09,walk + smaller portion,ragi_dosa,breakfast,147.98488,143.44443,4.540451,0.0,0.0,0.0
+T09,walk + smaller portion,fruit_bowl,snack,124.76496,125.86124,-1.0962753,0.0,0.0,0.0
+T09,walk + smaller portion,roti_dal_sabzi,dinner,158.20888,149.07744,9.131439,0.0,0.0,0.0
+T09,walk + smaller portion,veg_biryani,lunch,179.64941,160.061,19.58841,0.0,0.0,0.0
+T09,walk + smaller portion,mithai_sweets,snack,122.239815,115.38163,6.858185,0.0,0.0,0.0
+T09,walk + smaller portion,veg_biryani,dinner,173.66774,156.1504,17.517334,0.0,0.0,0.0
+T09,walk + smaller portion,idli_sambar,breakfast,151.49211,142.6052,8.886917,0.0,0.0,0.0
+T09,walk + smaller portion,fruit_bowl,snack,136.40306,133.06271,3.3403473,0.0,0.0,0.0
+T09,walk + smaller portion,poha,breakfast,143.92424,136.7639,7.1603394,0.0,0.0,0.0
+T09,walk + smaller portion,veg_biryani,lunch,166.80983,152.30898,14.5008545,0.0,0.0,0.0
+T09,walk + smaller portion,dosa_chutney,dinner,130.10309,122.96994,7.133148,0.0,0.0,0.0
+T09,walk + smaller portion,oats_upma,breakfast,144.18791,143.3194,0.868515,0.0,0.0,0.0
+T09,walk + smaller portion,white_rice_dal_sabzi,lunch,188.18445,170.52377,17.660675,30.0,0.0,30.0
+T09,walk + smaller portion,samosa,snack,127.631096,120.42941,7.201683,0.0,0.0,0.0
+T09,walk + smaller portion,poha,breakfast,150.52933,144.36253,6.166794,0.0,0.0,0.0
+T09,walk + smaller portion,veg_biryani,lunch,182.82867,164.55986,18.268814,20.0,0.0,20.0
+T09,walk + smaller portion,chai_biscuit,snack,122.91065,120.96344,1.9472122,0.0,0.0,0.0
+T09,walk + smaller portion,idli_sambar,breakfast,164.28091,153.94487,10.336044,0.0,0.0,0.0
+T09,walk + smaller portion,oats_upma,breakfast,137.98491,135.91052,2.0743866,0.0,0.0,0.0
+T09,walk + smaller portion,roti_dal_sabzi,dinner,150.21649,137.63474,12.581757,0.0,0.0,0.0
+T10,walk 10 min,aloo_paratha,breakfast,257.65442,256.3104,1.3440247,90.0,90.0,0.0
+T10,walk 10 min,roti_dal_sabzi,lunch,205.57526,204.8535,0.721756,60.0,60.0,0.0
+T10,walk 10 min,samosa,snack,157.58592,157.35115,0.23477173,0.0,0.0,0.0
+T10,walk 10 min,veg_biryani,dinner,281.75464,280.6026,1.1520386,95.0,95.0,0.0
+T10,walk 10 min,sweet_pongal,breakfast,232.05522,230.99002,1.0652008,70.0,70.0,0.0
+T10,walk 10 min,millet_dal_sabzi,lunch,164.59007,162.75784,1.8322296,0.0,0.0,0.0
+T10,walk 10 min,mithai_sweets,snack,187.63118,186.48125,1.1499329,35.0,35.0,0.0
+T10,walk 10 min,millet_khichdi,dinner,183.643,182.81511,0.8278961,20.0,20.0,0.0
+T10,walk 10 min,poha,breakfast,209.19188,208.20242,0.9894562,60.0,60.0,0.0
+T10,walk 10 min,veg_biryani,lunch,240.19884,238.4371,1.761734,70.0,70.0,0.0
+T10,walk 10 min,samosa,snack,153.3662,155.08932,-1.7231293,0.0,0.0,0.0
+T10,walk 10 min,veg_biryani,dinner,269.71643,268.0454,1.6710205,90.0,85.0,5.0
+T10,walk 10 min,aloo_paratha,breakfast,208.69635,207.40862,1.287735,55.0,50.0,5.0
+T10,walk 10 min,roti_dal_sabzi,lunch,169.04828,167.4214,1.6268768,0.0,0.0,0.0
+T10,walk 10 min,mithai_sweets,snack,182.27623,181.2853,0.9909363,15.0,10.0,5.0
+T10,walk 10 min,veg_biryani,dinner,199.76456,197.98134,1.7832184,40.0,35.0,5.0
+T10,walk 10 min,aloo_paratha,breakfast,216.49223,215.0058,1.4864349,60.0,55.0,5.0
+T10,walk 10 min,veg_biryani,lunch,271.631,270.82544,0.8055725,95.0,95.0,0.0
+T10,walk 10 min,mithai_sweets,snack,227.96321,227.68181,0.2814026,75.0,80.0,-5.0
+T10,walk 10 min,aloo_paratha,breakfast,213.51013,212.01346,1.4966736,55.0,55.0,0.0
+T10,walk 10 min,veg_biryani,lunch,234.2402,232.50081,1.7393951,65.0,65.0,0.0
+T10,walk 10 min,samosa,snack,152.02977,153.66096,-1.6311951,0.0,0.0,0.0
+T10,walk 10 min,veg_biryani,dinner,296.19626,294.94412,1.2521362,105.0,105.0,0.0
+T10,walk 10 min,poha,breakfast,202.91924,201.87068,1.0485535,50.0,50.0,0.0
+T10,walk 10 min,white_rice_dal_sabzi,lunch,244.58772,242.84084,1.7468872,75.0,75.0,0.0
+T10,walk 10 min,chai_biscuit,snack,145.10692,144.60262,0.504303,0.0,0.0,0.0
+T10,walk 10 min,dosa_chutney,dinner,190.49887,189.39847,1.1004028,30.0,30.0,0.0
+T10,walk 10 min,poha,breakfast,196.7555,195.7567,0.99879456,40.0,40.0,0.0
+T10,walk 10 min,mithai_sweets,snack,188.03214,187.47507,0.5570679,30.0,25.0,5.0
+T10,walk 10 min,roti_dal_sabzi,dinner,224.82312,223.84904,0.9740753,65.0,65.0,0.0
+T10,walk 10 min,aloo_paratha,breakfast,239.95033,238.7103,1.240036,80.0,80.0,0.0
+T10,walk 10 min,roti_dal_sabzi,lunch,235.0092,233.91725,1.0919495,105.0,110.0,-5.0
+T10,walk 10 min,mithai_sweets,snack,234.12323,233.51335,0.60987854,85.0,85.0,0.0
+T10,walk 10 min,white_rice_dal_sabzi,dinner,251.7326,250.30487,1.4277344,80.0,80.0,0.0
+T10,walk 10 min,ragi_dosa,breakfast,197.75018,197.08595,0.66423035,55.0,55.0,0.0
+T10,walk 10 min,white_rice_dal_sabzi,lunch,280.2517,278.7441,1.5075989,100.0,100.0,0.0
+T10,walk 10 min,veg_biryani,dinner,231.5222,229.89375,1.6284485,65.0,60.0,5.0
+T10,walk 10 min,sweet_pongal,breakfast,220.02196,218.5442,1.4777527,60.0,55.0,5.0
+T10,walk 10 min,millet_dal_sabzi,lunch,211.12553,210.63062,0.49491882,60.0,60.0,0.0
+T10,walk 10 min,mithai_sweets,snack,201.23926,200.54907,0.69018555,40.0,40.0,0.0
+T10,walk 10 min,dosa_chutney,dinner,169.0096,167.76558,1.2440186,0.0,0.0,0.0
+T10,walk 10 min,poha,breakfast,217.72186,216.7272,0.9946594,60.0,60.0,0.0
+T10,walk 10 min,veg_biryani,lunch,211.9874,210.3115,1.6759033,55.0,55.0,0.0
+T10,walk 10 min,samosa,snack,149.98732,149.46355,0.5237732,0.0,0.0,0.0
+T10,walk 10 min,veg_biryani,dinner,280.60287,279.5434,1.0594788,95.0,100.0,-5.0
+T10,walk 10 min,sweet_pongal,breakfast,252.04135,251.16371,0.8776398,85.0,85.0,0.0
+T10,walk 10 min,mithai_sweets,snack,186.411,184.99632,1.4146729,25.0,20.0,5.0
+T10,walk 10 min,white_rice_dal_sabzi,dinner,234.40324,232.75722,1.6460266,65.0,65.0,0.0
+T10,walk 10 min,idli_sambar,breakfast,222.39738,220.97504,1.422348,65.0,65.0,0.0
+T10,walk 10 min,veg_biryani,lunch,250.6859,248.99634,1.6895599,80.0,80.0,0.0
+T10,walk 10 min,chai_biscuit,snack,153.25565,153.99985,-0.74420166,0.0,0.0,0.0
+T10,walk 10 min,veg_biryani,dinner,221.41335,219.80821,1.605133,55.0,55.0,0.0
+T10,30% smaller portion,aloo_paratha,breakfast,257.65442,234.24944,23.404984,90.0,80.0,10.0
+T10,30% smaller portion,roti_dal_sabzi,lunch,205.57526,196.0907,9.484558,60.0,60.0,0.0
+T10,30% smaller portion,samosa,snack,157.58592,150.85812,6.7277985,0.0,0.0,0.0
+T10,30% smaller portion,veg_biryani,dinner,281.75464,245.05838,36.69626,95.0,75.0,20.0
+T10,30% smaller portion,sweet_pongal,breakfast,232.05522,215.50763,16.547592,70.0,60.0,10.0
+T10,30% smaller portion,millet_dal_sabzi,lunch,164.59007,155.04616,9.543915,0.0,0.0,0.0
+T10,30% smaller portion,mithai_sweets,snack,187.63118,175.82083,11.8103485,35.0,0.0,35.0
+T10,30% smaller portion,millet_khichdi,dinner,183.643,174.43216,9.210846,20.0,0.0,20.0
+T10,30% smaller portion,poha,breakfast,209.19188,199.81789,9.373993,60.0,55.0,5.0
+T10,30% smaller portion,veg_biryani,lunch,240.19884,214.16248,26.036362,70.0,55.0,15.0
+T10,30% smaller portion,samosa,snack,153.3662,155.28357,-1.9173737,0.0,0.0,0.0
+T10,30% smaller portion,veg_biryani,dinner,269.71643,245.06013,24.656296,90.0,75.0,15.0
+T10,30% smaller portion,aloo_paratha,breakfast,208.69635,197.24701,11.449341,55.0,45.0,10.0
+T10,30% smaller portion,roti_dal_sabzi,lunch,169.04828,159.69144,9.356842,0.0,0.0,0.0
+T10,30% smaller portion,mithai_sweets,snack,182.27623,169.57048,12.7057495,15.0,0.0,15.0
+T10,30% smaller portion,veg_biryani,dinner,199.76456,179.12094,20.643616,40.0,0.0,40.0
+T10,30% smaller portion,aloo_paratha,breakfast,216.49223,203.37268,13.119553,60.0,50.0,10.0
+T10,30% smaller portion,veg_biryani,lunch,271.631,242.2049,29.426117,95.0,80.0,15.0
+T10,30% smaller portion,mithai_sweets,snack,227.96321,221.68225,6.28096,75.0,75.0,0.0
+T10,30% smaller portion,aloo_paratha,breakfast,213.51013,199.58882,13.92131,55.0,45.0,10.0
+T10,30% smaller portion,veg_biryani,lunch,234.2402,202.63593,31.604279,65.0,45.0,20.0
+T10,30% smaller portion,samosa,snack,152.02977,153.7154,-1.6856232,0.0,0.0,0.0
+T10,30% smaller portion,veg_biryani,dinner,296.19626,257.9746,38.22165,105.0,85.0,20.0
+T10,30% smaller portion,poha,breakfast,202.91924,192.84457,10.074661,50.0,40.0,10.0
+T10,30% smaller portion,white_rice_dal_sabzi,lunch,244.58772,212.57742,32.0103,75.0,55.0,20.0
+T10,30% smaller portion,chai_biscuit,snack,145.10692,145.87047,-0.7635498,0.0,0.0,0.0
+T10,30% smaller portion,dosa_chutney,dinner,190.49887,180.53105,9.967819,30.0,10.0,20.0
+T10,30% smaller portion,poha,breakfast,196.7555,187.83798,8.917511,40.0,35.0,5.0
+T10,30% smaller portion,mithai_sweets,snack,188.03214,173.2723,14.759842,30.0,0.0,30.0
+T10,30% smaller portion,roti_dal_sabzi,dinner,224.82312,210.12999,14.6931305,65.0,60.0,5.0
+T10,30% smaller portion,aloo_paratha,breakfast,239.95033,221.23137,18.718964,80.0,75.0,5.0
+T10,30% smaller portion,roti_dal_sabzi,lunch,235.0092,218.7417,16.267502,105.0,110.0,-5.0
+T10,30% smaller portion,mithai_sweets,snack,234.12323,220.98093,13.142303,85.0,80.0,5.0
+T10,30% smaller portion,white_rice_dal_sabzi,dinner,251.7326,230.48135,21.251251,80.0,70.0,10.0
+T10,30% smaller portion,ragi_dosa,breakfast,197.75018,193.29044,4.4597473,55.0,55.0,0.0
+T10,30% smaller portion,white_rice_dal_sabzi,lunch,280.2517,245.5021,34.749603,100.0,85.0,15.0
+T10,30% smaller portion,veg_biryani,dinner,231.5222,207.84485,23.677353,65.0,45.0,20.0
+T10,30% smaller portion,sweet_pongal,breakfast,220.02196,204.60089,15.421066,60.0,50.0,10.0
+T10,30% smaller portion,millet_dal_sabzi,lunch,211.12553,198.27776,12.847778,60.0,50.0,10.0
+T10,30% smaller portion,mithai_sweets,snack,201.23926,193.90096,7.3383026,40.0,30.0,10.0
+T10,30% smaller portion,dosa_chutney,dinner,169.0096,158.72012,10.2894745,0.0,0.0,0.0
+T10,30% smaller portion,poha,breakfast,217.72186,206.77956,10.9423065,60.0,60.0,0.0
+T10,30% smaller portion,veg_biryani,lunch,211.9874,189.7206,22.2668,55.0,35.0,20.0
+T10,30% smaller portion,samosa,snack,149.98732,150.6552,-0.6678772,0.0,0.0,0.0
+T10,30% smaller portion,veg_biryani,dinner,280.60287,246.15228,34.450592,95.0,80.0,15.0
+T10,30% smaller portion,sweet_pongal,breakfast,252.04135,228.28339,23.757965,85.0,75.0,10.0
+T10,30% smaller portion,mithai_sweets,snack,186.411,174.32306,12.087936,25.0,0.0,25.0
+T10,30% smaller portion,white_rice_dal_sabzi,dinner,234.40324,204.73914,29.664108,65.0,45.0,20.0
+T10,30% smaller portion,idli_sambar,breakfast,222.39738,207.7668,14.630585,65.0,60.0,5.0
+T10,30% smaller portion,veg_biryani,lunch,250.6859,227.90207,22.783829,80.0,70.0,10.0
+T10,30% smaller portion,chai_biscuit,snack,153.25565,153.86484,-0.6091919,0.0,0.0,0.0
+T10,30% smaller portion,veg_biryani,dinner,221.41335,201.06061,20.352737,55.0,40.0,15.0
+T10,low-GI swap (GI 50),aloo_paratha,breakfast,257.65442,236.42038,21.23404,90.0,75.0,15.0
+T10,low-GI swap (GI 50),roti_dal_sabzi,lunch,205.57526,202.79677,2.7784882,60.0,55.0,5.0
+T10,low-GI swap (GI 50),samosa,snack,157.58592,153.85924,3.7266846,0.0,0.0,0.0
+T10,low-GI swap (GI 50),veg_biryani,dinner,281.75464,248.59564,33.158997,95.0,75.0,20.0
+T10,low-GI swap (GI 50),sweet_pongal,breakfast,232.05522,212.80588,19.249344,70.0,60.0,10.0
+T10,low-GI swap (GI 50),mithai_sweets,snack,187.63118,173.28629,14.344894,35.0,0.0,35.0
+T10,low-GI swap (GI 50),poha,breakfast,209.19188,202.18817,7.003708,60.0,55.0,5.0
+T10,low-GI swap (GI 50),veg_biryani,lunch,240.19884,217.64294,22.555893,70.0,55.0,15.0
+T10,low-GI swap (GI 50),samosa,snack,153.3662,155.23541,-1.8692169,0.0,0.0,0.0
+T10,low-GI swap (GI 50),veg_biryani,dinner,269.71643,248.10303,21.613403,90.0,75.0,15.0
+T10,low-GI swap (GI 50),aloo_paratha,breakfast,208.69635,198.18182,10.514526,55.0,45.0,10.0
+T10,low-GI swap (GI 50),roti_dal_sabzi,lunch,169.04828,166.27032,2.777954,0.0,0.0,0.0
+T10,low-GI swap (GI 50),mithai_sweets,snack,182.27623,166.74574,15.530487,15.0,0.0,15.0
+T10,low-GI swap (GI 50),veg_biryani,dinner,199.76456,181.60829,18.156265,40.0,15.0,25.0
+T10,low-GI swap (GI 50),aloo_paratha,breakfast,216.49223,204.89197,11.6002655,60.0,50.0,10.0
+T10,low-GI swap (GI 50),veg_biryani,lunch,271.631,244.9542,26.676819,95.0,75.0,20.0
+T10,low-GI swap (GI 50),mithai_sweets,snack,227.96321,220.15918,7.8040314,75.0,75.0,0.0
+T10,low-GI swap (GI 50),aloo_paratha,breakfast,213.51013,201.18921,12.320923,55.0,45.0,10.0
+T10,low-GI swap (GI 50),veg_biryani,lunch,234.2402,206.37053,27.869675,65.0,50.0,15.0
+T10,low-GI swap (GI 50),samosa,snack,152.02977,153.88074,-1.8509674,0.0,0.0,0.0
+T10,low-GI swap (GI 50),veg_biryani,dinner,296.19626,261.46603,34.730225,105.0,80.0,25.0
+T10,low-GI swap (GI 50),poha,breakfast,202.91924,195.5191,7.400131,50.0,45.0,5.0
+T10,low-GI swap (GI 50),white_rice_dal_sabzi,lunch,244.58772,211.3897,33.19803,75.0,55.0,20.0
+T10,low-GI swap (GI 50),chai_biscuit,snack,145.10692,146.83011,-1.7231903,0.0,0.0,0.0
+T10,low-GI swap (GI 50),dosa_chutney,dinner,190.49887,181.9481,8.550766,30.0,15.0,15.0
+T10,low-GI swap (GI 50),poha,breakfast,196.7555,190.2686,6.4868927,40.0,35.0,5.0
+T10,low-GI swap (GI 50),mithai_sweets,snack,188.03214,169.70268,18.329453,30.0,0.0,30.0
+T10,low-GI swap (GI 50),roti_dal_sabzi,dinner,224.82312,220.41304,4.41008,65.0,60.0,5.0
+T10,low-GI swap (GI 50),aloo_paratha,breakfast,239.95033,222.78941,17.16092,80.0,70.0,10.0
+T10,low-GI swap (GI 50),roti_dal_sabzi,lunch,235.0092,230.36452,4.644684,105.0,100.0,5.0
+T10,low-GI swap (GI 50),mithai_sweets,snack,234.12323,217.65544,16.467789,85.0,80.0,5.0
+T10,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,251.7326,229.50752,22.225082,80.0,65.0,15.0
+T10,low-GI swap (GI 50),white_rice_dal_sabzi,lunch,280.2517,243.62718,36.624527,100.0,80.0,20.0
+T10,low-GI swap (GI 50),veg_biryani,dinner,231.5222,210.69548,20.826721,65.0,50.0,15.0
+T10,low-GI swap (GI 50),sweet_pongal,breakfast,220.02196,202.6477,17.374252,60.0,45.0,15.0
+T10,low-GI swap (GI 50),mithai_sweets,snack,201.23926,192.20369,9.035568,40.0,30.0,10.0
+T10,low-GI swap (GI 50),dosa_chutney,dinner,169.0096,160.05173,8.9578705,0.0,0.0,0.0
+T10,low-GI swap (GI 50),poha,breakfast,217.72186,209.78375,7.9381104,60.0,55.0,5.0
+T10,low-GI swap (GI 50),veg_biryani,lunch,211.9874,192.34334,19.644058,55.0,40.0,15.0
+T10,low-GI swap (GI 50),samosa,snack,149.98732,151.08575,-1.0984344,0.0,0.0,0.0
+T10,low-GI swap (GI 50),veg_biryani,dinner,280.60287,249.45381,31.149063,95.0,75.0,20.0
+T10,low-GI swap (GI 50),sweet_pongal,breakfast,252.04135,224.15987,27.881485,85.0,70.0,15.0
+T10,low-GI swap (GI 50),mithai_sweets,snack,186.411,171.42764,14.983353,25.0,0.0,25.0
+T10,low-GI swap (GI 50),white_rice_dal_sabzi,dinner,234.40324,203.22473,31.178513,65.0,45.0,20.0
+T10,low-GI swap (GI 50),idli_sambar,breakfast,222.39738,208.8803,13.51709,65.0,55.0,10.0
+T10,low-GI swap (GI 50),veg_biryani,lunch,250.6859,231.16267,19.523224,80.0,65.0,15.0
+T10,low-GI swap (GI 50),chai_biscuit,snack,153.25565,155.07544,-1.8197937,0.0,0.0,0.0
+T10,low-GI swap (GI 50),veg_biryani,dinner,221.41335,203.80959,17.60376,55.0,45.0,10.0
+T10,walk + smaller portion,aloo_paratha,breakfast,257.65442,233.26967,24.38475,90.0,80.0,10.0
+T10,walk + smaller portion,roti_dal_sabzi,lunch,205.57526,195.56357,10.011688,60.0,60.0,0.0
+T10,walk + smaller portion,samosa,snack,157.58592,150.63103,6.954895,0.0,0.0,0.0
+T10,walk + smaller portion,veg_biryani,dinner,281.75464,243.98283,37.771805,95.0,75.0,20.0
+T10,walk + smaller portion,sweet_pongal,breakfast,232.05522,214.51753,17.53769,70.0,60.0,10.0
+T10,walk + smaller portion,millet_dal_sabzi,lunch,164.59007,153.31905,11.271027,0.0,0.0,0.0
+T10,walk + smaller portion,mithai_sweets,snack,187.63118,174.48946,13.141724,35.0,0.0,35.0
+T10,walk + smaller portion,millet_khichdi,dinner,183.643,174.08568,9.557327,20.0,0.0,20.0
+T10,walk + smaller portion,poha,breakfast,209.19188,199.15816,10.033722,60.0,55.0,5.0
+T10,walk + smaller portion,veg_biryani,lunch,240.19884,212.40852,27.790314,70.0,55.0,15.0
+T10,walk + smaller portion,samosa,snack,153.3662,156.00732,-2.6411285,0.0,0.0,0.0
+T10,walk + smaller portion,veg_biryani,dinner,269.71643,243.57828,26.138153,90.0,75.0,15.0
+T10,walk + smaller portion,aloo_paratha,breakfast,208.69635,196.39293,12.303421,55.0,45.0,10.0
+T10,walk + smaller portion,roti_dal_sabzi,lunch,169.04828,159.20554,9.842743,0.0,0.0,0.0
+T10,walk + smaller portion,mithai_sweets,snack,182.27623,168.84943,13.426804,15.0,0.0,15.0
+T10,walk + smaller portion,veg_biryani,dinner,199.76456,177.73476,22.0298,40.0,0.0,40.0
+T10,walk + smaller portion,aloo_paratha,breakfast,216.49223,202.13281,14.359421,60.0,50.0,10.0
+T10,walk + smaller portion,veg_biryani,lunch,271.631,241.65076,29.980255,95.0,80.0,15.0
+T10,walk + smaller portion,mithai_sweets,snack,227.96321,221.56265,6.4005585,75.0,80.0,-5.0
+T10,walk + smaller portion,aloo_paratha,breakfast,213.51013,198.14134,15.36879,55.0,45.0,10.0
+T10,walk + smaller portion,veg_biryani,lunch,234.2402,200.93108,33.309128,65.0,45.0,20.0
+T10,walk + smaller portion,samosa,snack,152.02977,154.45297,-2.4232025,0.0,0.0,0.0
+T10,walk + smaller portion,veg_biryani,dinner,296.19626,256.80002,39.39624,105.0,85.0,20.0
+T10,walk + smaller portion,poha,breakfast,202.91924,192.16948,10.749756,50.0,40.0,10.0
+T10,walk + smaller portion,white_rice_dal_sabzi,lunch,244.58772,210.80125,33.78647,75.0,55.0,20.0
+T10,walk + smaller portion,chai_biscuit,snack,145.10692,145.32329,-0.21636963,0.0,0.0,0.0
+T10,walk + smaller portion,dosa_chutney,dinner,190.49887,180.07857,10.420303,30.0,10.0,20.0
+T10,walk + smaller portion,poha,breakfast,196.7555,186.86377,9.891724,40.0,30.0,10.0
+T10,walk + smaller portion,mithai_sweets,snack,188.03214,172.6287,15.403442,30.0,0.0,30.0
+T10,walk + smaller portion,roti_dal_sabzi,dinner,224.82312,209.57759,15.245529,65.0,60.0,5.0
+T10,walk + smaller portion,aloo_paratha,breakfast,239.95033,220.65646,19.293869,80.0,75.0,5.0
+T10,walk + smaller portion,roti_dal_sabzi,lunch,235.0092,217.67041,17.33879,105.0,115.0,-10.0
+T10,walk + smaller portion,mithai_sweets,snack,234.12323,220.39809,13.725143,85.0,80.0,5.0
+T10,walk + smaller portion,white_rice_dal_sabzi,dinner,251.7326,229.56544,22.16716,80.0,70.0,10.0
+T10,walk + smaller portion,ragi_dosa,breakfast,197.75018,193.04207,4.7081146,55.0,60.0,-5.0
+T10,walk + smaller portion,white_rice_dal_sabzi,lunch,280.2517,244.42348,35.82823,100.0,85.0,15.0
+T10,walk + smaller portion,veg_biryani,dinner,231.5222,206.11186,25.41034,65.0,45.0,20.0
+T10,walk + smaller portion,sweet_pongal,breakfast,220.02196,203.22484,16.79712,60.0,45.0,15.0
+T10,walk + smaller portion,millet_dal_sabzi,lunch,211.12553,197.94312,13.182419,60.0,50.0,10.0
+T10,walk + smaller portion,mithai_sweets,snack,201.23926,193.22726,8.011993,40.0,30.0,10.0
+T10,walk + smaller portion,dosa_chutney,dinner,169.0096,158.39642,10.613174,0.0,0.0,0.0
+T10,walk + smaller portion,poha,breakfast,217.72186,205.8122,11.909668,60.0,60.0,0.0
+T10,walk + smaller portion,veg_biryani,lunch,211.9874,188.39012,23.597275,55.0,35.0,20.0
+T10,walk + smaller portion,samosa,snack,149.98732,150.097,-0.109680176,0.0,0.0,0.0
+T10,walk + smaller portion,veg_biryani,dinner,280.60287,245.42107,35.18181,95.0,80.0,15.0
+T10,walk + smaller portion,sweet_pongal,breakfast,252.04135,227.44931,24.592041,85.0,75.0,10.0
+T10,walk + smaller portion,mithai_sweets,snack,186.411,173.0241,13.386902,25.0,0.0,25.0
+T10,walk + smaller portion,white_rice_dal_sabzi,dinner,234.40324,203.11325,31.289993,65.0,45.0,20.0
+T10,walk + smaller portion,idli_sambar,breakfast,222.39738,207.07797,15.319412,65.0,60.0,5.0
+T10,walk + smaller portion,veg_biryani,lunch,250.6859,226.23318,24.452713,80.0,65.0,15.0
+T10,walk + smaller portion,chai_biscuit,snack,153.25565,154.39061,-1.134964,0.0,0.0,0.0
+T10,walk + smaller portion,veg_biryani,dinner,221.41335,199.49309,21.920258,55.0,40.0,15.0
