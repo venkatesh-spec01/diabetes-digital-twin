@@ -16,7 +16,7 @@ import pandas as pd
 
 # ----------------------------- SETTINGS ------------------------------------
 SEED = 42              # same seed = same data every time (good for judges)
-N_TRAIN_PATIENTS = 40  # random patients used to train the model later
+N_TRAIN_PATIENTS = 150 # random patients used to train the model later
 DAYS = 14              # days of sensor data per patient
 STEP_MIN = 5           # one reading every 5 minutes
 START = pd.Timestamp("2026-09-01 00:00")
@@ -227,8 +227,12 @@ def simulate(p, rng):
 def main():
     os.makedirs(f"{OUT}/sensors", exist_ok=True)
     rng = np.random.default_rng(SEED)
-    patients = [make_patient(rng, f"P{i:03d}", "train") for i in range(1, N_TRAIN_PATIENTS + 1)]
+    N_ORIGINAL = 40   # the first 40 patients and T01-T10 stay identical to the first run
+    patients = [make_patient(rng, f"P{i:03d}", "train") for i in range(1, N_ORIGINAL + 1)]
     patients += hard_test_patients(rng)
+    extra_rng = np.random.default_rng(SEED + 1)   # separate random stream for the new patients
+    patients += [make_patient(extra_rng, f"P{i:03d}", "train") for i in range(N_ORIGINAL + 1, N_TRAIN_PATIENTS + 1)]
+    
     pd.DataFrame(patients).to_csv(f"{OUT}/patients.csv", index=False)
 
     all_meals, rows = [], []
