@@ -172,3 +172,9 @@ docs/                      Dashboard screenshots
 ## 10. Licence
 
 MIT. See `LICENSE`.
+## 11. Submission documents
+
+- Architecture diagram: [docs/architecture_diagram.pdf](docs/architecture_diagram.pdf)
+- Presentation: [docs/presentation.pdf](docs/presentation.pdf)
+- Demo video: <paste your unlisted YouTube link here>
+- Open-source licence: MIT, see [LICENSE](LICENSE)
