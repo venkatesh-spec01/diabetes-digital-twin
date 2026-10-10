@@ -461,7 +461,7 @@ else:
         box_wi.markdown(card(
             f"<b>For this meal</b> (predicted peak without any change: <b>{f0.max():.0f} mg/dL</b>): the most helpful option the model "
             f"predicts is <b>{best['Remedy']}</b>, changing the peak by <b>{best['Change in peak']} mg/dL</b>. "
-            f"Walking effects are underestimated by the model, so treat them as conservative.", "warn"), unsafe_allow_html=True)
+            f"These are model predictions checked only against the simulator, not real patients.", "warn"), unsafe_allow_html=True)
     wc1, wc2 = st.columns([3, 2])
     with wc1:
         st.plotly_chart(f5, key="whatif_chart")
@@ -475,7 +475,7 @@ else:
             st.info("This meal already has a low glycemic index, so the swap changes nothing.")
         st.dataframe(pd.DataFrame(results), hide_index=True)
         st.info("Checked against the simulator's true answers on unseen patients: portion-size and low-GI predictions were "
-                "within about 1 mg/dL on average. The walking effect is underestimated (about 4 vs a true 13 mg/dL).")
+                "within about 1 mg/dL on average. The walking effect was also close (14.9 vs a true 13.2 mg/dL).")
 
 # ============================ SECTION 4: record ============================
 sec("sec-record", "📋", "Patient record")

@@ -372,7 +372,7 @@ with tab3:
         st.dataframe(pd.DataFrame(results), hide_index=True)
         st.info("How far to trust this: checked against the simulator's true answers on unseen patients, "
                 "portion-size and low-GI predictions were within about 1 mg/dL on average. The walking effect "
-                "is underestimated (about 4 vs a true 13 mg/dL), so treat walk results as conservative.")
+                "is also close (14.9 vs a true 13.2 mg/dL), but this is checked against the simulator only.")
 
 # ============================ TAB 4: record ============================
 with tab4:

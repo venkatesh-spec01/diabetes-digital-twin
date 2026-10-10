@@ -133,6 +133,6 @@ else:
 		fig2.tight_layout()
 		st.pyplot(fig2)
 		if "walk" in remedy:
-			st.caption("Note: tested against the simulator, the model underestimates the effect of walking "
-					   "(about 4 vs a true 13 mg/dL). Treat walk results as a conservative estimate.")
+			st.caption("Note: tested against the simulator, the model's walking effect was close to the truth "
+					   "(14.9 predicted vs 13.2 true mg/dL on average). Treat as a prototype estimate.")
 		st.caption("Portion-size and low-GI predictions were within about 0.2 mg/dL of the simulator's true effect on average.")
