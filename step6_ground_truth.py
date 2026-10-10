@@ -49,7 +49,7 @@ def main():
 	meals = pd.read_csv(f"{DATA}/meals.csv", parse_dates=["timestamp"])
 	pat = patients.set_index("patient_id")
 
-	model = FusionForecaster(9, ehr.shape[1])
+	model = FusionForecaster(10, ehr.shape[1])
 	model.load_state_dict(torch.load("models/fusion_lstm.pt"))
 	model.eval()
 

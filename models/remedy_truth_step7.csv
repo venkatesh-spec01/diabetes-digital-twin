@@ -1,9 +1,9 @@
 remedy,true_avg,predicted_avg,bias,mae,correlation,model
-walk 10 min,13.23,1.1,-12.13,12.13,0.66,old
-30% smaller portion,11.29,12.14,0.85,2.44,0.92,old
-low-GI swap (GI 50),11.97,12.34,0.36,2.56,0.91,old
-walk + smaller portion,20.42,13.07,-7.35,7.78,0.96,old
-walk 10 min,13.23,4.13,-9.1,9.11,0.8,new
-30% smaller portion,11.29,11.9,0.61,2.9,0.93,new
-low-GI swap (GI 50),11.97,12.18,0.21,2.76,0.93,new
-walk + smaller portion,20.42,15.66,-4.75,5.64,0.96,new
+walk 10 min,13.23,1.18,-12.05,12.06,0.61,old
+30% smaller portion,11.29,11.98,0.69,2.52,0.92,old
+low-GI swap (GI 50),11.97,12.47,0.5,2.56,0.91,old
+walk + smaller portion,20.42,13.04,-7.38,7.86,0.96,old
+walk 10 min,13.23,4.3,-8.93,8.95,0.82,new
+30% smaller portion,11.29,12.07,0.78,3.25,0.93,new
+low-GI swap (GI 50),11.97,12.61,0.63,2.86,0.93,new
+walk + smaller portion,20.42,15.88,-4.53,5.38,0.96,new

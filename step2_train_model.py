@@ -48,8 +48,15 @@ def load_patient(pid):
     # time of day as a circle (so 23:55 is close to 00:05)
     mins = (df["timestamp"].dt.hour * 60 + df["timestamp"].dt.minute).values
     tod = np.stack([np.sin(2 * np.pi * mins / 1440), np.cos(2 * np.pi * mins / 1440)], axis=1)
-    x = np.concatenate([x, tod.astype(np.float32)], axis=1)
+    walk = np.zeros((len(df), 1), dtype=np.float32)
+    meals = pd.read_csv(f"{DATA}/meals.csv", parse_dates=["timestamp"])
+    meals = meals[(meals.patient_id == pid) & (meals.walked_after == 1)]
+    for ts in meals["timestamp"]:
+        t0 = int(round((ts - df["timestamp"].iloc[0]).total_seconds() / 300))
+        walk[t0 + 3:t0 + 5, 0] = 1.0
+    x = np.concatenate([x, tod.astype(np.float32), walk], axis=1)
     return x, df["glucose_mgdl"].values.astype(np.float32)
+    
 
 
 def make_windows(x, g, start, end):

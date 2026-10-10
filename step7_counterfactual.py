@@ -127,7 +127,7 @@ def main():
 	Y = torch.from_numpy(np.concatenate([Ytr] + [Yc] * REPEAT_CF))
 	del Xtr, Str, Ytr
 
-	model = FusionForecaster(9, S.shape[1])
+	model = FusionForecaster(10, S.shape[1])
 	model.load_state_dict(torch.load("models/fusion_lstm.pt"))
 	opt = torch.optim.Adam(model.parameters(), lr=FT_LR, weight_decay=1e-5)
 	loss_fn = nn.MSELoss()
@@ -156,7 +156,7 @@ def main():
 			torch.save(model.state_dict(), "models/fusion_cf.pt")
 	model.load_state_dict(torch.load("models/fusion_cf.pt"))
 
-	old = FusionForecaster(9, S.shape[1])
+	old = FusionForecaster(10, S.shape[1])
 	old.load_state_dict(torch.load("models/fusion_lstm.pt"))
 
 	print("\nGROUND TRUTH on 10 unseen patients (drop in 2-hour peak, mg/dL)")

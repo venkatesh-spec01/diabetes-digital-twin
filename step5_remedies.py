@@ -48,6 +48,7 @@ def make_variant(x, t0, gi, remedy):
 		for a in (t0 + 3, t0 + 4):
 			w[a - lo, 1] += 450.0 / 500.0
 			w[a - lo, 2] += 27.0 / 100.0
+			w[a - lo, 9] = 1.0
 	return w
 
 
@@ -64,7 +65,7 @@ def main():
 	ehr = load_ehr(patients, train_ids)
 	meals = pd.read_csv(f"{DATA}/meals.csv", parse_dates=["timestamp"])
 
-	model = FusionForecaster(9, ehr.shape[1])
+	model = FusionForecaster(10, ehr.shape[1])
 	model.load_state_dict(torch.load("models/fusion_lstm.pt"))
 	model.eval()
 
