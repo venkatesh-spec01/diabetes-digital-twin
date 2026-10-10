@@ -30,7 +30,7 @@ def make_variant(x, t0, gi, remedy):
 	w = x[i - HISTORY : i].copy()
 	lo = i - HISTORY
 	walk = remedy in ("walk 10 min", "walk + smaller portion")
-	scale = 1.0
+	scale = 0.72 if walk else 1.0
 	if remedy in ("30% smaller portion", "walk + smaller portion"):
 		scale *= 0.7
 	if remedy == "low-GI swap (GI 50)":
