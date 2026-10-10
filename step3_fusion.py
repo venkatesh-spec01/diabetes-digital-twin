@@ -56,12 +56,12 @@ class FusionForecaster(nn.Module):
 		self.lstm = nn.LSTM(n_seq, hidden, batch_first=True)
 		self.ehr = nn.Sequential(nn.Linear(n_static, 32), nn.ReLU(),
 								 nn.Linear(32, 32), nn.ReLU())
-		self.head = nn.Sequential(nn.Linear(hidden + 32, 64), nn.ReLU(),
+		self.head = nn.Sequential(nn.Linear(hidden + 32 + 3, 64), nn.ReLU(),
 								  nn.Linear(64, HORIZON))
 
 	def forward(self, x, s):
 		out, _ = self.lstm(x)
-		return self.head(torch.cat([out[:, -1], self.ehr(s)], dim=1))
+		return self.head(torch.cat([out[:, -1], self.ehr(s), torch.stack([x[:, -n:, 9].max(dim=1).values for n in (6, 12, 24)], dim=1)], dim=1))
 
 
 def predict_fused(model, X, S):

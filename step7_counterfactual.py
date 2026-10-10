@@ -20,7 +20,7 @@ from step6_ground_truth import meal_curve, remedy_params
 
 FT_EPOCHS = 6
 FT_LR = 5e-4
-REPEAT_CF = 2          # how many times the counterfactual examples are shown per round
+REPEAT_CF=4          # how many times the counterfactual examples are shown per round
 
 
 def cf_samples(ids, ehr, pat, meals, lo, hi):
