@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 notes/
 desktop.ini
+cgmacros_data/
+cgmacros.zip

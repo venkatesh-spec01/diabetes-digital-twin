@@ -106,6 +106,56 @@ The default setting raised **0 false low alarms** but missed most lows. The sens
 | Walk + smaller portion | 20.42 | 23.12 | +2.70 | 3.74 | 0.96 |
 
 The walk effect is slightly overestimated, and the combined remedy is slightly optimistic (+2.7 mg/dL).
+## 5.4 Real-data check (CGMacros, no retraining)
+
+To test whether the twin works beyond our simulator, we ran the trained models **unchanged** on
+[CGMacros](https://physionet.org/content/cgmacros/1.0.0/), an anonymized, open-access dataset of 45 real adults
+(14 Type 2 Diabetes, 16 pre-diabetes, 15 healthy) with Dexcom G6 CGM, Fitbit activity, logged meals and blood tests,
+10 days each. Script: `step10_cgmacros_test.py`. The data is not stored in this repository.
+
+**2-hour forecast error (RMSE, mg/dL), T2D participants (14 people, 12,884 windows):**
+
+| Model | 30 min | 60 min | 120 min |
+|---|---|---|---|
+| No change (flat) | 23.1 | 36.6 | 52.2 |
+| Trend | 28.1 | 55.1 | 107.0 |
+| Sensor-only LSTM | 22.4 | 34.3 | 46.1 |
+| Fusion twin (dashboard model) | 24.0 | 35.7 | 46.0 |
+
+Pre-diabetes: 33.3 vs 37.7 (flat). Healthy: 27.4 vs 29.0 (flat).
+
+**HIGH alerts, T2D:** default precision 0.68, recall 0.08; sensitive mode precision 0.57, recall 0.37 (F1 0.45, trend 0.38).
+
+**Honest reading:** with no retraining, the twin beats a "no change" guess on real people at 2 hours (about 12% lower
+error for T2D), so it learned real glucose behaviour, not only simulator rules. But errors are about 2.5x larger than on
+synthetic data, it is slightly worse than "no change" at 30 minutes, the health record still adds nothing, and alerts miss
+most real highs. CGMacros has no HRV, sleep, meal GI or medicine data, so these were filled with typical values.
+**Next step:** fine-tune on CGMacros with patients held out for testing.
+
+## 5.5 Data sources and compliance
+
+All models are trained only on synthetic data. No real patient data is used for training, in line with the challenge's
+data rules (anonymized, open-source or synthetic only).
+
+| Layer | Source | Type |
+|---|---|---|
+| EHR (static) | Own generator, `step1_generate_data.py` | Synthetic |
+| Sensor stream (dynamic) | Own generator, mimicking a 5-minute CGM (Dexcom / Libre) plus Apple Health / Google Fit signals | Synthetic |
+| External test only | CGMacros v1.0.0, PhysioNet (CC BY-NC-SA 4.0) | Anonymized, open-access |
+
+How our synthetic signals map to wearable platforms:
+
+| Our column | Apple Health (HealthKit) | Google Fit / medical IoT |
+|---|---|---|
+| `glucose_mgdl` (every 5 min) | Blood Glucose | CGM (Dexcom G6 / FreeStyle Libre) |
+| `steps` | Step Count | Step count |
+| `heart_rate` | Heart Rate | Heart rate (bpm) |
+| `hrv_ms` | Heart Rate Variability (SDNN) | HRV |
+| `sleeping` | Sleep Analysis | Sleep segments |
+| `carbs_g`, `meal_gi` | Dietary Carbohydrates | Nutrition |
+
+**Citation:** Das, A. et al. CGMacros: a scientific dataset for personalized nutrition and diet monitoring. PhysioNet (2025).
+https://physionet.org/content/cgmacros/1.0.0/
 
 ## 6. Limitations (please read)
 
