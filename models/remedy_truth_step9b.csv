@@ -1,0 +1,5 @@
+remedy,true_avg,predicted_avg,bias,mae,correlation,test_rmse_2h
+walk 10 min,13.23,12.95,-0.28,1.79,0.97,17.96
+30% smaller portion,11.29,11.97,0.67,2.52,0.94,17.96
+low-GI swap (GI 50),11.97,12.49,0.51,2.44,0.93,17.96
+walk + smaller portion,20.42,21.69,1.28,3.26,0.96,17.96

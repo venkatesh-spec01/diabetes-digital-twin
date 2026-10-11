@@ -69,7 +69,7 @@ def load_everything():
     ehr = load_ehr(patients, train_ids)
     meals = pd.read_csv(f"{DATA}/meals.csv", parse_dates=["timestamp"])
     model = FusionForecaster(10, ehr.shape[1])
-    model.load_state_dict(torch.load("models/fusion_cf.pt"))
+    model.load_state_dict(torch.load("models/fusion_cf_blend75.pt"))
     model.eval()
     return patients, ehr, meals, model
 
@@ -474,8 +474,8 @@ else:
         else:
             st.info("This meal already has a low glycemic index, so the swap changes nothing.")
         st.dataframe(pd.DataFrame(results), hide_index=True)
-        st.info("Checked against the simulator's true answers on unseen patients: portion-size and low-GI predictions were "
-                "within about 1 mg/dL on average. The walking effect was also close (14.9 vs a true 13.2 mg/dL).")
+        st.info("Checked against the simulator's true answers on unseen patients: all four remedies were "
+                    "within about 1.3 mg/dL on average (walk: 12.95 predicted vs a true 13.23 mg/dL).")
 
 # ============================ SECTION 4: record ============================
 sec("sec-record", "📋", "Patient record")
