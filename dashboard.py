@@ -1,8 +1,10 @@
 """
-Doctor dashboard v3 for the Type 2 Diabetes digital twin (100% synthetic data).
-Dark theme, scroll-linked animation, doctor's notes, patient avatar.
+Doctor dashboard v4 for the Type 2 Diabetes digital twin (100% synthetic data).
+Everything in v3, plus: medicine list (hospital prescription vs what the patient takes), blood sugar level bar,
+safety view with an uncertainty band, reference actions for high and low glucose, diet chart in its own window,
+and a one-page patient summary (PDF).
 
-Run:  streamlit run app_v3.py
+Run:  streamlit run dashboard_new.py
 """
 import os
 import json
@@ -14,9 +16,12 @@ import streamlit as st
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from step2_train_model import DATA, HISTORY, HORIZON, load_patient
-from step3_fusion import load_ehr, FusionForecaster
-from step5_remedies import make_variant, forecast, AFTER, REMEDIES, START
+from train_baseline import DATA, HISTORY, HORIZON, load_patient
+from fusion_model import load_ehr, FusionForecaster
+from whatif import make_variant, forecast, AFTER, REMEDIES, START
+import clinical_reference as cr
+import doctor_logic as dl
+import doctor_panels as dp
 
 HIGH, LOW = 180.0, 70.0
 GREEN, RED, BLUE, ORANGE, GRAY = "#2ca02c", "#e4572e", "#3b82f6", "#f59e0b", "#9ca3af"
@@ -59,6 +64,7 @@ div[data-testid="stMetric"] { background: #0d0f14; border: 1px solid #1d212b; bo
 </style>
 """
 st.markdown(CSS, unsafe_allow_html=True)
+dp.inject_css()
 
 
 # ----------------------------- loading -----------------------------
@@ -166,8 +172,11 @@ with st.sidebar:
     day = st.slider("Day to review", 1, 14, 4)
     low_sens = st.radio("Low-glucose alert sensitivity", ["High (recommended)", "Standard"], index=0)
     st.caption("High sensitivity catches more lows but gives more false alarms. A missed low is the more dangerous mistake.")
-    st.markdown('<a class="navlink" href="#sec-live">▸ Live twin</a><a class="navlink" href="#sec-patterns">▸ 14-day patterns</a>'
-                '<a class="navlink" href="#sec-whatif">▸ What-if remedies</a><a class="navlink" href="#sec-record">▸ Patient record</a>',
+    st.markdown('<a class="navlink" href="#sec-meds">▸ Medicines</a><a class="navlink" href="#sec-live">▸ Live twin</a>'
+                '<a class="navlink" href="#sec-level">▸ Glucose level and actions</a>'
+                '<a class="navlink" href="#sec-patterns">▸ 14-day patterns</a>'
+                '<a class="navlink" href="#sec-whatif">▸ What-if remedies</a><a class="navlink" href="#sec-record">▸ Patient record</a>'
+                '<a class="navlink" href="#sec-summary">▸ Patient summary (PDF)</a>',
                 unsafe_allow_html=True)
     st.divider()
     st.markdown("### 📝 Doctor's notes")
@@ -241,6 +250,12 @@ with hc2:
     html = "".join(badge(m, GREEN) for m in meds) or badge("No diabetes medicine", GRAY)
     html += "".join(badge(t, c) for t, c in flags)
     st.markdown(html, unsafe_allow_html=True)
+
+dp.diet_button(pid, row.bmi, row.diet, bool(row.insulin or row.sulfonylurea))
+
+# ============================ SECTION 0: medicines ============================
+sec("sec-meds", "💊", "Medicines: hospital prescription and what the patient takes")
+dp.render_medicines(pid, DATA)
 
 # ============================ SECTION 1: live twin ============================
 sec("sec-live", "📈", "Live twin: 2-hour glucose forecast")
@@ -323,6 +338,23 @@ else:
             st.dataframe(pd.DataFrame(rows), hide_index=True, height=480)
         else:
             st.success("No alerts on this day.")
+
+# ============================ SECTION 1b: glucose level, safety view, actions ============================
+sec("sec-level", "🎚️", "Blood sugar level, safety view and reference actions")
+ms_all, F_all = day_forecasts(pid, HISTORY, n_steps - HORIZON - 1, 12)
+sigma = dl.residual_sigma(g, ms_all, F_all, HORIZON)
+if len(ms) == 0:
+    st.info("No forecast moment is available for this day, so the level bar and action list are not shown.")
+else:
+    first_alert = next((i_ for i_, a_ in enumerate(alerts) if a_ != "OK"), len(ms) // 2)
+    pick_i = st.select_slider("Moment to review (▲ high alert, ▼ low alert)", options=list(range(len(ms))),
+                              value=first_alert, format_func=lambda i_: labels[i_], key=f"moment_{pid}_{day}")
+    mom, fc_i = int(ms[pick_i]), F[pick_i]
+    now_i = float(g[mom - 1])
+    status = dl.safety_status(now_i, fc_i, sigma, LOW_MARGIN)
+    dp.render_level(now_i, fc_i, key="level_chart")
+    dp.render_safety(ts, g, mom, fc_i, sigma, status, key="safety_chart", horizon=HORIZON, history=HISTORY)
+    dp.render_actions(status["kind"], status["possible"], key="actions")
 
 # ============================ SECTION 2: patterns ============================
 sec("sec-patterns", "🗓️", "14-day patterns")
@@ -519,6 +551,14 @@ with rc2:
         "- **Alerts** fire when the forecast crosses 180 mg/dL (high) or nears 70 mg/dL (low).\n"
         "- **What-if remedies** re-run the forecast with one change.\n"
         "- **All data is synthetic**, and these patients were never used for training.")
+
+# ============================ SECTION 5: patient summary ============================
+sec("sec-summary", "🧾", "Patient summary")
+stats = dl.summary_stats(raw["glucose_mgdl"].values, ms_all, F_all, g, LOW_MARGIN)
+meds_now, _ = dl.load_meds(pid, DATA)
+plan_now = dl.load_diet(pid, cr.default_plan_for(row.bmi))[1]
+dp.render_summary(pid, row, stats, meds_now, ts, raw["glucose_mgdl"].values, float(sigma[-1]),
+                  [t for t, _ in flags], plan_now)
 
 st.caption("Prototype for research and demonstration only. Not for clinical use.")
 

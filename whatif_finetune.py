@@ -1,11 +1,8 @@
 """
-STEP 7 - Counterfactual fine-tuning of the fusion model.
-
-Teaches the model what a remedy (walk, smaller portion, low-GI swap) really does,
-using "same meal with / without the remedy" pairs from the simulator formula.
-Then re-runs the ground-truth check on the 10 unseen test patients (old vs new model).
-
-Run:  python step7_counterfactual.py
+Fine-tunes the model on "same meal with and without the remedy" pairs
+so it learns what a walk, smaller portion or low-GI swap really does.
+Then repeats the truth check (old vs new model).
+Run: python whatif_finetune.py
 """
 import time
 import numpy as np
@@ -13,10 +10,10 @@ import pandas as pd
 import torch
 import torch.nn as nn
 
-from step2_train_model import DATA, HISTORY, HORIZON, BATCH, SEED, load_patient, rmse_by_horizon
-from step3_fusion import load_ehr, build_fused, FusionForecaster, predict_fused
-from step5_remedies import make_variant, forecast, AFTER, REMEDIES, START
-from step6_ground_truth import meal_curve, remedy_params
+from train_baseline import DATA, HISTORY, HORIZON, BATCH, SEED, load_patient, rmse_by_horizon
+from fusion_model import load_ehr, build_fused, FusionForecaster, predict_fused
+from whatif import make_variant, forecast, AFTER, REMEDIES, START
+from whatif_truth_check import meal_curve, remedy_params
 
 FT_EPOCHS = 6
 FT_LR = 5e-4

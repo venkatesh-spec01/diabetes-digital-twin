@@ -1,14 +1,7 @@
 """
-STEP 1 - Synthetic data generator for the Type 2 Diabetes digital twin.
-
-Creates (all 100% synthetic, so no privacy / DPDP / HIPAA problem):
-  data/patients.csv        -> one row per patient (the "static layer", like an EHR)
-  data/meals.csv           -> every meal eaten (Indian meals)
-  data/sensors/Pxxx.csv    -> glucose, steps, heart rate, HRV, sleep every 5 minutes
-  data/summary.csv         -> quick health check of the generated data
-
-Run:  python step1_generate_data.py
-Needs: numpy, pandas  (runs on any normal laptop CPU in under a minute)
+Makes the synthetic data: patients, meals and 5-minute sensor files.
+Everything is generated, so no real patient is involved.
+Run: python make_data.py
 """
 import os
 import numpy as np

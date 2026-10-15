@@ -1,16 +1,8 @@
 """
-STEP 2 - Baseline glucose forecaster (runs on CPU, no GPU needed).
-
-What it does:
-  1. Reads the sensor files made in step 1.
-  2. Cuts them into "windows": look at the past 6 hours -> predict the next 2 hours of glucose.
-  3. Trains a small LSTM (a model that reads a sequence in order).
-  4. Compares it with a "lazy guess" (glucose stays flat) and prints the errors.
-  5. Tests it on the 10 hard patients (T01-T10) that it never saw in training.
-  6. Saves the model to models/ and a picture to plots/.
-
-Run:  python step2_train_model.py
-Needs: numpy, pandas, torch, matplotlib
+Baseline model: an LSTM that reads the last 6 hours of sensor data and
+forecasts the next 2 hours of glucose. Compared with a "stays flat" guess and
+tested on the 10 patients (T01-T10) it never saw in training.
+Run: python train_baseline.py
 """
 import os
 import time

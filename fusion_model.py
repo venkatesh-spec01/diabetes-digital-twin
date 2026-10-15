@@ -1,13 +1,8 @@
 """
-STEP 3 - Fusion model: sensor history + health record (EHR).
-
-What it does:
-  1. Reads each patient's health record (age, HbA1c, medicines, ...) from data/patients.csv.
-  2. Trains an LSTM that reads the last 6 hours of sensor data AND the health record,
-	 then predicts the next 2 hours of glucose.
-  3. Compares it with the glucose-only model from step 2 on the 10 unseen test patients.
-
-Run:  python step3_fusion.py
+Fusion model: same LSTM, but it also reads the patient record
+(age, HbA1c, medicines and so on). Compared with the sensor-only model
+on the 10 test patients.
+Run: python fusion_model.py
 """
 import time
 import numpy as np
@@ -18,9 +13,9 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from step2_train_model import (DATA, HORIZON, BATCH, LR, EPOCHS, SEED,
+from train_baseline import (DATA, HORIZON, BATCH, LR, EPOCHS, SEED,
 							   load_patient, make_windows, rmse_by_horizon, Forecaster)
-from step2_train_model import predict as predict_seq
+from train_baseline import predict as predict_seq
 
 EHR_COLUMNS = ["age", "sex", "bmi", "years_since_diagnosis", "hba1c", "fasting_glucose",
 			   "ldl", "triglycerides", "family_history", "polygenic_risk",

@@ -1,11 +1,7 @@
 """
-STEP 5 - What-if remedy engine.
-
-For each real meal of the 10 unseen test patients, look at the moment 30 minutes after
-the meal, change ONE thing (walk, smaller portion, lower-GI dish), and ask the fusion
-model how the next 2 hours of glucose would change.
-
-Run:  python step5_remedies.py
+What-if engine. 30 minutes after each meal, change one thing (walk,
+smaller portion, lower-GI food) and see how the forecast changes.
+Run: python whatif.py
 """
 import numpy as np
 import pandas as pd
@@ -15,8 +11,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from step2_train_model import DATA, HISTORY, HORIZON, load_patient
-from step3_fusion import load_ehr, FusionForecaster, predict_fused
+from train_baseline import DATA, HISTORY, HORIZON, load_patient
+from fusion_model import load_ehr, FusionForecaster, predict_fused
 
 START = pd.Timestamp("2026-09-01 00:00")
 AFTER = 6

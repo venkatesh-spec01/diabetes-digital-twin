@@ -1,24 +1,10 @@
 """
-STEP 9 - Reduce the walk remedy bias (fair version of step 7).
-
-Problem: after step 7 the model over-promises the walk (+1.67 mg/dL) and
-walk + smaller portion (+2.70). Before step 7 it under-promised the walk (-1.17).
-So the right amount of fine-tuning lies somewhere in between.
-
-What this script does:
-  1. Repeats the step 7 fine-tuning, but after EVERY round it measures remedy bias
-	 on VALIDATION meals (later days of the training patients). Test patients are not used.
-  2. Keeps the round with the best validation score (forecast error + remedy bias).
-  3. Tries blending the old and fine-tuned weights (0%, 25%, 50%, 75%, 100%) and again
-	 picks the best blend on validation only.
-  4. Only at the end, reports the result ONCE on the 10 unseen test patients,
-	 next to the old model and the current step 7 model.
-
-It does NOT overwrite anything the dashboard uses. It saves:
-  models/fusion_cf_v2.pt          the new model
-  models/remedy_truth_step9.csv   test results for old / step7 / step9
-
-Run:  python step9_walk_fix.py
+After whatif_finetune the model over-promised the walk and before it
+under-promised it, so the right amount of fine-tuning is in between.
+Here I check the remedy bias after every round on validation meals, pick the best
+round and the best blend of old and new weights (validation only), and report once
+on the test patients. Saves models/fusion_cf_v2.pt and models/remedy_truth_step9.csv.
+Run: python walk_fix.py
 """
 import time
 import numpy as np
@@ -26,11 +12,11 @@ import pandas as pd
 import torch
 import torch.nn as nn
 
-from step2_train_model import DATA, HISTORY, HORIZON, BATCH, SEED, load_patient, rmse_by_horizon
-from step3_fusion import load_ehr, build_fused, FusionForecaster, predict_fused
-from step5_remedies import make_variant, forecast, AFTER, REMEDIES, START
-from step6_ground_truth import meal_curve, remedy_params
-from step7_counterfactual import (cf_samples, truth_table, test_forecast_error,
+from train_baseline import DATA, HISTORY, HORIZON, BATCH, SEED, load_patient, rmse_by_horizon
+from fusion_model import load_ehr, build_fused, FusionForecaster, predict_fused
+from whatif import make_variant, forecast, AFTER, REMEDIES, START
+from whatif_truth_check import meal_curve, remedy_params
+from whatif_finetune import (cf_samples, truth_table, test_forecast_error,
 								  FT_EPOCHS, FT_LR, REPEAT_CF)
 
 BLENDS = [0.0, 0.25, 0.5, 0.75, 1.0]

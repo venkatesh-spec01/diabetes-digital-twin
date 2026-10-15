@@ -1,12 +1,7 @@
 """
-STEP 6 - Ground-truth check of the what-if remedies.
-
-For every real meal of the 10 unseen test patients, we compute:
-  - the TRUE drop in 2-hour peak glucose, using the simulator's own meal formula
-  - the PREDICTED drop, from the fusion model (same as step 5)
-and compare them.
-
-Run:  python step6_ground_truth.py
+Checks the what-if answers against the simulator: true drop in the
+2-hour peak vs the drop the model predicts, for every test meal.
+Run: python whatif_truth_check.py
 """
 import numpy as np
 import pandas as pd
@@ -16,10 +11,10 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from step1_generate_data import kernel
-from step2_train_model import DATA, HISTORY, HORIZON, load_patient
-from step3_fusion import load_ehr, FusionForecaster
-from step5_remedies import make_variant, forecast, AFTER, REMEDIES, START
+from make_data import kernel
+from train_baseline import DATA, HISTORY, HORIZON, load_patient
+from fusion_model import load_ehr, FusionForecaster
+from whatif import make_variant, forecast, AFTER, REMEDIES, START
 
 
 def meal_curve(p, carbs, gi, walked, n=72):

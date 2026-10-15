@@ -1,27 +1,15 @@
 """
-STEP 11 - Round 1: fine-tune the twin on REAL people (CGMacros), test on real people it never saw.
+Fine-tunes the twin on real people (CGMacros) and tests on other real people.
 
-Why: step 10 showed the twin (trained only on synthetic data) is only modest on real people.
-Here we let it learn from some real people, and check honestly on others.
+People are split by person, never by time window (seed 42):
+  train about 29, valid about 6 (only to pick the best round), test about 10 (scored once).
+Each group (T2D / pre-diabetes / healthy) is split the same way.
+To avoid forgetting the synthetic training (and breaking the what-if part), every round
+also mixes in synthetic windows. The dashboard model is not overwritten.
 
-The honest rules (this is what makes the result trustworthy):
-  * People are split BY PERSON, never by time window:
-        TRAIN (about 29 people)   the model learns from these
-        VALID (about 6 people)    used only to pick the best training round
-        TEST  (about 10 people)   locked away, scored ONCE at the end
-    Each health group (T2D / pre-diabetes / healthy) is split the same way, seed 42.
-  * The same split is saved to models/step11_split.csv so later rounds can reuse it.
-  * To stop the model forgetting what it learned from synthetic data (and breaking the
-    what-if remedies), every round mixes in as many synthetic windows as real ones.
-  * Nothing the dashboard uses is overwritten. New model: models/fusion_real_ft1.pt
-
-Needs the same cgmacros_data/ folder as step 10.   Run:  python step11_finetune_real.py
-Takes a few minutes on a normal laptop CPU.
-
-Saves:
-  models/fusion_real_ft1.pt        the fine-tuned model (best round on VALID people)
-  models/step11_split.csv          which person went to train / valid / test
-  models/real_finetune_step11.csv  TEST-people scores, before vs after
+Needs the same cgmacros_data/ folder as cgmacros_test.py.
+Run: python cgmacros_finetune.py   (a few minutes on CPU)
+Saves models/fusion_real_ft1.pt, models/step11_split.csv, models/real_finetune_step11.csv
 """
 import glob
 import os
@@ -31,9 +19,9 @@ import pandas as pd
 import torch
 import torch.nn as nn
 
-from step2_train_model import DATA, HORIZON, BATCH, SEED, rmse_by_horizon
-from step3_fusion import load_ehr, build_fused, FusionForecaster, predict_fused
-from step10_cgmacros_test import (find_root, read_bio, ehr_for, read_stream, windows,
+from train_baseline import DATA, HORIZON, BATCH, SEED, rmse_by_horizon
+from fusion_model import load_ehr, build_fused, FusionForecaster, predict_fused
+from cgmacros_test import (find_root, read_bio, ehr_for, read_stream, windows,
                                   alert_scores)
 
 BASE_MODEL = "models/fusion_cf_blend75.pt"   # what the dashboard uses today
@@ -116,7 +104,7 @@ def report(models, people, split, real):
 
 def remedy_check(models):
     """Did fine-tuning on real data damage the synthetic skills and the what-if remedies?"""
-    from step7_counterfactual import truth_table, test_forecast_error
+    from whatif_finetune import truth_table, test_forecast_error
     patients = pd.read_csv(f"{DATA}/patients.csv")
     train_ids = patients[patients.group == "train"].patient_id.tolist()
     test_ids = patients[patients.group == "test"].patient_id.tolist()

@@ -19,12 +19,12 @@ People with T2D often find out about a glucose spike only after it has happened.
 
 | Layer | What it does | File(s) |
 |---|---|---|
-| 1 + 2 | Synthetic EHR and sensor generator (glucose, steps, heart rate, HRV, sleep, meals), Indian meal menu | `step1_generate_data.py` |
-| 3 | Fusion LSTM: 6 hours of sensor history + the patient's EHR, predicts the next 2 hours | `step2_train_model.py`, `step3_fusion.py` |
-| 4 | Adverse event alerts (HIGH > 180, LOW < 70) with precision / recall / F1 | `step4_alert.py` |
-| 5 | What-if remedy engine (walk, smaller portion, low-GI swap), checked against the simulator's true answers | `step5_remedies.py`, `step6_ground_truth.py`, `step7_counterfactual.py` |
-| 6 | Doctor dashboard (Streamlit) | `app_v3.py` |
-| Check | 5-seed reproducibility check | `step8_seeds.py` |
+| 1 + 2 | Synthetic EHR and sensor generator (glucose, steps, heart rate, HRV, sleep, meals), Indian meal menu | `make_data.py` |
+| 3 | Fusion LSTM: 6 hours of sensor history + the patient's EHR, predicts the next 2 hours | `train_baseline.py`, `fusion_model.py` |
+| 4 | Adverse event alerts (HIGH > 180, LOW < 70) with precision / recall / F1 | `alerts.py` |
+| 5 | What-if remedy engine (walk, smaller portion, low-GI swap), checked against the simulator's true answers | `whatif.py`, `whatif_truth_check.py`, `whatif_finetune.py` |
+| 6 | Doctor dashboard (Streamlit) | `dashboard.py` |
+| Check | 5-seed reproducibility check | `seed_check.py` |
 
 ## 3. Architecture
 
@@ -43,7 +43,7 @@ Model settings: history 72 readings (6 h), horizon 24 readings (2 h), hidden siz
 
 ## 4. Dashboard
 
-Run it with `streamlit run app_v3.py`. All patients shown are synthetic, and the avatar is an illustration, not a photo.
+Run it with `streamlit run dashboard.py`. All patients shown are synthetic, and the avatar is an illustration, not a photo.
 
 **Live twin: forecast and alerts** (T03, day 4: 4 high-glucose alerts)
 
@@ -111,7 +111,7 @@ The walk effect is slightly overestimated, and the combined remedy is slightly o
 To test whether the twin works beyond our simulator, we ran the trained models **unchanged** on
 [CGMacros](https://physionet.org/content/cgmacros/1.0.0/), an anonymized, open-access dataset of 45 real adults
 (14 Type 2 Diabetes, 16 pre-diabetes, 15 healthy) with Dexcom G6 CGM, Fitbit activity, logged meals and blood tests,
-10 days each. Script: `step10_cgmacros_test.py`. The data is not stored in this repository.
+10 days each. Script: `cgmacros_test.py`. The data is not stored in this repository.
 
 **2-hour forecast error (RMSE, mg/dL), T2D participants (14 people, 12,884 windows):**
 
@@ -139,7 +139,7 @@ data rules (anonymized, open-source or synthetic only).
 
 | Layer | Source | Type |
 |---|---|---|
-| EHR (static) | Own generator, `step1_generate_data.py` | Synthetic |
+| EHR (static) | Own generator, `make_data.py` | Synthetic |
 | Sensor stream (dynamic) | Own generator, mimicking a 5-minute CGM (Dexcom / Libre) plus Apple Health / Google Fit signals | Synthetic |
 | External test only | CGMacros v1.0.0, PhysioNet (CC BY-NC-SA 4.0) | Anonymized, open-access |
 
@@ -187,7 +187,7 @@ python -m venv venv
 venv\Scripts\activate        # Windows
 # source venv/bin/activate   # macOS / Linux
 pip install -r requirements.txt
-streamlit run app_v3.py
+streamlit run dashboard.py
 ```
 
 Then open `http://localhost:8501` and choose a patient (T01-T10) in the sidebar.
@@ -195,26 +195,26 @@ Then open `http://localhost:8501` and choose a patient (T01-T10) in the sidebar.
 The generated data (`data/`) and trained models (`models/`) are included in the repository, so the dashboard runs without retraining. To regenerate everything from scratch, run the scripts in order:
 
 ```bash
-python step1_generate_data.py
-python step2_train_model.py
-python step3_fusion.py
-python step7_counterfactual.py
+python make_data.py
+python train_baseline.py
+python fusion_model.py
+python whatif_finetune.py
 ```
 
-Other checks: `step4_alert.py` (alerts), `step6_ground_truth.py` (remedy validation), `step8_seeds.py` (5-seed check).
+Other checks: `alerts.py` (alerts), `whatif_truth_check.py` (remedy validation), `seed_check.py` (5-seed check).
 
 ## 9. Repository layout
 
 ```
-app_v3.py                  Doctor dashboard (final version)
-step1_generate_data.py     Synthetic EHR + sensor data
-step2_train_model.py       Glucose-only LSTM
-step3_fusion.py            Fusion LSTM
-step4_alert.py             Adverse event alerts
-step5_remedies.py          What-if remedy engine
-step6_ground_truth.py      Remedy validation vs simulator
-step7_counterfactual.py    Counterfactual fine-tuning
-step8_seeds.py             5-seed reproducibility check
+dashboard.py                  Doctor dashboard (final version)
+make_data.py     Synthetic EHR + sensor data
+train_baseline.py       Glucose-only LSTM
+fusion_model.py            Fusion LSTM
+alerts.py             Adverse event alerts
+whatif.py          What-if remedy engine
+whatif_truth_check.py      Remedy validation vs simulator
+whatif_finetune.py    Counterfactual fine-tuning
+seed_check.py             5-seed reproducibility check
 data/  models/  plots/     Data, trained models, result plots
 docs/                      Dashboard screenshots
 ```
@@ -222,6 +222,23 @@ docs/                      Dashboard screenshots
 ## 10. Licence
 
 MIT. See `LICENSE`.
+Order I built the scripts (the phase numbers match the "step" numbers used in this README):
+
+| Phase | Script | What it does |
+|---|---|---|
+| 1 | `make_data.py` | Make the synthetic patients and sensor data |
+| 2 | `train_baseline.py` | Train the sensor-only LSTM (baseline) |
+| 3 | `fusion_model.py` | Train the fusion LSTM (sensors + patient record) |
+| 4 | `alerts.py` | High and low glucose alerts |
+| 5 | `whatif.py` | What-if engine (walk, portion, low-GI) |
+| 6 | `whatif_truth_check.py` | Check the what-if answers against the simulator |
+| 7 | `whatif_finetune.py` | Fine-tune the what-if behaviour |
+| 8 | `seed_check.py` | Repeat with 5 seeds |
+| 9 | `walk_fix.py` | Fix the walk remedy bias |
+| 9b | `blend_test.py` | Test the chosen 75% blend (dashboard model) |
+| 10 | `cgmacros_test.py` | Test on real people (CGMacros) |
+| 11 | `cgmacros_finetune.py` | Fine-tune on real people, test on others |
+
 ## 11. Submission documents
 
 - Architecture diagram: [docs/architecture_diagram.pdf](docs/architecture_diagram.pdf)

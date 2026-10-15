@@ -1,10 +1,7 @@
 """
-STEP 4 - Adverse event alerts (high and low glucose in the next 2 hours).
-
-Turns the 2-hour forecast into alerts and measures them on the 10 unseen test patients.
-Only NEW events are counted (glucose was in range when the alert was raised).
-
-Run:  python step4_alerts.py
+High and low glucose alerts from the 2-hour forecast, scored on the
+10 test patients. Only new events count (glucose was in range when the alert was raised).
+Run: python alerts.py
 """
 import numpy as np
 import pandas as pd
@@ -13,9 +10,9 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from step2_train_model import (DATA, HORIZON, load_patient, make_windows, Forecaster,
+from train_baseline import (DATA, HORIZON, load_patient, make_windows, Forecaster,
 							   predict as predict_seq)
-from step3_fusion import load_ehr, FusionForecaster, predict_fused
+from fusion_model import load_ehr, FusionForecaster, predict_fused
 
 HIGH, LOW = 180.0, 70.0
 

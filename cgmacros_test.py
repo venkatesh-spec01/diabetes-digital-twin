@@ -1,43 +1,28 @@
 """
-STEP 10 - Real-data check on CGMacros (PhysioNet).
+Real-data check on CGMacros (PhysioNet): 45 adults, 10 days each, with a
+Dexcom G6 sensor, Fitbit, logged meals and blood tests. The models trained on
+synthetic data are run unchanged on these people.
+Dataset: https://physionet.org/content/cgmacros/1.0.0/  (CC BY-NC-SA 4.0, not stored in this repo)
 
-Runs the models we trained on SYNTHETIC data, unchanged, on REAL people:
-45 adults (15 healthy, 16 pre-diabetes, 14 Type 2 Diabetes), 10 days each,
-Dexcom G6 CGM + Fitbit + logged meals + blood tests.
-No retraining: this tests whether the twin still works on data it has never seen
-from a completely different source.
+Setup: download and unzip it into cgmacros_data/ (the script looks for bio.csv).
+Run: python cgmacros_test.py
 
-Dataset: CGMacros v1.0.0, https://physionet.org/content/cgmacros/1.0.0/
-Licence: CC BY-NC-SA 4.0 (non-commercial, attribution). Data is NOT stored in this repo.
-
-Setup:
-  1. Download the ZIP from the link above and unzip it.
-  2. Put the folder in the project as  cgmacros_data/
-     so that you have  cgmacros_data/bio.csv  and  cgmacros_data/CGMacros-001/CGMacros-001.csv  etc.
-     (one extra parent folder is fine, the script searches for bio.csv)
-
-Run:  python step10_cgmacros_test.py
-
-What CGMacros does NOT have, and how we fill it (please read, it affects results):
-  steps        -> estimated from Fitbit METs (about 40 steps per minute per MET above rest)
-  HRV          -> not recorded, set to a typical 40 ms
-  sleep        -> not recorded, estimated as "very low activity between 23:00 and 07:00"
-  meal GI      -> not recorded, set to 60 (average of our menu) at each meal
-  medicines, years since diagnosis, family history, genetic risk
-               -> not recorded, set to the training average (so the model gets no signal from them)
-  CGMacros clock times are shifted for privacy, so time-of-day may not be exact.
-
-Saves:
-  models/real_data_step10.csv        forecast errors and alert scores, by health group
-  plots/real_data_example.png        one real T2D day with the twin's forecasts
+CGMacros has no steps, HRV, sleep or meal GI, so these are estimated:
+  steps  from Fitbit METs (about 40 steps/min per MET above rest)
+  HRV    fixed at 40 ms
+  sleep  low activity between 23:00 and 07:00
+  GI     60 for every meal
+  medicines, years with diabetes, family history: set to the training average
+Clock times in CGMacros are shifted for privacy, so time of day is approximate.
+Saves models/real_data_step10.csv and plots/real_data_example.png
 """
 import glob
 import os
 import numpy as np
 import pandas as pd
 
-from step2_train_model import DATA, HISTORY, HORIZON, STRIDE, SCALE, rmse_by_horizon
-from step3_fusion import EHR_COLUMNS, load_ehr
+from train_baseline import DATA, HISTORY, HORIZON, STRIDE, SCALE, rmse_by_horizon
+from fusion_model import EHR_COLUMNS, load_ehr
 
 ROOT = "cgmacros_data"
 HIGH, LOW = 180.0, 70.0
@@ -205,8 +190,8 @@ def alert_scores(forecast, future, now, margin=0):
 # ----------------------------- main ----------------------------------------
 def main():
     import torch
-    from step2_train_model import Forecaster, predict as predict_seq
-    from step3_fusion import FusionForecaster, predict_fused
+    from train_baseline import Forecaster, predict as predict_seq
+    from fusion_model import FusionForecaster, predict_fused
 
     root = find_root()
     files = {}

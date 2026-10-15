@@ -1,9 +1,12 @@
-"""STEP 9b - Test the 75% blend (chosen on validation in step 9) on the 10 unseen patients."""
+"""
+Tests the 75% blend (picked on validation in walk_fix) on the 10 test patients.
+Saves models/fusion_cf_blend75.pt, the model the dashboard uses.
+"""
 import pandas as pd
 import torch
-from step2_train_model import DATA
-from step3_fusion import load_ehr, FusionForecaster
-from step7_counterfactual import truth_table, test_forecast_error
+from train_baseline import DATA
+from fusion_model import load_ehr, FusionForecaster
+from whatif_finetune import truth_table, test_forecast_error
 
 patients = pd.read_csv(f"{DATA}/patients.csv")
 train_ids = patients[patients.group == "train"].patient_id.tolist()

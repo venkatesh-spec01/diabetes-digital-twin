@@ -1,7 +1,7 @@
 """
-STEP 8 - Is fusion really better than glucose-only? Train both with several random seeds.
-
-Does NOT touch the final models. Run:  python step8_seeds.py
+Trains the sensor-only and fusion models with several random seeds
+to see if fusion is really better. Does not touch the final models.
+Run: python seed_check.py
 """
 import time
 import numpy as np
@@ -9,9 +9,9 @@ import pandas as pd
 import torch
 import torch.nn as nn
 
-from step2_train_model import (DATA, BATCH, LR, EPOCHS, rmse_by_horizon,
+from train_baseline import (DATA, BATCH, LR, EPOCHS, rmse_by_horizon,
 							   Forecaster, predict as predict_seq)
-from step3_fusion import load_ehr, build_fused, FusionForecaster, predict_fused
+from fusion_model import load_ehr, build_fused, FusionForecaster, predict_fused
 
 SEEDS = [1, 2, 3, 4, 5]
 
