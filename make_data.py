@@ -1,25 +1,27 @@
-"""
-Makes the synthetic data: patients, meals and 5-minute sensor files.
-Everything is generated, so no real patient is involved.
-Run: python make_data.py
-"""
+# this file makes all the fake (synthetic) data for the project.
+# it creates 150 training patients and 10 hard test patients (T01 to T10).
+# every patient gets 14 days of readings, one every 5 minutes:
+# glucose, steps, heart rate, hrv and sleep. it also saves the meals they ate.
+# no real person is used, so there is no privacy problem.
+# everything is saved in the data folder.
+# run: python make_data.py
 import os
 import numpy as np
 import pandas as pd
 
-# ----------------------------- SETTINGS ------------------------------------
-SEED = 42              # same seed = same data every time (good for judges)
-N_TRAIN_PATIENTS = 150 # random patients used to train the model later
-DAYS = 14              # days of sensor data per patient
-STEP_MIN = 5           # one reading every 5 minutes
+# fixed seed so the data is same every run
+SEED = 42
+N_TRAIN_PATIENTS = 150
+DAYS = 14
+# one reading every 5 minutes
+STEP_MIN = 5
 START = pd.Timestamp("2026-09-01 00:00")
 OUT = "data"
 
 STEPS_PER_DAY = 1440 // STEP_MIN
 N = DAYS * STEPS_PER_DAY
 
-# ----------------------------- INDIAN MEAL MENU ----------------------------
-# (name, carbs in grams, glycemic index)
+# indian dishes as (name, carbs in grams, GI)
 MENU = {
     "breakfast": [("idli_sambar", 45, 70), ("poha", 50, 65), ("ragi_dosa", 35, 50),
                   ("aloo_paratha", 60, 70), ("oats_upma", 30, 55), ("sweet_pongal", 65, 78)],
@@ -30,7 +32,7 @@ MENU = {
     "dinner":    [("white_rice_dal_sabzi", 85, 75), ("roti_dal_sabzi", 60, 55),
                   ("millet_khichdi", 55, 50), ("veg_biryani", 100, 70), ("dosa_chutney", 50, 68)],
 }
-# how likely each diet type is to pick each dish (matched by dish name keywords)
+# words in dish names that each diet type prefers
 DIET_BIAS = {
     "rice_heavy": ["rice", "biryani", "idli", "pongal", "poha"],
     "wheat":      ["roti", "paratha", "oats"],
@@ -38,24 +40,25 @@ DIET_BIAS = {
     "junk":       ["samosa", "mithai", "biryani", "paratha", "biscuit", "pongal"],
     "mixed":      [],
 }
-MEAL_OFFSET_H = {"breakfast": 1.5, "lunch": 7.0, "snack": 11.0, "dinner": 14.5}  # hours after waking
+# hours after waking when each meal happens
+MEAL_OFFSET_H = {"breakfast": 1.5, "lunch": 7.0, "snack": 11.0, "dinner": 14.5}
 
 
+# picks a random dish, favouring the patient's diet type
 def pick_meal(rng, slot, diet):
     dishes = MENU[slot]
     w = np.array([3.0 if any(k in d[0] for k in DIET_BIAS[diet]) else 1.0 for d in dishes])
     return dishes[rng.choice(len(dishes), p=w / w.sum())]
 
 
-# ----------------------------- PATIENT TABLE -------------------------------
+# creates one random patient with health record values
 def make_patient(rng, pid, group, **override):
-    """Random India-style T2D patient. Any field can be overridden (used for hard test cases)."""
     age = int(rng.integers(25, 76))
-    bmi = float(np.clip(rng.normal(26.5, 4.5), 18, 42))   # Indian T2D often at lower BMI
+    bmi = float(np.clip(rng.normal(26.5, 4.5), 18, 42))
     years_dx = int(np.clip(rng.integers(0, 21), 0, age - 20))
     hba1c = float(np.clip(rng.normal(7.4 + 0.07 * years_dx, 1.1), 6.5, 11.5))
     fam = int(rng.random() < 0.6)
-    prs = float(np.clip(0.3 + 0.35 * fam + rng.normal(0, 0.15), 0, 1))   # simple polygenic risk score
+    prs = float(np.clip(0.3 + 0.35 * fam + rng.normal(0, 0.15), 0, 1))
     on_ins = years_dx > 10 and hba1c > 8 and rng.random() < 0.4
     on_su = (not on_ins) and rng.random() < 0.3
     p = dict(
@@ -72,19 +75,20 @@ def make_patient(rng, pid, group, **override):
         dose_miss_prob=0.05, note="random patient",
     )
     p.update(override)
-    # hidden "insulin resistance" factor: how hard the body reacts to carbs
+    # insulin resistance grows with bmi, hba1c and genes
     ir = 0.7 + 0.04 * (p["bmi"] - 22) + 0.08 * (p["hba1c"] - 6.5) + 0.3 * p["polygenic_risk"] + rng.normal(0, 0.1)
     p.setdefault("insulin_resistance", None)
     if p["insulin_resistance"] is None:
         p["insulin_resistance"] = round(float(np.clip(ir, 0.5, 2.2)), 2)
+    # fasting glucose is estimated from hba1c
     p["fasting_glucose"] = p.get("fasting_glucose") or int(0.8 * (28.7 * p["hba1c"] - 46.7) - 12)
-    # how strongly the medicine can push glucose DOWN too far (hypoglycemia risk)
+    # how strongly medicines can push glucose low
     p["hypo_strength"] = round(0.35 * p["sulfonylurea"] + 0.75 * p["insulin"], 2)
     return p
 
 
+# hand-made tricky patients used only for testing
 def hard_test_patients(rng):
-    """10 deliberately different / opposite / difficult patients for final testing."""
     T = lambda i, **kw: make_patient(rng, f"T{i:02d}", "test", **kw)
     return [
         T(1, age=27, bmi=21.5, years_since_diagnosis=0, hba1c=6.6, metformin=1, sulfonylurea=0, insulin=0,
@@ -120,19 +124,19 @@ def hard_test_patients(rng):
     ]
 
 
-# ----------------------------- SENSOR SIMULATION ---------------------------
+# shape of the glucose rise after eating
 def kernel(t_min, peak):
-    """Smooth 'rise then fall' curve, 0 before meal, max (=1) at `peak` minutes."""
     t = np.maximum(t_min, 0)
     return (t / peak) * np.exp(1 - t / peak)
 
 
+# builds 14 days of sensor data for one patient
 def simulate(p, rng):
     idx = np.arange(N)
     minutes = idx * STEP_MIN
     hour = (minutes / 60) % 24
 
-    # ---- sleep: each day wake time + sleep length ----
+    # marks which time steps the patient sleeps
     sleeping = np.zeros(N, dtype=int)
     sleep_len = np.zeros(DAYS)
     for d in range(DAYS):
@@ -143,28 +147,31 @@ def simulate(p, rng):
         sleeping[max(a, 0):min(max(b, 0), N)] = 1
     day_of = (minutes // 1440).astype(int)
     prev_sleep = np.where(day_of > 0, sleep_len[np.maximum(day_of - 1, 0)], sleep_len[0])
-    deficit = np.clip(7.0 - prev_sleep, 0, 4)       # hours of missing sleep
+    # sleep debt from last night, max 4 hours
+    deficit = np.clip(7.0 - prev_sleep, 0, 4)
 
-    # ---- steps ----
     base_rate = {"sedentary": 8, "light": 22, "active": 45}[p["activity"]]
+    # random walking steps, more for active people
     steps = rng.poisson(base_rate * rng.lognormal(0, 0.4, N)).astype(float)
-    for d in range(DAYS):                            # a few random walking bouts per day
+    for d in range(DAYS):
         for _ in range(int(rng.integers(1, 4 if p["activity"] != "sedentary" else 2))):
             s = int(d * STEPS_PER_DAY + rng.integers(100, 250))
             steps[s:s + int(rng.integers(2, 5))] += rng.normal(420, 60)
     steps[sleeping == 1] = rng.poisson(0.3, int(sleeping.sum()))
 
-    # ---- meals + glucose ----
+    # metformin lowers insulin resistance a bit
     ir = p["insulin_resistance"] * (0.85 if p["metformin"] else 1.0) * (1 + 0.05 * deficit)
-    baseline = p["fasting_glucose"] + 8 * np.exp(-((hour - 6) / 2) ** 2) + 6 * deficit   # dawn effect + bad sleep
-    baseline = baseline - 3 * p["metformin"] - 14 * p["hypo_strength"]   # medicines also pull the baseline down
+    # morning bump plus sleep debt on base glucose
+    baseline = p["fasting_glucose"] + 8 * np.exp(-((hour - 6) / 2) ** 2) + 6 * deficit
+    baseline = baseline - 3 * p["metformin"] - 14 * p["hypo_strength"]
     glucose = baseline.copy()
     meals = []
     for d in range(DAYS):
         wake = d * 24 + p["wake_hour"]
+        # go through each meal of the day
         for slot, off in MEAL_OFFSET_H.items():
+            # sometimes the patient skips the meal
             if rng.random() < p["meal_skip_prob"]:
-                # medicine is still taken even if the meal is skipped -> classic cause of a low
                 t_skip = int((wake + off) * 60 / STEP_MIN)
                 if p["hypo_strength"] > 0 and 0 <= t_skip < N and rng.random() < 0.6:
                     seg = np.arange(min(72, N - t_skip)) * STEP_MIN
@@ -175,29 +182,33 @@ def simulate(p, rng):
             t0 = int((wake + off + rng.normal(0, 0.4)) * 60 / STEP_MIN)
             if t0 < 0 or t0 >= N:
                 continue
+            # decide if the patient walked after eating
             walked = int(rng.random() < p["walk_after_meal_prob"])
-            if walked:                                   # 10-min walk starting 15 min after the meal
+            if walked:
                 steps[t0 + 3:t0 + 5] += rng.normal(450, 50)
-            seg = np.arange(min(72, N - t0)) * STEP_MIN   # next 6 hours
+            seg = np.arange(min(72, N - t0)) * STEP_MIN
+            # size of glucose rise from this meal
             amp = 0.6 * carbs * (gi / 70) * ir[t0] * (0.72 if walked else 1.0)
             glucose[t0:t0 + len(seg)] += amp * kernel(seg, 45)
+            # sometimes the medicine dose is missed
             missed = rng.random() < p["dose_miss_prob"]
-            if p["hypo_strength"] > 0 and not missed:    # medicine pushes glucose down ~2.5h later
+            if p["hypo_strength"] > 0 and not missed:
                 glucose[t0:t0 + len(seg)] -= p["hypo_strength"] * 0.85 * carbs * (gi / 70) * kernel(seg, 150)
             meals.append(dict(patient_id=p["patient_id"], timestamp=START + pd.Timedelta(minutes=int(t0 * STEP_MIN)),
                               slot=slot, meal=name, carbs_g=round(carbs), gi=gi, walked_after=walked))
 
-    # sensor noise: slow wobble + small jitter
+    # small random noise so the curve looks real
     wobble = np.zeros(N)
     for i in range(1, N):
         wobble[i] = 0.9 * wobble[i - 1] + rng.normal(0, 2.0)
     glucose = np.clip(glucose + wobble, 40, 400)
 
-    # ---- heart rate and HRV ----
+    # heart rate goes up with steps, down in sleep
     hr = p["resting_hr"] + 0.06 * steps - 8 * sleeping + rng.normal(0, 2, N)
-    for m in meals:                                      # small bump after eating
+    for m in meals:
         t0 = int((m["timestamp"] - START).total_seconds() // 60 // STEP_MIN)
         hr[t0:t0 + 6] += 3
+    # hrv gets lower with age and bmi
     hrv_base = float(np.clip(55 - 0.4 * (p["age"] - 30) - 0.5 * (p["bmi"] - 22), 15, 60))
     hrv = hrv_base * np.where(sleeping == 1, 1.3, 0.8) * (1 - 0.04 * deficit) + rng.normal(0, 2, N)
 
@@ -207,7 +218,6 @@ def simulate(p, rng):
         heart_rate=hr.clip(40, 180).round().astype(int), hrv_ms=hrv.clip(5, 120).round(1),
         sleeping=sleeping))
     meal_df = pd.DataFrame(meals)
-    # put meal carbs on the sensor timeline too (handy for the model in step 3)
     df["carbs_g"] = 0
     df["meal_gi"] = 0
     for m in meals:
@@ -216,14 +226,16 @@ def simulate(p, rng):
     return df, meal_df
 
 
-# ----------------------------- MAIN ----------------------------------------
+# makes all patients and writes the csv files
 def main():
     os.makedirs(f"{OUT}/sensors", exist_ok=True)
     rng = np.random.default_rng(SEED)
-    N_ORIGINAL = 40   # the first 40 patients and T01-T10 stay identical to the first run
+    N_ORIGINAL = 40
     patients = [make_patient(rng, f"P{i:03d}", "train") for i in range(1, N_ORIGINAL + 1)]
+    # add the 10 hard test patients
     patients += hard_test_patients(rng)
-    extra_rng = np.random.default_rng(SEED + 1)   # separate random stream for the new patients
+    # extra patients use a second random generator
+    extra_rng = np.random.default_rng(SEED + 1)
     patients += [make_patient(extra_rng, f"P{i:03d}", "train") for i in range(N_ORIGINAL + 1, N_TRAIN_PATIENTS + 1)]
     
     pd.DataFrame(patients).to_csv(f"{OUT}/patients.csv", index=False)

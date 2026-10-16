@@ -1,8 +1,8 @@
-"""
-What-if engine. 30 minutes after each meal, change one thing (walk,
-smaller portion, lower-GI food) and see how the forecast changes.
-Run: python whatif.py
-"""
+# what-if engine: shows what a small change would do to the forecast.
+# 30 minutes after a meal we change one thing (walk, smaller portion,
+# or a low-GI dish) in the input window and run the fusion model again.
+# the drop in the forecast peak tells how much the remedy may help.
+# run: python whatif.py
 import numpy as np
 import pandas as pd
 import torch
@@ -15,28 +15,33 @@ from train_baseline import DATA, HISTORY, HORIZON, load_patient
 from fusion_model import load_ehr, FusionForecaster, predict_fused
 
 START = pd.Timestamp("2026-09-01 00:00")
+# check 30 minutes after the meal
 AFTER = 6
 HIGH = 180.0
+# the four remedies we test
 REMEDIES = ["walk 10 min", "30% smaller portion", "low-GI swap (GI 50)", "walk + smaller portion"]
 
 
+# copies the past window and applies one remedy
 def make_variant(x, t0, gi, remedy):
-	"""Return a modified copy of the 6-hour window ending 30 minutes after a meal."""
 	i = t0 + AFTER
 	w = x[i - HISTORY : i].copy()
 	lo = i - HISTORY
 	walk = remedy in ("walk 10 min", "walk + smaller portion")
+	# walking lowers the rise by about 28 percent
 	scale = 0.72 if walk else 1.0
 	if remedy in ("30% smaller portion", "walk + smaller portion"):
 		scale *= 0.7
 	if remedy == "low-GI swap (GI 50)":
 		if gi <= 50:
 			return None
+		# low GI dish gives a smaller rise
 		scale *= 50.0 / gi
 		w[t0 - lo, 6] = 50.0 / 100.0
 	if remedy in ("30% smaller portion", "walk + smaller portion"):
 		w[t0 - lo, 5] *= 0.7
 	if scale < 1.0:
+		# shrink the glucose rise since the meal
 		g0 = x[t0 - 1, 0]
 		for a in range(t0, i):
 			w[a - lo, 0] = g0 + (x[a, 0] - g0) * scale
@@ -44,16 +49,19 @@ def make_variant(x, t0, gi, remedy):
 		for a in (t0 + 3, t0 + 4):
 			w[a - lo, 1] += 450.0 / 500.0
 			w[a - lo, 2] += 27.0 / 100.0
+			# mark walking steps so the model sees them
 			w[a - lo, 9] = 1.0
 	return w
 
 
+# gives 2 hour glucose forecast from windows
 def forecast(model, W, s):
 	S = np.repeat(s[None], len(W), axis=0).astype(np.float32)
 	now = W[:, -1, 0] * 200.0
 	return now[:, None] + predict_fused(model, W.astype(np.float32), S) * 100.0
 
 
+# tests every remedy on every meal, saves results
 def main():
 	patients = pd.read_csv(f"{DATA}/patients.csv")
 	train_ids = patients[patients.group == "train"].patient_id.tolist()
@@ -81,6 +89,7 @@ def main():
 		if not base_W:
 			continue
 		f0 = forecast(model, np.array(base_W), s)
+		# highest forecast glucose without any remedy
 		peak0 = f0.max(axis=1)
 		above0 = (f0 > HIGH).sum(axis=1) * 5.0
 		for remedy in REMEDIES:
@@ -106,6 +115,7 @@ def main():
 	df.to_csv("models/remedy_results_step5.csv", index=False)
 
 	print(f"Tested {df.groupby('remedy').size().max()} meals per remedy across {len(test_ids)} unseen patients\n")
+	# average results for each remedy
 	overall = df.groupby("remedy").agg(
 		meals=("peak_drop", "size"),
 		avg_peak_drop=("peak_drop", "mean"),
@@ -116,6 +126,7 @@ def main():
 	print(overall.sort_values("avg_peak_drop", ascending=False).round(1).to_string())
 
 	print("\nBEST REMEDY PER PATIENT (average predicted peak drop, mg/dL)")
+	# best remedy for each patient
 	pv = df.groupby(["patient_id", "remedy"]).peak_drop.mean().unstack().round(1)
 	pv["best"] = pv.idxmax(axis=1)
 	print(pv.to_string())

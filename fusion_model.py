@@ -1,9 +1,8 @@
-"""
-Fusion model: same LSTM, but it also reads the patient record
-(age, HbA1c, medicines and so on). Compared with the sensor-only model
-on the 10 test patients.
-Run: python fusion_model.py
-"""
+# fusion model: the same LSTM plus the patient's health record.
+# the record (age, hba1c, medicines and so on) goes through a small network,
+# and its output is joined with the sensor LSTM output before the forecast.
+# it is compared with the baseline model on the 10 unseen test patients.
+# run: python fusion_model.py
 import time
 import numpy as np
 import pandas as pd
@@ -17,13 +16,14 @@ from train_baseline import (DATA, HORIZON, BATCH, LR, EPOCHS, SEED,
 							   load_patient, make_windows, rmse_by_horizon, Forecaster)
 from train_baseline import predict as predict_seq
 
+# health record columns used as extra inputs
 EHR_COLUMNS = ["age", "sex", "bmi", "years_since_diagnosis", "hba1c", "fasting_glucose",
 			   "ldl", "triglycerides", "family_history", "polygenic_risk",
 			   "metformin", "sulfonylurea", "insulin"]
 
 
+# turns patient records into scaled numbers
 def load_ehr(patients, train_ids):
-	"""One row of numbers per patient, scaled using the TRAIN patients only."""
 	ehr = patients.set_index("patient_id")[EHR_COLUMNS].copy()
 	ehr = pd.get_dummies(ehr, dtype=float)
 	ehr = ehr.astype(float).fillna(ehr.median())
@@ -32,6 +32,7 @@ def load_ehr(patients, train_ids):
 	return (ehr - mu) / sd
 
 
+# makes sensor windows plus record for each one
 def build_fused(ids, ehr, split_rows=None):
 	Xs, Ss, Ys = [], [], []
 	for pid in ids:
@@ -45,6 +46,7 @@ def build_fused(ids, ehr, split_rows=None):
 	return np.concatenate(Xs), np.concatenate(Ss), np.concatenate(Ys)
 
 
+# LSTM for sensors plus small network for record
 class FusionForecaster(nn.Module):
 	def __init__(self, n_seq, n_static, hidden=64):
 		super().__init__()
@@ -54,11 +56,13 @@ class FusionForecaster(nn.Module):
 		self.head = nn.Sequential(nn.Linear(hidden + 32 + 3, 64), nn.ReLU(),
 								  nn.Linear(64, HORIZON))
 
+	# joins sensor output, record output and walk flags
 	def forward(self, x, s):
 		out, _ = self.lstm(x)
 		return self.head(torch.cat([out[:, -1], self.ehr(s), torch.stack([x[:, -n:, 9].max(dim=1).values for n in (6, 12, 24)], dim=1)], dim=1))
 
 
+# runs the fusion model on data in batches
 def predict_fused(model, X, S):
 	model.eval()
 	out = []
@@ -69,6 +73,7 @@ def predict_fused(model, X, S):
 	return np.concatenate(out)
 
 
+# trains fusion model and compares with baseline
 def main():
 	torch.manual_seed(SEED)
 	np.random.seed(SEED)
@@ -96,6 +101,7 @@ def main():
 		total = 0.0
 		for i in range(0, len(Xt), BATCH):
 			idx = perm[i:i + BATCH]
+			# tiny noise on record to avoid overfitting
 			s_batch = St[idx] + 0.1 * torch.randn_like(St[idx])
 			opt.zero_grad()
 			loss = loss_fn(model(Xt[idx], s_batch), Yt[idx])
@@ -112,7 +118,7 @@ def main():
 			torch.save(model.state_dict(), "models/fusion_lstm.pt")
 	model.load_state_dict(torch.load("models/fusion_lstm.pt"))
 
-	# Compare against the glucose-only model from step 2.
+	# load baseline model to compare with
 	base = Forecaster(Xtr.shape[2])
 	base.load_state_dict(torch.load("models/baseline_lstm.pt"))
 
@@ -138,6 +144,7 @@ def main():
 	df = pd.DataFrame(rows)
 	df.to_csv("models/test_results_step3.csv", index=False)
 
+	# count patients where fusion beats baseline
 	wins = int((df.fusion_120 < df.glucose_only_120).sum())
 	print(f"\nAverage 2-hour error on unseen patients: glucose-only {df.glucose_only_120.mean():.1f}"
 		  f"  vs  fusion {df.fusion_120.mean():.1f} mg/dL")

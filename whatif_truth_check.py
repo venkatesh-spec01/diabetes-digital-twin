@@ -1,8 +1,8 @@
-"""
-Checks the what-if answers against the simulator: true drop in the
-2-hour peak vs the drop the model predicts, for every test meal.
-Run: python whatif_truth_check.py
-"""
+# checks the what-if answers against the truth.
+# the simulator has a real formula for how a meal changes glucose, so we
+# can compute the true drop in the 2 hour peak for each remedy.
+# then we compare it with the drop the model predicted (bias, error, correlation).
+# run: python whatif_truth_check.py
 import numpy as np
 import pandas as pd
 import torch
@@ -17,15 +17,16 @@ from fusion_model import load_ehr, FusionForecaster
 from whatif import make_variant, forecast, AFTER, REMEDIES, START
 
 
+# true glucose curve of a meal from the simulator
 def meal_curve(p, carbs, gi, walked, n=72):
-	"""Glucose change caused by one meal (rise minus medicine effect), same formula as step 1."""
 	seg = np.arange(n) * 5.0
-	ir = p["insulin_resistance"] * (0.85 if p["metformin"] else 1.0)  # sleep-deficit term ignored
+	ir = p["insulin_resistance"] * (0.85 if p["metformin"] else 1.0)
 	amp = 0.6 * carbs * (gi / 70) * ir * (0.72 if walked else 1.0)
 	med = p["hypo_strength"] * 0.85 * carbs * (gi / 70)
 	return amp * kernel(seg, 45) - med * kernel(seg, 150)
 
 
+# meal settings after applying each remedy
 def remedy_params(remedy, carbs, gi):
 	if remedy == "walk 10 min":
 		return carbs, gi, 1
@@ -33,9 +34,10 @@ def remedy_params(remedy, carbs, gi):
 		return carbs * 0.7, gi, 0
 	if remedy == "low-GI swap (GI 50)":
 		return (carbs, 50, 0) if gi > 50 else None
-	return carbs * 0.7, gi, 1  # walk + smaller portion
+	return carbs * 0.7, gi, 1
 
 
+# compares the predicted drop with the true drop
 def main():
 	patients = pd.read_csv(f"{DATA}/patients.csv")
 	train_ids = patients[patients.group == "train"].patient_id.tolist()
@@ -81,11 +83,13 @@ def main():
 				c2, gi2, walked2 = remedy_params(remedy, carbs, gi)
 				d = meal_curve(p, c2, gi2, walked2) - meal_curve(p, carbs, gi, 0)
 				real = g[i:i + HORIZON]
+				# true drop in peak from simulator formula
 				true_drop = real.max() - (real + d[AFTER:AFTER + HORIZON]).max()
 				rows.append(dict(patient_id=pid, remedy=remedy,
 								 pred_drop=peak0[k] - peak1[j], true_drop=true_drop))
 
 	df = pd.DataFrame(rows)
+	# bias is predicted minus true drop
 	df["error"] = df.pred_drop - df.true_drop
 	df.to_csv("models/remedy_truth_step6.csv", index=False)
 
@@ -107,6 +111,7 @@ def main():
 		d = df[df.remedy == rem]
 		ax.scatter(d.true_drop, d.pred_drop, s=6, alpha=0.5)
 		lim = max(d.true_drop.max(), d.pred_drop.max()) + 2
+		# red line means a perfect prediction
 		ax.plot([0, lim], [0, lim], color="red", lw=0.8)
 		ax.set_title(rem, fontsize=9)
 		ax.set_xlabel("true drop")

@@ -1,8 +1,8 @@
-"""
-Trains the sensor-only and fusion models with several random seeds
-to see if fusion is really better. Does not touch the final models.
-Run: python seed_check.py
-"""
+# checks that fusion is really better than the sensor-only model.
+# one run can be lucky, so we train both models with 5 different seeds
+# and compare the average error on the 10 unseen patients.
+# this does not change any final model.
+# run: python seed_check.py
 import time
 import numpy as np
 import pandas as pd
@@ -13,9 +13,11 @@ from train_baseline import (DATA, BATCH, LR, EPOCHS, rmse_by_horizon,
 							   Forecaster, predict as predict_seq)
 from fusion_model import load_ehr, build_fused, FusionForecaster, predict_fused
 
+# different random starts to check the result
 SEEDS = [1, 2, 3, 4, 5]
 
 
+# trains one model and keeps its best epoch
 def train(model, fused, Xtr, Str, Ytr, Xva, Sva, Yva, seed):
 	torch.manual_seed(seed)
 	np.random.seed(seed)
@@ -23,6 +25,7 @@ def train(model, fused, Xtr, Str, Ytr, Xva, Sva, Yva, seed):
 	loss_fn = nn.MSELoss()
 	Xt, Yt = torch.from_numpy(Xtr), torch.from_numpy(Ytr)
 	St = torch.from_numpy(Str)
+	# remember the best weights seen so far
 	best, best_state = 1e9, None
 	for ep in range(EPOCHS):
 		model.train()
@@ -46,6 +49,7 @@ def train(model, fused, Xtr, Str, Ytr, Xva, Sva, Yva, seed):
 	return model
 
 
+# trains both models with 5 seeds, compares them
 def main():
 	patients = pd.read_csv(f"{DATA}/patients.csv")
 	train_ids = patients[patients.group == "train"].patient_id.tolist()
@@ -80,6 +84,7 @@ def main():
 
 	df = pd.DataFrame(rows)
 	df.to_csv("models/seed_results_step8.csv", index=False)
+	# positive means fusion is better
 	diff = df.glucose_only - df.fusion
 	print("\n2-hour error on 10 unseen patients (mg/dL, lower is better)")
 	print(f"  glucose-only : {df.glucose_only.mean():.2f} +/- {df.glucose_only.std():.2f}")

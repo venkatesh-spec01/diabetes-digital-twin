@@ -1,7 +1,7 @@
-"""
-Streamlit panels added to the doctor dashboard in dashboard_new.py.
-All logic lives in doctor_logic.py and clinical_reference.py; this file only draws things.
-"""
+# streamlit panels for the doctor dashboard:
+# the glucose level bar, safety view with uncertainty band, reference actions,
+# medicine table, diet chart window and the patient summary with pdf.
+# the numbers come from doctor_logic.py and the lists from clinical_reference.py.
 import datetime
 import html
 
@@ -13,9 +13,12 @@ import streamlit as st
 import clinical_reference as cr
 import doctor_logic as dl
 
+# colours used in the charts
 GREEN, RED, BLUE, ORANGE, GRAY = "#2ca02c", "#e4572e", "#3b82f6", "#f59e0b", "#9ca3af"
+# colour for each alert type
 KIND_COLOUR = {"HIGH": ORANGE, "LOW": BLUE, "OK": GREEN}
 
+# small styling for tables and status card
 CSS = """
 <style>
 .rtable { width: 100%; border-collapse: collapse; font-size: .85rem; margin-bottom: .6rem; }
@@ -27,31 +30,34 @@ CSS = """
 """
 
 
+# adds the styling to the page
 def inject_css():
     st.markdown(CSS, unsafe_allow_html=True)
 
 
+# turns a table into html
 def html_table(df):
-    """A table whose long text wraps (st.dataframe cuts long cells)."""
     return df.to_html(index=False, classes="rtable", border=0, escape=True)
 
 
+# dark theme for plotly charts
 def _dark(fig, h, **kw):
     fig.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", height=h, **kw)
     return fig
 
 
-# ----------------------------- blood sugar level bar -----------------------------
+# colour bar showing where glucose sits
 def level_bar(now, fc):
-    """Horizontal bar with the glucose zones, the current value, and the forecast peak and lowest point."""
     fig = go.Figure()
     xmin, xmax = 40, 320
+    # draw one coloured block for each zone
     for lo, hi, name, colour in cr.ZONES:
         x0, x1 = max(lo, xmin), min(hi, xmax)
         if x1 <= x0:
             continue
         fig.add_shape(type="rect", x0=x0, x1=x1, y0=0, y1=1, fillcolor=colour, opacity=0.35, line_width=0, layer="below")
         fig.add_annotation(x=(x0 + x1) / 2, y=1.18, text=name, showarrow=False, font=dict(size=11, color=colour))
+    # forecast peak and lowest points as markers
     peak, low = float(np.max(fc)), float(np.min(fc))
     fig.add_trace(go.Scatter(x=[min(max(low, xmin), xmax)], y=[0.5], mode="markers+text", text=[f"lowest {low:.0f}"],
                              textposition="bottom center", name="Forecast lowest",
@@ -68,6 +74,7 @@ def level_bar(now, fc):
     return fig
 
 
+# shows the current value and the level bar
 def render_level(now, fc, key):
     name, colour = dl.zone_of(now)
     c1, c2 = st.columns([1, 3])
@@ -79,12 +86,13 @@ def render_level(now, fc, key):
         st.plotly_chart(level_bar(now, fc), key=key)
 
 
-# ----------------------------- safety view -----------------------------
+# shows status card and forecast with band
 def render_safety(ts, g, m, fc, sigma, status, key, horizon=24, history=72):
     colour = KIND_COLOUR[status["kind"]] if status["label"] != "Clear" else GREEN
     badge = f'<b style="color:{colour}">{html.escape(status["label"])}</b>'
     st.markdown(f'<div class="statuscard" style="border-left-color:{colour}">{badge} &nbsp;|&nbsp; '
                 f'{html.escape(status["confidence"])} &nbsp;|&nbsp; {html.escape(status["reason"])}</div>', unsafe_allow_html=True)
+    # upper and lower edge of the likely range
     lo_b, hi_b = dl.band(fc, sigma)
     xs = ts[m - 1:m + horizon]
     now = float(g[m - 1])
@@ -104,13 +112,14 @@ def render_safety(ts, g, m, fc, sigma, status, key, horizon=24, history=72):
                "borderline case is not silently missed. This is a simple estimate, not a validated confidence interval.")
 
 
-# ----------------------------- action list -----------------------------
+# shows the action list for high or low
 def render_actions(kind, possible, key):
     if kind == "OK":
         st.success("No action is needed for this moment. The forecast and its band stay inside 70-180 mg/dL.")
         return
     rows = cr.ACTIONS_HIGH if kind == "HIGH" else cr.ACTIONS_LOW
     df = pd.DataFrame(rows, columns=cr.ACTION_COLUMNS)
+    # adds a timing group for each action
     df["Timing"] = df["When to do it"].map(cr.timing_group)
     title = "high glucose" if kind == "HIGH" else "low glucose"
     st.markdown(f"**Reference actions for {title}**" + (" (possible, borderline forecast)" if possible else ""))
@@ -131,11 +140,12 @@ def render_actions(kind, possible, key):
         st.markdown(html_table(sub[cr.ACTION_COLUMNS]), unsafe_allow_html=True)
 
 
-# ----------------------------- medicines -----------------------------
+# shows and edits the medicine table
 def render_medicines(pid, data_dir):
     df, saved = dl.load_meds(pid, data_dir)
     n_bad = 0
     note = dl.adherence_note(df)
+    # warning when the patient misses doses
     if note:
         n_bad = note.count(";") + 1
     k = st.columns(3)
@@ -144,11 +154,13 @@ def render_medicines(pid, data_dir):
     k[2].metric("List source", "Saved by doctor" if saved else "Synthetic sample")
     if note:
         st.warning(f"Missed doses reported: {note}. Check this before increasing any dose.")
+    # medicines that can cause low glucose
     risky = df[df["Note"].astype(str).str.contains("low glucose", case=False)] if len(df) else df
     if len(risky):
         st.info("Medicine that can cause low glucose: " + ", ".join(risky["Medicine"]) + ". Keep the low-glucose alert on high sensitivity.")
     st.caption("Doses below are typical example doses on synthetic patients, not prescriptions. The doctor can edit the table "
                "(add or remove rows) and press Save. 'Patient reports' is what the patient says they actually take.")
+    # doctor can edit this table directly
     edited = st.data_editor(
         df, num_rows="dynamic", hide_index=True, key=f"meds_editor_{pid}",
         column_config={"Patient reports": st.column_config.SelectboxColumn(
@@ -166,7 +178,7 @@ def render_medicines(pid, data_dir):
         st.rerun()
 
 
-# ----------------------------- diet chart in its own window -----------------------------
+# opens the diet chart in a pop-up window
 @st.dialog("Diet chart given to the patient", width="large")
 def _diet_dialog(pid, bmi, habit, on_risky_drug):
     default = cr.default_plan_for(bmi)
@@ -179,7 +191,9 @@ def _diet_dialog(pid, bmi, habit, on_risky_drug):
                "Sample Indian plan, to be personalised by a dietitian. Carbohydrate values are approximate.")
     if on_risky_drug:
         st.warning("This patient takes a medicine that can cause low glucose. Fixed meal times matter and meals should not be skipped.")
+    # diet table can be edited too
     edited = st.data_editor(df, hide_index=True, num_rows="dynamic", key=f"diet_editor_{pid}_{plan}")
+    # adds up carbs for the whole day
     total = pd.to_numeric(edited["Carbs (g, approx.)"], errors="coerce").sum()
     st.metric("Carbohydrate in the whole day (approx.)", f"{total:.0f} g")
     st.markdown("**Simple rules to give with the chart**")
@@ -193,12 +207,13 @@ def _diet_dialog(pid, bmi, habit, on_risky_drug):
                        mime="text/csv", key=f"diet_dl_{pid}")
 
 
+# button that opens the diet chart
 def diet_button(pid, bmi, habit, on_risky_drug):
     if st.button("📋 Open diet chart (new window)", key=f"diet_open_{pid}"):
         _diet_dialog(pid, float(bmi), str(habit), bool(on_risky_drug))
 
 
-# ----------------------------- summary and PDF -----------------------------
+# shows summary numbers and the pdf button
 def render_summary(pid, row, stats, meds_df, ts, gl, sigma2h, flags, diet_plan):
     k = st.columns(5)
     k[0].metric("Time in range 70-180", f"{stats['tir']:.0f}%")
@@ -208,7 +223,9 @@ def render_summary(pid, row, stats, meds_df, ts, gl, sigma2h, flags, diet_plan):
     k[4].metric("Low alerts (whole record)", stats["n_low"])
     st.caption(f"Alerts are counted over {stats['n_moments']} forecast moments across the whole record. "
                f"Typical forecast error at 2 hours for this patient: about {sigma2h:.0f} mg/dL.")
+    # remember the pdf so the download works
     key = f"pdf_bytes_{pid}"
+    # build the pdf only when button is clicked
     if st.button("Create one-page PDF summary", key=f"pdf_make_{pid}"):
         info = dict(pid=pid, age=int(row.age), sex=row.sex, bmi=row.bmi, hba1c=row.hba1c, fasting=row.fasting_glucose,
                     years=row.years_since_diagnosis, flags=flags, meds=meds_df, stats=stats, ts=ts, gl=gl,

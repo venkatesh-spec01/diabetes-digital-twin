@@ -1,16 +1,13 @@
-"""
-Fine-tunes the twin on real people (CGMacros) and tests on other real people.
-
-People are split by person, never by time window (seed 42):
-  train about 29, valid about 6 (only to pick the best round), test about 10 (scored once).
-Each group (T2D / pre-diabetes / healthy) is split the same way.
-To avoid forgetting the synthetic training (and breaking the what-if part), every round
-also mixes in synthetic windows. The dashboard model is not overwritten.
-
-Needs the same cgmacros_data/ folder as cgmacros_test.py.
-Run: python cgmacros_finetune.py   (a few minutes on CPU)
-Saves models/fusion_real_ft1.pt, models/step11_split.csv, models/real_finetune_step11.csv
-"""
+# fine-tunes the twin on real people (CGMacros) and tests it on other real people.
+# people are split by person, never by time window (seed 42):
+#   train about 29 people, valid about 6 (only to pick the best round),
+#   test about 10 people (looked at only once at the end).
+# each group (T2D, pre-diabetes, healthy) is split the same way.
+# to avoid forgetting the synthetic training, we mix synthetic windows into every round,
+# so the what-if part keeps working. the dashboard model is not overwritten.
+# needs the same cgmacros_data folder as cgmacros_test.py
+# saves the new model, the split and the before/after table in the models folder.
+# run: python cgmacros_finetune.py (takes a few minutes on cpu)
 import glob
 import os
 import time
@@ -24,15 +21,22 @@ from fusion_model import load_ehr, build_fused, FusionForecaster, predict_fused
 from cgmacros_test import (find_root, read_bio, ehr_for, read_stream, windows,
                                   alert_scores)
 
-BASE_MODEL = "models/fusion_cf_blend75.pt"   # what the dashboard uses today
+# model we start from (dashboard model)
+BASE_MODEL = "models/fusion_cf_blend75.pt"
+# where the fine-tuned model is saved
 NEW_MODEL = "models/fusion_real_ft1b.pt"
 EPOCHS = 8
-LR = 1e-4            # small steps, so the model adjusts instead of being rewritten
-SYN_RATIO = 3.0      # synthetic windows mixed in = SYN_RATIO x number of real windows
+# small learning rate so it forgets less
+LR = 1e-4
+# how many synthetic windows to mix in
+SYN_RATIO = 3.0
+# people held out for test and validation
 N_TEST, N_VALID = {"T2D": 3, "pre-diabetes": 4, "healthy": 3}, 2
 
 
+# splits people into train, valid and test
 def make_split(real, ids):
+    # fixed seed so the split repeats
     rng = np.random.RandomState(SEED)
     split = {}
     for grp in ["T2D", "pre-diabetes", "healthy"]:
@@ -44,8 +48,8 @@ def make_split(real, ids):
     return split
 
 
+# loads windows for every real person
 def load_people(files, real, ehr, split):
-    """sid -> (X, Y, L, S) for everyone with usable CGM windows."""
     out = {}
     for sid, path in sorted(files.items()):
         if sid not in split:
@@ -61,18 +65,20 @@ def load_people(files, real, ehr, split):
     return out
 
 
+# joins windows of people in one group
 def stack(people, split, which):
     parts = [v for sid, v in people.items() if split[sid] == which]
     return (np.concatenate([p[0] for p in parts]), np.concatenate([p[1] for p in parts]),
             np.concatenate([p[2] for p in parts]), np.concatenate([p[3] for p in parts]))
 
 
+# 2 hour error for quick checks
 def rmse120(model, X, S, Y):
     return rmse_by_horizon(predict_fused(model, X, S), Y)["120min"]
 
 
+# prints before and after on test people
 def report(models, people, split, real):
-    """Score every model on the TEST people only. Returns rows for the csv."""
     rows = []
     for grp in ["T2D", "pre-diabetes", "healthy", "ALL"]:
         ids = [s for s in people if split[s] == "test" and (grp == "ALL" or real.loc[s, "group_real"] == grp)]
@@ -102,8 +108,8 @@ def report(models, people, split, real):
     return rows
 
 
+# checks the what-if part still works after training
 def remedy_check(models):
-    """Did fine-tuning on real data damage the synthetic skills and the what-if remedies?"""
     from whatif_finetune import truth_table, test_forecast_error
     patients = pd.read_csv(f"{DATA}/patients.csv")
     train_ids = patients[patients.group == "train"].patient_id.tolist()
@@ -118,6 +124,7 @@ def remedy_check(models):
         print(truth_table(m, test_ids, ehr, pat, meals).to_string())
 
 
+# splits people, fine-tunes, tests, saves results
 def main():
     torch.manual_seed(SEED)
     np.random.seed(SEED)
@@ -140,12 +147,12 @@ def main():
     Xva, Yva, _, Sva = stack(people, split, "valid")
     print(f"Real windows: train {len(Xtr)}, valid {len(Xva)}")
 
-    # synthetic windows to mix in (so the model does not forget)
     patients = pd.read_csv(f"{DATA}/patients.csv")
     syn_ids = patients[patients.group == "train"].patient_id.tolist()
     ehr_syn = load_ehr(patients, syn_ids)
     n_rows = len(pd.read_csv(f"{DATA}/sensors/{syn_ids[0]}.csv"))
     Xs, Ss, Ys = build_fused(syn_ids, ehr_syn, (0, int(n_rows * 0.8)))
+    # pick random synthetic windows to mix in
     pick = np.random.choice(len(Xs), min(len(Xs), int(SYN_RATIO * len(Xtr))), replace=False)
     X = torch.from_numpy(np.concatenate([Xtr, Xs[pick]]))
     S = torch.from_numpy(np.concatenate([Str, Ss[pick]]))
@@ -153,10 +160,12 @@ def main():
     del Xs, Ss, Ys
     print(f"Training windows: {len(Xtr)} real + {len(pick)} synthetic")
 
+    # keep the original model for comparison
     before = FusionForecaster(10, S.shape[1])
     before.load_state_dict(torch.load(BASE_MODEL))
     model = FusionForecaster(10, S.shape[1])
     model.load_state_dict(torch.load(BASE_MODEL))
+    # validation error before any training
     best = rmse120(model, Xva, Sva, Yva)
     best_state = {k: v.clone() for k, v in model.state_dict().items()}
     print(f"\nVALID people, 2-hour RMSE before any training: {best:.2f} mg/dL")
@@ -181,6 +190,7 @@ def main():
             best_state = {k: t.clone() for k, t in model.state_dict().items()}
         print(f"round {ep}/{EPOCHS}: VALID 2-hour RMSE {v:.2f}{mark}   ({time.time() - t0:.0f}s)")
 
+    # go back to the best round
     model.load_state_dict(best_state)
     torch.save(best_state, NEW_MODEL)
     print(f"\nBest round on VALID people: {best:.2f} mg/dL. Saved {NEW_MODEL}")
@@ -190,7 +200,7 @@ def main():
     print("\nSaved: models/real_finetune_step11.csv")
     try:
         remedy_check({"before": before, "after": model})
-    except Exception as e:   # the main result is already saved, do not lose it
+    except Exception as e:
         print(f"\n(Synthetic safety check could not run: {e})")
     print("\nNote: the TEST group is only about 10 people, so treat small differences as noise.")
 

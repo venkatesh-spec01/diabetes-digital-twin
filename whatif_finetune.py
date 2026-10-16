@@ -1,9 +1,9 @@
-"""
-Fine-tunes the model on "same meal with and without the remedy" pairs
-so it learns what a walk, smaller portion or low-GI swap really does.
-Then repeats the truth check (old vs new model).
-Run: python whatif_finetune.py
-"""
+# fine-tunes the fusion model so it understands remedies better.
+# for every meal we make a pair: the same meal with and without the remedy,
+# and the simulator formula gives the true glucose for the remedy case.
+# the model is trained a little more on these examples.
+# then the truth check is repeated for the old and the new model.
+# run: python whatif_finetune.py
 import time
 import numpy as np
 import pandas as pd
@@ -15,13 +15,15 @@ from fusion_model import load_ehr, build_fused, FusionForecaster, predict_fused
 from whatif import make_variant, forecast, AFTER, REMEDIES, START
 from whatif_truth_check import meal_curve, remedy_params
 
+# fine-tuning settings: few rounds, small learning rate
 FT_EPOCHS = 6
 FT_LR = 5e-4
-REPEAT_CF=4          # how many times the counterfactual examples are shown per round
+# repeat remedy examples so model learns them
+REPEAT_CF=4
 
 
+# makes training examples with and without remedy
 def cf_samples(ids, ehr, pat, meals, lo, hi):
-	"""Counterfactual training examples from rows [lo, hi) of each patient's timeline."""
 	Xs, Ss, Ys = [], [], []
 	for pid in ids:
 		x, g = load_patient(pid)
@@ -40,6 +42,7 @@ def cf_samples(ids, ehr, pat, meals, lo, hi):
 					continue
 				c2, gi2, walked2 = remedy_params(remedy, carbs, gi)
 				d = meal_curve(p, c2, gi2, walked2) - meal_curve(p, carbs, gi, 0)
+				# target glucose if the remedy had been used
 				target = (g[i:i + HORIZON] + d[AFTER:AFTER + HORIZON] - g[i - 1]) / 100.0
 				Xs.append(w.astype(np.float32))
 				Ss.append(s)
@@ -47,8 +50,8 @@ def cf_samples(ids, ehr, pat, meals, lo, hi):
 	return np.array(Xs), np.array(Ss), np.array(Ys)
 
 
+# compares predicted and true remedy drops
 def truth_table(model, test_ids, ehr, pat, meals):
-	"""Predicted vs true drop in 2-hour peak for each remedy (same method as step 6)."""
 	rows = []
 	for pid in test_ids:
 		x, g = load_patient(pid)
@@ -92,6 +95,7 @@ def truth_table(model, test_ids, ehr, pat, meals):
 	return pd.DataFrame(out).set_index("remedy").round(2)
 
 
+# normal 2 hour error on test patients
 def test_forecast_error(model, test_ids, ehr):
 	errs = []
 	for pid in test_ids:
@@ -100,6 +104,7 @@ def test_forecast_error(model, test_ids, ehr):
 	return np.array(errs)
 
 
+# fine-tunes the model on remedy examples
 def main():
 	torch.manual_seed(SEED)
 	np.random.seed(SEED)
@@ -119,12 +124,14 @@ def main():
 	print(f"Original windows: {len(Xtr)} | counterfactual examples: {len(Xc)} "
 		  f"(validation: {len(Xcv)})")
 
+	# mix normal windows with remedy examples
 	X = torch.from_numpy(np.concatenate([Xtr] + [Xc] * REPEAT_CF))
 	S = torch.from_numpy(np.concatenate([Str] + [Sc] * REPEAT_CF))
 	Y = torch.from_numpy(np.concatenate([Ytr] + [Yc] * REPEAT_CF))
 	del Xtr, Str, Ytr
 
 	model = FusionForecaster(10, S.shape[1])
+	# start from the already trained fusion model
 	model.load_state_dict(torch.load("models/fusion_lstm.pt"))
 	opt = torch.optim.Adam(model.parameters(), lr=FT_LR, weight_decay=1e-5)
 	loss_fn = nn.MSELoss()
@@ -148,11 +155,13 @@ def main():
 		print(f"round {ep}/{FT_EPOCHS}  train loss {total / len(X):.4f}  "
 			  f"validation 2h RMSE: normal windows {a:.1f} | remedy examples {b:.1f} mg/dL  "
 			  f"({time.time() - t0:.0f}s)")
+		# save the round with best combined error
 		if a + b < best:
 			best = a + b
 			torch.save(model.state_dict(), "models/fusion_cf.pt")
 	model.load_state_dict(torch.load("models/fusion_cf.pt"))
 
+	# keep the old model to compare with new
 	old = FusionForecaster(10, S.shape[1])
 	old.load_state_dict(torch.load("models/fusion_lstm.pt"))
 

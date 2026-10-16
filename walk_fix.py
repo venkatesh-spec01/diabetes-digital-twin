@@ -1,11 +1,12 @@
-"""
-After whatif_finetune the model over-promised the walk and before it
-under-promised it, so the right amount of fine-tuning is in between.
-Here I check the remedy bias after every round on validation meals, pick the best
-round and the best blend of old and new weights (validation only), and report once
-on the test patients. Saves models/fusion_cf_v2.pt and models/remedy_truth_step9.csv.
-Run: python walk_fix.py
-"""
+# fixes the walk remedy bias.
+# after whatif_finetune the model promised too much for walking, and before
+# it promised too little, so the right amount is somewhere in between.
+# here we check the remedy bias after every round on validation meals
+# (later days of the training patients) and keep the best round.
+# then we try blends of old and new weights, again on validation only.
+# the test patients are used only once at the end.
+# saves models/fusion_cf_v2.pt and models/remedy_truth_step9.csv
+# run: python walk_fix.py
 import time
 import numpy as np
 import pandas as pd
@@ -19,11 +20,12 @@ from whatif_truth_check import meal_curve, remedy_params
 from whatif_finetune import (cf_samples, truth_table, test_forecast_error,
 								  FT_EPOCHS, FT_LR, REPEAT_CF)
 
+# how much of the new weights to mix
 BLENDS = [0.0, 0.25, 0.5, 0.75, 1.0]
 
 
+# average predicted-minus-true error for each remedy
 def remedy_bias(model, ids, ehr, pat, meals, lo, hi):
-	"""Average (predicted - true) drop in 2-hour peak per remedy, on rows [lo, hi) only."""
 	rows = []
 	for pid in ids:
 		x, g = load_patient(pid)
@@ -63,6 +65,7 @@ def remedy_bias(model, ids, ehr, pat, meals, lo, hi):
 	return df.groupby("remedy").error.mean().reindex(REMEDIES)
 
 
+# combined score on validation, lower is better
 def val_score(model, Xva, Sva, Yva, Xcv, Scv, Ycv, train_ids, ehr, pat, meals, cut, n_rows):
 	a = rmse_by_horizon(predict_fused(model, Xva, Sva), Yva)["120min"]
 	b = rmse_by_horizon(predict_fused(model, Xcv, Scv), Ycv)["120min"]
@@ -70,12 +73,14 @@ def val_score(model, Xva, Sva, Yva, Xcv, Scv, Ycv, train_ids, ehr, pat, meals, c
 	return a + b + bias.abs().mean(), a, b, bias
 
 
+# prints one line of results
 def show(tag, score, a, b, bias):
 	short = ["walk", "portion", "lowGI", "walk+portion"]
 	parts = "  ".join(f"{n} {v:+.2f}" for n, v in zip(short, bias.values))
 	print(f"{tag:<14} score {score:6.2f} | RMSE normal {a:5.1f} remedy {b:5.1f} | bias: {parts}")
 
 
+# fine-tunes, tries blends, picks best on validation
 def main():
 	torch.manual_seed(SEED)
 	np.random.seed(SEED)
@@ -101,6 +106,7 @@ def main():
 	old = FusionForecaster(10, S.shape[1])
 	old.load_state_dict(torch.load("models/fusion_lstm.pt"))
 	print("VALIDATION only (later days of training patients). Lower score is better.\n")
+	# score of the old model first
 	best = val_score(old, *args)
 	show("old model", *best)
 	best_state = {k: v.clone() for k, v in old.state_dict().items()}
@@ -128,27 +134,28 @@ def main():
 			best = res
 			best_state = {k: v.clone() for k, v in model.state_dict().items()}
 
-	# blend old weights with the best fine-tuned weights, pick on validation
 	print("\nBlending old and fine-tuned weights (validation only):")
 	old_state = old.state_dict()
 	final_state, final = best_state, best
 	for a in BLENDS:
+		# mix old and new weights by percentage
 		st = {k: (1 - a) * old_state[k] + a * best_state[k] for k in old_state}
 		m = FusionForecaster(10, S.shape[1])
 		m.load_state_dict(st)
 		res = val_score(m, *args)
 		show(f"blend {int(a * 100)}%", *res)
+		# keep the blend with the best score
 		if res[0] < final[0]:
 			final, final_state = res, st
 	torch.save(final_state, "models/fusion_cf_v2.pt")
 	print(f"\nChosen on validation: score {final[0]:.2f}. Saved models/fusion_cf_v2.pt")
 
-	# ---- report ONCE on the unseen test patients ----
 	new = FusionForecaster(10, S.shape[1])
 	new.load_state_dict(final_state)
 	step7 = FusionForecaster(10, S.shape[1])
 	step7.load_state_dict(torch.load("models/fusion_cf.pt"))
 	tables = []
+	# finally test all three on test patients
 	for tag, m in [("old", old), ("step7", step7), ("step9", new)]:
 		t = truth_table(m, test_ids, ehr, pat, meals)
 		e = test_forecast_error(m, test_ids, ehr)

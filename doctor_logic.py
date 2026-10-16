@@ -1,14 +1,11 @@
-"""
-Plain Python logic for the doctor dashboard additions (no Streamlit here, so it is easy to test).
-
-  zone_of            which glucose zone a value is in
-  residual_sigma     how wrong the forecast usually is at each step ahead (from this patient's own record)
-  safety_status      alert status with an uncertainty band, so borderline cases are not missed
-  load_meds          medicine table for a patient (synthetic sample or the doctor's saved edits)
-  diet_table         diet chart as a table
-  summary_stats      numbers for the one-page patient summary
-  make_pdf           builds the one-page summary as a PDF (matplotlib only, no extra install)
-"""
+# logic for the doctor dashboard panels (no streamlit in this file).
+#   zone_of: which glucose zone a value is in
+#   residual_sigma: how wrong the forecast usually is for this patient
+#   safety_status: alert status with an uncertainty band
+#   load_meds, save_meds: the medicine table
+#   load_diet, save_diet: the diet chart
+#   summary_stats, make_pdf: the one page patient summary
+# all patients and medicines are synthetic samples.
 import io
 import json
 import os
@@ -19,14 +16,18 @@ import pandas as pd
 
 from clinical_reference import ZONES, DIET_PLANS, DIET_COLUMNS
 
+# glucose limits used for alerts
 HIGH, LOW = 180.0, 70.0
-Z80 = 1.28                 # about the middle 80% of errors if they are roughly bell-shaped
-LOW_CONFIDENCE_SIGMA = 25  # mg/dL at 2 hours; a simple rule of thumb, not a validated cut-off
+# multiplier that covers about 80 percent of errors
+Z80 = 1.28
+# above this error we call it low confidence
+LOW_CONFIDENCE_SIGMA = 25
 
+# columns of the medicine table
 MED_COLUMNS = ["Medicine", "Dose", "How often", "When to take", "Prescribed by", "Patient reports", "Note"]
 
 
-# ----------------------------- glucose zones -----------------------------
+# tells which glucose zone a value is in
 def zone_of(v):
     for lo, hi, name, colour in ZONES:
         if lo <= v < hi:
@@ -34,34 +35,34 @@ def zone_of(v):
     return ZONES[-1][2], ZONES[-1][3]
 
 
-# ----------------------------- uncertainty -----------------------------
+# usual forecast error for this patient
 def residual_sigma(g, ms, F, horizon=24, floor=3.0):
-    """Standard deviation of (real glucose - forecast) at each of the next `horizon` steps,
-    measured on this patient's own record. Returns an array of length `horizon`."""
     errs = []
     for m, f in zip(ms, F):
         m = int(m)
         if m + horizon <= len(g):
             errs.append(np.asarray(g[m:m + horizon], dtype=float) - np.asarray(f, dtype=float))
+    # not enough history, use a typical error
     if len(errs) < 5:
-        return np.linspace(8.0, 20.0, horizon)          # not enough history: assume a typical size
+        return np.linspace(8.0, 20.0, horizon)
     return np.maximum(np.std(np.stack(errs), axis=0), floor)
 
 
+# range around the forecast line
 def band(fc, sigma, z=Z80):
     fc = np.asarray(fc, dtype=float)
     return fc - z * sigma, fc + z * sigma
 
 
+# decides alert status using the uncertainty band
 def safety_status(now, fc, sigma, low_margin=0.0, z=Z80):
-    """Returns a dict: kind ('HIGH', 'LOW' or 'OK'), possible (True if only the band crosses the line),
-    label, confidence and a plain-language reason."""
     fc = np.asarray(fc, dtype=float)
     lo_b, hi_b = band(fc, sigma, z)
     s2h = float(sigma[-1])
     conf = "Lower confidence" if s2h > LOW_CONFIDENCE_SIGMA else "Normal confidence"
     out = dict(kind="OK", possible=False, label="Clear", confidence=conf, sigma_2h=s2h,
                reason="The forecast and its uncertainty band stay inside 70-180 mg/dL.")
+    # check current glucose first, then the forecast
     if now > HIGH:
         out.update(kind="HIGH", label="Already high",
                    reason=f"Glucose is already {now:.0f} mg/dL, above 180.")
@@ -74,6 +75,7 @@ def safety_status(now, fc, sigma, low_margin=0.0, z=Z80):
     elif fc.min() < LOW + low_margin:
         out.update(kind="LOW", label="Low glucose expected",
                    reason=f"The forecast drops to {fc.min():.0f} mg/dL, close to or below 70.")
+    # only the band crosses, so it is borderline
     elif hi_b.max() > HIGH:
         out.update(kind="HIGH", possible=True, label="Possible high (borderline)",
                    reason=f"The forecast peaks at {fc.max():.0f} mg/dL, but with the usual error for this patient "
@@ -85,9 +87,8 @@ def safety_status(now, fc, sigma, low_margin=0.0, z=Z80):
     return out
 
 
-# ----------------------------- medicines -----------------------------
+# loads medicine list, saved edits first
 def load_meds(pid, data_dir, notes_dir="notes"):
-    """Doctor's saved edits first, otherwise the synthetic sample table in data/medications.csv."""
     saved = os.path.join(notes_dir, f"meds_{pid}.json")
     if os.path.exists(saved):
         try:
@@ -110,6 +111,7 @@ def load_meds(pid, data_dir, notes_dir="notes"):
     return pd.DataFrame(columns=MED_COLUMNS), False
 
 
+# saves the doctor's medicine edits to a file
 def save_meds(pid, df, notes_dir="notes"):
     os.makedirs(notes_dir, exist_ok=True)
     clean = df.fillna("").astype(str)
@@ -118,9 +120,11 @@ def save_meds(pid, df, notes_dir="notes"):
         json.dump(clean.to_dict(orient="records"), f, indent=2)
 
 
+# lists medicines the patient is missing
 def adherence_note(df):
     if len(df) == 0 or "Patient reports" not in df.columns:
         return None
+    # keep rows not taken regularly
     bad = df[~df["Patient reports"].astype(str).str.lower().str.contains("regular")]
     bad = bad[bad["Patient reports"].astype(str).str.strip() != ""]
     if len(bad) == 0:
@@ -128,11 +132,12 @@ def adherence_note(df):
     return "; ".join(f"{row['Medicine']}: {row['Patient reports']}" for _, row in bad.iterrows())
 
 
-# ----------------------------- diet chart -----------------------------
+# turns a diet plan into a table
 def diet_table(plan):
     return pd.DataFrame(DIET_PLANS[plan], columns=DIET_COLUMNS)
 
 
+# loads the saved diet chart if there is one
 def load_diet(pid, plan, notes_dir="notes"):
     saved = os.path.join(notes_dir, f"diet_{pid}.json")
     if os.path.exists(saved):
@@ -145,13 +150,14 @@ def load_diet(pid, plan, notes_dir="notes"):
     return diet_table(plan), plan, False
 
 
+# saves the edited diet chart
 def save_diet(pid, plan, df, notes_dir="notes"):
     os.makedirs(notes_dir, exist_ok=True)
     with open(os.path.join(notes_dir, f"diet_{pid}.json"), "w", encoding="utf-8") as f:
         json.dump({"plan": plan, "rows": df.fillna("").astype(object).values.tolist()}, f, indent=2)
 
 
-# ----------------------------- summary -----------------------------
+# numbers for the patient summary page
 def summary_stats(gl, ms, F, g, low_margin=0.0):
     gl = np.asarray(gl, dtype=float)
     n_high = n_low = 0
@@ -166,15 +172,15 @@ def summary_stats(gl, ms, F, g, low_margin=0.0):
                 n_high=n_high, n_low=n_low, n_moments=len(ms))
 
 
+# builds the one page summary as a pdf
 def make_pdf(info):
-    """One A4 page. info keys: pid, age, sex, bmi, hba1c, fasting, years, flags, meds (DataFrame), stats, ts, gl,
-    sigma2h, diet_plan, today."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     from matplotlib.backends.backend_pdf import PdfPages
 
     st = info["stats"]
+    # page is A4 size, built with matplotlib
     fig = plt.figure(figsize=(8.27, 11.69))
     fig.text(0.07, 0.955, "Type 2 Diabetes Digital Twin: patient summary", fontsize=15, fontweight="bold")
     fig.text(0.07, 0.932, f"Synthetic demonstration data. Prepared {info['today']}. Not medical advice.", fontsize=8.5, color="#555")
@@ -187,6 +193,7 @@ def make_pdf(info):
         y -= 0.02
     y -= 0.01
 
+    # writes a heading and its lines
     def block(title, lines, y):
         fig.text(0.07, y, title, fontsize=11, fontweight="bold", color="#1f3a5f")
         y -= 0.022

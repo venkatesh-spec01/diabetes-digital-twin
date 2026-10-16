@@ -1,8 +1,8 @@
-"""
-High and low glucose alerts from the 2-hour forecast, scored on the
-10 test patients. Only new events count (glucose was in range when the alert was raised).
-Run: python alerts.py
-"""
+# alerts: turns the 2 hour forecast into HIGH and LOW glucose alerts.
+# we count only new events (glucose was in range when the alert was raised).
+# alerts are scored with precision, recall and F1 on the 10 test patients.
+# the trend baseline, baseline LSTM and fusion LSTM are compared.
+# run: python alerts.py
 import numpy as np
 import pandas as pd
 import torch
@@ -14,9 +14,11 @@ from train_baseline import (DATA, HORIZON, load_patient, make_windows, Forecaste
 							   predict as predict_seq)
 from fusion_model import load_ehr, FusionForecaster, predict_fused
 
+# glucose limits for high and low alerts
 HIGH, LOW = 180.0, 70.0
 
 
+# collects windows and real future glucose for patients
 def collect(ids, ehr):
 	Xs, Ss, Fs, Ls, Ps = [], [], [], [], []
 	for pid in ids:
@@ -25,13 +27,14 @@ def collect(ids, ehr):
 		s = ehr.loc[pid].values.astype(np.float32)
 		Xs.append(X)
 		Ss.append(np.repeat(s[None], len(X), axis=0))
-		Fs.append(L[:, None] + Y * 100.0)  # real glucose over the next 2 hours
+		Fs.append(L[:, None] + Y * 100.0)
 		Ls.append(L)
 		Ps.extend([pid] * len(X))
 	return (np.concatenate(Xs), np.concatenate(Ss), np.concatenate(Fs),
 			np.concatenate(Ls), np.array(Ps))
 
 
+# precision, recall and F1 for the alerts
 def score(alert, event):
 	tp = int((alert & event).sum())
 	fp = int((alert & ~event).sum())
@@ -42,6 +45,7 @@ def score(alert, event):
 	return precision, recall, f1, tp, fp, fn
 
 
+# builds forecasts, scores alerts, saves table and chart
 def main():
 	patients = pd.read_csv(f"{DATA}/patients.csv")
 	train_ids = patients[patients.group == "train"].patient_id.tolist()
@@ -57,12 +61,15 @@ def main():
 
 	steps = np.arange(1, HORIZON + 1)
 	glucose_hist = X[:, :, 0] * 200.0
+	# simple trend: change over last 30 minutes
 	slope = (glucose_hist[:, -1] - glucose_hist[:, -7]) / 6.0
+	# forecasts from three different methods
 	forecasts = {
 		"trend baseline": now[:, None] + slope[:, None] * steps,
 		"glucose-only LSTM": now[:, None] + predict_seq(base, X) * 100.0,
 		"fusion LSTM": now[:, None] + predict_fused(fuse, X, S) * 100.0,
 	}
+	# sensitive version alerts 15 mg/dL earlier
 	methods = [
 		("trend baseline", "trend baseline", 0),
 		("glucose-only LSTM", "glucose-only LSTM", 0),
@@ -73,6 +80,7 @@ def main():
 	rows = []
 	for kind in ("HIGH (>180)", "LOW (<70)"):
 		if kind.startswith("HIGH"):
+			# only count new events, glucose was in range
 			mask = now <= HIGH
 			event = future.max(axis=1) > HIGH
 		else:
@@ -83,6 +91,7 @@ def main():
 		for name, key, margin in methods:
 			forecast = forecasts[key]
 			if kind.startswith("HIGH"):
+				# alert if the forecast goes above the limit
 				alert = forecast.max(axis=1) > HIGH - margin
 			else:
 				alert = forecast.min(axis=1) < LOW + margin

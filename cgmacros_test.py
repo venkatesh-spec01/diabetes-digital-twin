@@ -1,21 +1,16 @@
-"""
-Real-data check on CGMacros (PhysioNet): 45 adults, 10 days each, with a
-Dexcom G6 sensor, Fitbit, logged meals and blood tests. The models trained on
-synthetic data are run unchanged on these people.
-Dataset: https://physionet.org/content/cgmacros/1.0.0/  (CC BY-NC-SA 4.0, not stored in this repo)
-
-Setup: download and unzip it into cgmacros_data/ (the script looks for bio.csv).
-Run: python cgmacros_test.py
-
-CGMacros has no steps, HRV, sleep or meal GI, so these are estimated:
-  steps  from Fitbit METs (about 40 steps/min per MET above rest)
-  HRV    fixed at 40 ms
-  sleep  low activity between 23:00 and 07:00
-  GI     60 for every meal
-  medicines, years with diabetes, family history: set to the training average
-Clock times in CGMacros are shifted for privacy, so time of day is approximate.
-Saves models/real_data_step10.csv and plots/real_data_example.png
-"""
+# tests the twin on real people from the CGMacros dataset (PhysioNet).
+# 45 adults (healthy, pre-diabetes and type 2 diabetes), 10 days each,
+# with a Dexcom G6 sensor, fitbit, meals and blood tests.
+# the models trained on synthetic data are used as they are, no retraining.
+# dataset: https://physionet.org/content/cgmacros/1.0.0/
+# licence: CC BY-NC-SA 4.0, so the data is not stored in this repo.
+# setup: download it, unzip it into a folder called cgmacros_data.
+# CGMacros does not have steps, hrv, sleep or meal GI, so we estimate them:
+#   steps from fitbit METs, hrv fixed at 40 ms, sleep from quiet time at night,
+#   GI fixed at 60, medicines and family history set to the training average.
+# the clock times in the dataset are shifted for privacy, so time of day is rough.
+# saves models/real_data_step10.csv and plots/real_data_example.png
+# run: python cgmacros_test.py
 import glob
 import os
 import numpy as np
@@ -24,12 +19,14 @@ import pandas as pd
 from train_baseline import DATA, HISTORY, HORIZON, STRIDE, SCALE, rmse_by_horizon
 from fusion_model import EHR_COLUMNS, load_ehr
 
+# folder where the CGMacros download is kept
 ROOT = "cgmacros_data"
 HIGH, LOW = 180.0, 70.0
-MODEL_FILE = "models/fusion_cf_blend75.pt"   # the model the dashboard uses
+# model we test, same as the dashboard
+MODEL_FILE = "models/fusion_cf_blend75.pt"
 
 
-# ----------------------------- find the files -----------------------------
+# finds the folder that has bio.csv
 def find_root():
     hits = glob.glob(os.path.join(ROOT, "**", "bio.csv"), recursive=True)
     if not hits:
@@ -37,8 +34,8 @@ def find_root():
     return os.path.dirname(hits[0])
 
 
+# finds a column by part of its name
 def col(df, *keys):
-    """Find a column by keywords (case and spaces ignored): exact name, then starts-with, then contains."""
     norm = {c: str(c).lower().replace(" ", "") for c in df.columns}
     for test in (lambda n: n == keys[0], lambda n: n.startswith(keys[0]) and all(k in n for k in keys),
                  lambda n: all(k in n for k in keys)):
@@ -48,14 +45,13 @@ def col(df, *keys):
     return None
 
 
-# ----------------------------- health records -----------------------------
+# reads age, weight, hba1c and other details
 def read_bio(root, subject_ids):
     bio = pd.read_csv(os.path.join(root, "bio.csv"))
     sid = col(bio, "subject")
     if sid is not None:
         bio["sid"] = bio[sid].astype(str).str.extract(r"(\d+)")[0].astype(int)
     else:
-        # the official notebook assumes rows are in the same order as the participant folders
         print("Note: bio.csv has no subject column, matching rows to folders in sorted order.")
         bio = bio.iloc[:len(subject_ids)].copy()
         bio["sid"] = sorted(subject_ids)[:len(bio)]
@@ -69,22 +65,25 @@ def read_bio(root, subject_ids):
     out["age"] = num(col(bio, "age"))
     g = bio[col(bio, "gender")].astype(str).str.upper().str[0] if col(bio, "gender") else "M"
     out["sex"] = np.where(g == "F", "F", "M")
+    # bmi from weight in pounds and height in inches
     out["bmi"] = (weight_lb * 0.453592) / (height_in * 0.0254) ** 2
     out["hba1c"] = num(col(bio, "a1c"))
     out["fasting_glucose"] = num(col(bio, "fasting", "glu"))
     out["ldl"] = num(col(bio, "ldl"))
     out["triglycerides"] = num(col(bio, "triglycerides"))
+    # group by hba1c: healthy, pre-diabetes or T2D
     out["group_real"] = np.select([out.hba1c < 5.7, out.hba1c <= 6.4], ["healthy", "pre-diabetes"], "T2D")
     return out
 
 
+# builds patient record rows for real people
 def ehr_for(real):
-    """Scale real records exactly like the training records; unknown fields = training average."""
     patients = pd.read_csv(f"{DATA}/patients.csv")
     train_ids = patients[patients.group == "train"].patient_id.tolist()
     train = patients[patients.group == "train"]
     rows = []
     for sid, r in real.iterrows():
+        # missing items get the training average
         row = {c: (train[c].mean() if c != "sex" else "M") for c in EHR_COLUMNS}
         for c in ["age", "sex", "bmi", "hba1c", "fasting_glucose", "ldl", "triglycerides"]:
             if pd.notna(r[c]):
@@ -95,16 +94,15 @@ def ehr_for(real):
     return load_ehr(both, train_ids)
 
 
-# ----------------------------- sensor stream ------------------------------
+# fills small gaps in the sensor readings
 def fill_short_gaps(s, max_len):
-    """Fill gaps of up to max_len missing readings; longer gaps stay missing (those windows are skipped)."""
     filled = s.interpolate(limit_area="inside")
     run = s.isna().groupby(s.notna().cumsum()).transform("sum")
     return filled.where(s.notna() | (run <= max_len))
 
 
+# reads one person's file into model input format
 def read_stream(path):
-    """One participant: 1-minute rows -> 5-minute rows with our 10 input signals."""
     df = pd.read_csv(path)
     df["t"] = pd.to_datetime(df[col(df, "timestamp")], errors="coerce")
     df = df.dropna(subset=["t"]).set_index("t").sort_index()
@@ -116,9 +114,10 @@ def read_stream(path):
     def five(c):
         return pd.to_numeric(df[c], errors="coerce").resample("5min").mean() if c else None
     g5 = five(dex)
-    if (g5 is None or g5.notna().mean() < 0.5) and lib:      # Dexcom mostly missing -> use Libre (every 15 min)
+    if (g5 is None or g5.notna().mean() < 0.5) and lib:
         g5 = five(lib)
     m = pd.to_numeric(df[mets], errors="coerce") / 10.0 if mets else pd.Series(1.0, index=df.index)
+    # no step data, so estimate it from METs
     steps_min = ((m - 1.0) * 40).clip(0, 180)
     c = pd.to_numeric(df[carbs], errors="coerce").fillna(0) if carbs else 0
     if amount:
@@ -135,10 +134,12 @@ def read_stream(path):
     r["steps"] = r.steps.fillna(0)
     r["hr"] = r.hr.interpolate(limit_area="inside").ffill().bfill().fillna(75)
     hour = r.index.hour + r.index.minute / 60
+    # guess sleep as quiet time at night
     r["sleeping"] = (((hour >= 23) | (hour < 7)) & (r.mets.fillna(1) <= 1.1)).astype(float)
+    # GI is not recorded, so use 60
     r["gi"] = np.where(r.carbs > 0, 60.0, 0.0)
 
-    # walk flag, like training: active for 10+ minutes in the 15-40 minutes after a meal
+    # guess walking after meals from activity
     walk = np.zeros(len(r), dtype=np.float32)
     active = (r.mets.fillna(1) >= 2.5).values
     for i in np.where(r.carbs.values > 0)[0]:
@@ -155,8 +156,8 @@ def read_stream(path):
     return x, r.glucose.values.astype(np.float32), r
 
 
+# makes past and future windows, skips gaps
 def windows(x, g):
-    """Same windows as training (6 h in, 2 h out, every 15 min), skipping gaps in the CGM."""
     X, Y, L, idx = [], [], [], []
     for i in range(HISTORY, len(g) - HORIZON, STRIDE):
         past, future = g[i - HISTORY:i], g[i:i + HORIZON]
@@ -171,6 +172,7 @@ def windows(x, g):
     return np.array(X), np.array(Y, dtype=np.float32), np.array(L, dtype=np.float32), np.array(idx)
 
 
+# precision, recall and F1 on real data
 def alert_scores(forecast, future, now, margin=0):
     out = {}
     for kind in ("HIGH", "LOW"):
@@ -187,7 +189,7 @@ def alert_scores(forecast, future, now, margin=0):
     return out
 
 
-# ----------------------------- main ----------------------------------------
+# runs the models on all the real people
 def main():
     import torch
     from train_baseline import Forecaster, predict as predict_seq
@@ -220,6 +222,7 @@ def main():
             continue
         X, Y, L, idx = w
         S = np.repeat(ehr.loc[f"CGM{sid:03d}"].values.astype(np.float32)[None], len(X), axis=0)
+        # four methods to compare on each person
         preds = {
             "no change (flat)": np.zeros_like(Y),
             "trend": ((X[:, -1, 0] - X[:, -7, 0]) * 200 / 6)[:, None] * np.arange(1, HORIZON + 1) / 100,

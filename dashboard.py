@@ -1,11 +1,11 @@
-"""
-Doctor dashboard v4 for the Type 2 Diabetes digital twin (100% synthetic data).
-Everything in v3, plus: medicine list (hospital prescription vs what the patient takes), blood sugar level bar,
-safety view with an uncertainty band, reference actions for high and low glucose, diet chart in its own window,
-and a one-page patient summary (PDF).
-
-Run:  streamlit run dashboard_new.py
-"""
+# doctor dashboard for the type 2 diabetes digital twin (streamlit).
+# all patients are synthetic and only the unseen test patients are shown.
+# sections: medicines, live 2 hour forecast with alerts, glucose level bar
+# with safety view and reference actions, 14 day patterns, what-if remedies,
+# patient record and a one page patient summary (pdf).
+# the diet chart opens in its own window from a button.
+# the forecasts come from models/fusion_cf_blend75.pt
+# run: streamlit run dashboard.py
 import os
 import json
 import datetime
@@ -23,12 +23,16 @@ import clinical_reference as cr
 import doctor_logic as dl
 import doctor_panels as dp
 
+# limits for high and low glucose
 HIGH, LOW = 180.0, 70.0
 GREEN, RED, BLUE, ORANGE, GRAY = "#2ca02c", "#e4572e", "#3b82f6", "#f59e0b", "#9ca3af"
+# doctor's notes are saved in this file
 NOTES_FILE = "notes/doctor_notes.json"
 
+# browser tab title and wide layout
 st.set_page_config(page_title="T2D Digital Twin", page_icon="🩺", layout="wide")
 
+# all the dark theme styling lives here
 CSS = """
 <style>
 html, body, .stApp, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
@@ -64,10 +68,11 @@ div[data-testid="stMetric"] { background: #0d0f14; border: 1px solid #1d212b; bo
 </style>
 """
 st.markdown(CSS, unsafe_allow_html=True)
+# add styling for the new panels
 dp.inject_css()
 
 
-# ----------------------------- loading -----------------------------
+# loads data, patient records and the model once
 @st.cache_resource
 def load_everything():
     patients = pd.read_csv(f"{DATA}/patients.csv")
@@ -75,25 +80,30 @@ def load_everything():
     ehr = load_ehr(patients, train_ids)
     meals = pd.read_csv(f"{DATA}/meals.csv", parse_dates=["timestamp"])
     model = FusionForecaster(10, ehr.shape[1])
+    # the final model chosen on validation data
     model.load_state_dict(torch.load("models/fusion_cf_blend75.pt"))
     model.eval()
     return patients, ehr, meals, model
 
 
 patients, ehr, meals, model = load_everything()
+# dashboard only shows the unseen test patients
 test_ids = patients[patients.group == "test"].patient_id.tolist()
 
 
+# reads one patient's sensor file
 @st.cache_data
 def load_raw(pid):
     return pd.read_csv(f"{DATA}/sensors/{pid}.csv", parse_dates=["timestamp"])
 
 
+# model input for one patient, cached
 @st.cache_data
 def get_patient(pid):
     return load_patient(pid)
 
 
+# forecast at every hour of the chosen day
 @st.cache_data
 def day_forecasts(pid, start, stop, step):
     x, g = get_patient(pid)
@@ -109,7 +119,7 @@ def day_forecasts(pid, start, stop, step):
     return ms, now[:, None] + pred * 100.0
 
 
-# ----------------------------- helpers -----------------------------
+# reads the doctor's notes from file
 def load_notes():
     try:
         with open(NOTES_FILE, "r", encoding="utf-8") as f:
@@ -118,30 +128,36 @@ def load_notes():
         return {}
 
 
+# writes the doctor's notes to file
 def save_notes(d):
     os.makedirs("notes", exist_ok=True)
     with open(NOTES_FILE, "w", encoding="utf-8") as f:
         json.dump(d, f, indent=2)
 
 
+# dark theme for plotly charts
 def dark(fig, h, **kw):
     fig.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
                       height=h, **kw)
     return fig
 
 
+# makes a small coloured label
 def badge(text, color):
     return f'<span class="badge" style="background:{color}22;border:1px solid {color};color:{color}">{text}</span>'
 
 
+# section heading with an anchor link
 def sec(anchor, icon, title):
     st.markdown(f'<div id="{anchor}"></div><div class="sec-title">{icon} {title}</div>', unsafe_allow_html=True)
 
 
+# makes a summary box with text
 def card(html, kind=""):
     return f'<div class="sumcard {kind}">{html}</div>'
 
 
+# draws a simple cartoon face for the patient
 def avatar_svg(pid, sex, age):
     seed = sum(map(ord, pid))
     skin = ["#f1c27d", "#e0ac69", "#c68642", "#8d5524", "#d9a066"][seed % 5]
@@ -165,7 +181,7 @@ def avatar_svg(pid, sex, age):
     return "".join(parts)
 
 
-# ----------------------------- sidebar -----------------------------
+# left panel: patient, day and notes
 with st.sidebar:
     st.markdown("### Controls")
     pid = st.selectbox("Patient (unseen during training)", test_ids)
@@ -198,9 +214,11 @@ with st.sidebar:
         st.markdown(f'<div class="note"><b>{n["tag"]}</b><div class="meta">{n["time"]} · {n["context"]}</div>{body}</div>',
                     unsafe_allow_html=True)
 
+# high sensitivity warns 15 mg/dL earlier
 LOW_MARGIN = 15.0 if low_sens.startswith("High") else 0.0
 
 
+# returns HIGH, LOW or OK for one forecast
 def alert_of(now, fc):
     if now <= HIGH and fc.max() > HIGH:
         return "HIGH"
@@ -215,8 +233,10 @@ x, g = get_patient(pid)
 s = ehr.loc[pid].values.astype(np.float32)
 n_steps = len(g)
 ts = pd.DatetimeIndex(raw["timestamp"])
+# names of diabetes medicines this patient takes
 meds = [n for n, v in (("Metformin", row.metformin), ("Sulfonylurea", row.sulfonylurea), ("Insulin", row.insulin)) if v]
 
+# risk flags shown as coloured labels
 flags = []
 if row.hba1c >= 7.0:
     flags.append(("HbA1c at or above 7%", ORANGE))
@@ -231,7 +251,6 @@ if row.family_history:
 if row.insulin or row.sulfonylurea:
     flags.append(("Medicine can cause low glucose", RED))
 
-# ----------------------------- header -----------------------------
 st.markdown("## 🩺 Type 2 Diabetes Digital Twin")
 st.caption("Prototype on 100% synthetic data. Not medical advice. Needs clinical validation.")
 
@@ -251,18 +270,21 @@ with hc2:
     html += "".join(badge(t, c) for t, c in flags)
     st.markdown(html, unsafe_allow_html=True)
 
+# button that opens the diet chart window
 dp.diet_button(pid, row.bmi, row.diet, bool(row.insulin or row.sulfonylurea))
 
-# ============================ SECTION 0: medicines ============================
 sec("sec-meds", "💊", "Medicines: hospital prescription and what the patient takes")
+# show and edit the medicine table
 dp.render_medicines(pid, DATA)
 
-# ============================ SECTION 1: live twin ============================
+# live twin section with the animated chart
 sec("sec-live", "📈", "Live twin: 2-hour glucose forecast")
 box_live = st.empty()
 
+# range of forecast moments for chosen day
 start = max((day - 1) * 288, HISTORY)
 stop = min(day * 288, n_steps - HORIZON - 1)
+# ms = moments, F = forecasts for them
 ms, F = day_forecasts(pid, start, stop, 12)
 
 if len(ms) == 0:
@@ -271,6 +293,7 @@ if len(ms) == 0:
         "warn"), unsafe_allow_html=True)
     st.info("The selected day has no forecast points available; this usually happens when the patient record is shorter than the requested review window.")
 else:
+    # alert type for each forecast moment
     alerts = [alert_of(g[m - 1], F[i]) for i, m in enumerate(ms)]
     sym = {"HIGH": " ▲", "LOW": " ▼", "OK": ""}
     labels = [ts[m - 1].strftime("%H:%M") + sym[a] for m, a in zip(ms, alerts)]
@@ -281,6 +304,7 @@ else:
         f"Highest forecast <b>{F.max():.0f} mg/dL</b>, lowest <b>{F.min():.0f} mg/dL</b>. Press ▶ Play to watch the twin move through the day.",
         kind), unsafe_allow_html=True)
 
+    # lines to draw for one moment in time
     def traces_for(m, fc):
         a, b = m - HISTORY, m + HORIZON
         return [(ts[a:m], g[a:m]), (ts[m - 1:b], g[m - 1:b]), (ts[m - 1:b], np.r_[g[m - 1], fc]), (ts[m - 1:m], g[m - 1:m])]
@@ -339,9 +363,11 @@ else:
         else:
             st.success("No alerts on this day.")
 
-# ============================ SECTION 1b: glucose level, safety view, actions ============================
+# glucose level bar, safety view and actions
 sec("sec-level", "🎚️", "Blood sugar level, safety view and reference actions")
+# forecasts over the whole record for uncertainty
 ms_all, F_all = day_forecasts(pid, HISTORY, n_steps - HORIZON - 1, 12)
+# usual forecast error for this patient
 sigma = dl.residual_sigma(g, ms_all, F_all, HORIZON)
 if len(ms) == 0:
     st.info("No forecast moment is available for this day, so the level bar and action list are not shown.")
@@ -351,15 +377,20 @@ else:
                               value=first_alert, format_func=lambda i_: labels[i_], key=f"moment_{pid}_{day}")
     mom, fc_i = int(ms[pick_i]), F[pick_i]
     now_i = float(g[mom - 1])
+    # alert status including the uncertainty band
     status = dl.safety_status(now_i, fc_i, sigma, LOW_MARGIN)
+    # draw the glucose level bar
     dp.render_level(now_i, fc_i, key="level_chart")
+    # draw forecast with its likely range
     dp.render_safety(ts, g, mom, fc_i, sigma, status, key="safety_chart", horizon=HORIZON, history=HISTORY)
+    # show reference actions for this alert
     dp.render_actions(status["kind"], status["possible"], key="actions")
 
-# ============================ SECTION 2: patterns ============================
+# section with 14 day summary charts
 sec("sec-patterns", "🗓️", "14-day patterns")
 box_pat = st.empty()
 gl = raw["glucose_mgdl"]
+# time in range, above range, below range
 tir = ((gl >= LOW) & (gl <= HIGH)).mean() * 100
 above = (gl > HIGH).mean() * 100
 below = (gl < LOW).mean() * 100
@@ -380,6 +411,7 @@ pc1, pc2 = st.columns(2)
 with pc1:
     st.markdown("**Typical day** (median and spread over 14 days)")
     slot = raw["timestamp"].dt.hour * 12 + raw["timestamp"].dt.minute // 5
+    # median and spread of glucose by time
     q = raw.assign(slot=slot).groupby("slot").glucose_mgdl.quantile([.1, .25, .5, .75, .9]).unstack()
     hrs = q.index.values * 5 / 60
     f2 = go.Figure()
@@ -399,6 +431,7 @@ with pc1:
     st.plotly_chart(f2, key="agp_chart")
 with pc2:
     st.markdown("**Every day at a glance** (blue low, green in range, orange/red high)")
+    # one row per day for the heatmap
     z = gl.values[: (len(gl) // 288) * 288].reshape(-1, 288)
     f3 = go.Figure(go.Heatmap(
         z=z, x=np.arange(288) * 5 / 60, y=[f"Day {i + 1}" for i in range(z.shape[0])],
@@ -411,6 +444,7 @@ with pc2:
 
 st.markdown(f"**Day {day} in detail:** glucose, meals, activity, heart rate and sleep")
 d = raw.iloc[(day - 1) * 288: day * 288]
+# meals eaten on the chosen day
 dm = meals[(meals.patient_id == pid) & (meals.timestamp >= d.timestamp.iloc[0]) & (meals.timestamp <= d.timestamp.iloc[-1])]
 k = st.columns(5)
 k[0].metric("Steps", f"{int(d.steps.sum()):,}")
@@ -443,9 +477,10 @@ f4.update_yaxes(title_text="bpm", row=3, col=1)
 st.plotly_chart(f4, key="day_chart")
 st.caption("Blue shading = sleep. Orange diamonds = meals.")
 
-# ============================ SECTION 3: what-if ============================
+# start of the what-if remedies section
 sec("sec-whatif", "🧪", "What-if remedies")
 box_wi = st.empty()
+# meals where the patient did not walk
 m = meals[(meals.patient_id == pid) & (meals.walked_after == 0)].copy()
 m["t0"] = ((m.timestamp - START).dt.total_seconds() / 300).round().astype(int)
 m = m[(m.t0 >= 1) & (m.t0 + AFTER >= HISTORY) & (m.t0 + AFTER + HORIZON <= n_steps)]
@@ -464,6 +499,7 @@ else:
     r = m.iloc[labs.index(pick)]
     t0, gi = int(r.t0), float(r.gi)
     i0 = t0 + AFTER
+    # forecast with no change as the reference
     f0 = forecast(model, x[i0 - HISTORY:i0][None].astype(np.float32), s)[0]
     fx = ts[i0:i0 + HORIZON]
 
@@ -473,6 +509,7 @@ else:
     results = []
     palette = {"walk 10 min": GREEN, "30% smaller portion": BLUE, "low-GI swap (GI 50)": ORANGE, "walk + smaller portion": RED}
     shown = None
+    # forecast again with each remedy applied
     for rem in REMEDIES:
         var = make_variant(x, t0, gi, rem)
         if var is None:
@@ -509,7 +546,7 @@ else:
         st.info("Checked against the simulator's true answers on unseen patients: all four remedies were "
                     "within about 1.3 mg/dL on average (walk: 12.95 predicted vs a true 13.23 mg/dL).")
 
-# ============================ SECTION 4: record ============================
+# start of the patient record section
 sec("sec-record", "📋", "Patient record")
 box_rec = st.empty()
 box_rec.markdown(card(
@@ -517,6 +554,7 @@ box_rec.markdown(card(
     f". Medicines: {', '.join(meds) if meds else 'none'}.", "warn" if flags else "good"), unsafe_allow_html=True)
 
 
+# says if a value is in range
 def rng(v, lo_=None, hi_=None):
     if hi_ is not None and v > hi_:
         return "Above range"
@@ -525,6 +563,7 @@ def rng(v, lo_=None, hi_=None):
     return "In range"
 
 
+# rows of the record table with reference
 rec = [
     ("Age", f"{row.age}", "", ""),
     ("Sex", f"{row.sex}", "", ""),
@@ -552,16 +591,18 @@ with rc2:
         "- **What-if remedies** re-run the forecast with one change.\n"
         "- **All data is synthetic**, and these patients were never used for training.")
 
-# ============================ SECTION 5: patient summary ============================
+# one page patient summary with pdf
 sec("sec-summary", "🧾", "Patient summary")
+# numbers for the summary page
 stats = dl.summary_stats(raw["glucose_mgdl"].values, ms_all, F_all, g, LOW_MARGIN)
 meds_now, _ = dl.load_meds(pid, DATA)
 plan_now = dl.load_diet(pid, cr.default_plan_for(row.bmi))[1]
+# show summary and pdf download button
 dp.render_summary(pid, row, stats, meds_now, ts, raw["glucose_mgdl"].values, float(sigma[-1]),
                   [t for t, _ in flags], plan_now)
 
 st.caption("Prototype for research and demonstration only. Not for clinical use.")
 
-# floating summary box (stays visible while scrolling)
+# small floating box that follows the page
 st.markdown(f'<div class="floatbox"><b>{pid}</b> · {row.age} y {row.sex}<br>HbA1c {row.hba1c}% · Day {day}<br>'
             f'▲ {n_high} high · ▼ {n_low} low alerts</div>', unsafe_allow_html=True)

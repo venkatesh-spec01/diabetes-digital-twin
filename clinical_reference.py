@@ -1,13 +1,10 @@
-"""
-Reference tables used by the doctor dashboard (dashboard_new.py).
-
-IMPORTANT: this is general reference material for the treating doctor, written to follow widely used
-diabetes guidance (for example the ADA Standards of Care). It is not a prescription and it does not
-calculate any dose. The hospital's own protocol and the doctor's judgement always come first.
-Edit the lists below to match your hospital's protocol.
-"""
-
-# glucose zones in mg/dL: (from, to, name, colour)
+# reference tables used by the doctor dashboard.
+# this is general guidance for the treating doctor, based on common
+# diabetes advice (for example the ADA standards of care).
+# it is NOT a prescription and it does not calculate any dose.
+# the hospital's own protocol and the doctor's judgement come first.
+# the lists can be edited to match a hospital's protocol.
+# glucose zones with colours for the bar
 ZONES = [
     (0, 54, "Severe low", "#1d4ed8"),
     (54, 70, "Low", "#3b82f6"),
@@ -18,7 +15,7 @@ ZONES = [
 
 ACTION_COLUMNS = ["Type", "Action", "When to do it", "How long", "Notes", "Who"]
 
-# ----------------------------- when the glucose is going HIGH -----------------------------
+# what to do when glucose is going high
 ACTIONS_HIGH = [
     ("Lifestyle", "Easy walk at a normal pace", "After the meal (start 15-30 min after eating)", "10-15 minutes",
      "The what-if engine tests a 10-minute walk. Skip it if the patient is unwell or dizzy.", "Patient"),
@@ -43,7 +40,7 @@ ACTIONS_HIGH = [
      "At the next visit", "Next visit", "", "Doctor"),
 ]
 
-# ----------------------------- when the glucose is going LOW -----------------------------
+# what to do when glucose is going low
 ACTIONS_LOW = [
     ("Immediate", "15 g of fast sugar: 3-4 glucose tablets, or about 150 mL fruit juice, or 3-4 teaspoons of sugar in water",
      "Right now", "0-15 minutes", "Avoid chocolate and fatty foods, they act slowly.", "Patient"),
@@ -62,11 +59,12 @@ ACTIONS_LOW = [
      "Next visit", "No dose is suggested here.", "Doctor"),
 ]
 
+# groups used to filter by timing
 TIMING_FILTER = ["Right now", "Before the meal", "With the meal", "After the meal", "Any time", "Later / next visit"]
 
 
+# puts a timing text into a group
 def timing_group(text):
-    """Map a free-text 'When to do it' value to one of the filter groups."""
     t = text.lower()
     if t.startswith("right now"):
         return "Right now"
@@ -81,8 +79,7 @@ def timing_group(text):
     return "Later / next visit"
 
 
-# ----------------------------- sample diet charts (Indian) -----------------------------
-# Each plan: list of (slot, time, food, portion, approx carbs g, GI band)
+# sample indian diet plans by calories
 DIET_PLANS = {
     "1400 kcal": [
         ("Early morning", "6:30", "Methi (fenugreek) water or plain water, 4-5 soaked almonds", "1 glass + 5 almonds", 2, "Low"),
@@ -112,8 +109,10 @@ DIET_PLANS = {
         ("Bedtime (if hungry)", "22:00", "Warm milk, no sugar", "1 small glass", 8, "Low"),
     ],
 }
+# column names for the diet table
 DIET_COLUMNS = ["Meal", "Time", "Food", "Portion", "Carbs (g, approx.)", "GI band"]
 
+# simple rules given with the diet chart
 DIET_RULES = [
     "Eat at fixed times and do not skip meals, especially on insulin or a sulfonylurea (risk of lows).",
     "Fill half the plate with vegetables, a quarter with dal, egg, fish, paneer or chicken, and a quarter with grain.",
@@ -123,6 +122,7 @@ DIET_RULES = [
 ]
 
 
+# picks a diet plan from the bmi
 def default_plan_for(bmi):
     if bmi >= 30:
         return "1400 kcal"
