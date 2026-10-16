@@ -5,7 +5,7 @@
 # (later days of the training patients) and keep the best round.
 # then we try blends of old and new weights, again on validation only.
 # the test patients are used only once at the end.
-# saves models/fusion_cf_v2.pt and models/remedy_truth_step9.csv
+# saves models/fusion_cf_v2.pt and models/walk_fix_truth.csv
 # run: python walk_fix.py
 import time
 import numpy as np
@@ -164,8 +164,8 @@ def main():
 		t["model"] = tag
 		t["test_rmse_2h"] = round(e.mean(), 2)
 		tables.append(t)
-	pd.concat(tables).to_csv("models/remedy_truth_step9.csv")
-	print("\nSaved: models/remedy_truth_step9.csv")
+	pd.concat(tables).to_csv("models/walk_fix_truth.csv")
+	print("\nSaved: models/walk_fix_truth.csv")
 	print("If step9 has smaller walk biases and similar RMSE, switch the dashboard to fusion_cf_v2.pt.")
 
 

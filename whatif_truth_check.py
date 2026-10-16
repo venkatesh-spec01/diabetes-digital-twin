@@ -91,7 +91,7 @@ def main():
 	df = pd.DataFrame(rows)
 	# bias is predicted minus true drop
 	df["error"] = df.pred_drop - df.true_drop
-	df.to_csv("models/remedy_truth_step6.csv", index=False)
+	df.to_csv("models/whatif_truth.csv", index=False)
 
 	out = []
 	for rem in REMEDIES:
@@ -118,7 +118,7 @@ def main():
 		ax.set_ylabel("predicted drop")
 	fig.tight_layout()
 	fig.savefig("plots/remedy_truth.png", dpi=130)
-	print("\nSaved: models/remedy_truth_step6.csv, plots/remedy_truth.png")
+	print("\nSaved: models/whatif_truth.csv, plots/remedy_truth.png")
 
 
 if __name__ == "__main__":

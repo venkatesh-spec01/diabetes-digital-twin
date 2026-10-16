@@ -142,7 +142,7 @@ def main():
 		rows.append(dict(patient_id=pid, lazy_120=l["120min"], glucose_only_120=bb["120min"],
 						 fusion_120=ff["120min"], glucose_only_60=bb["60min"], fusion_60=ff["60min"]))
 	df = pd.DataFrame(rows)
-	df.to_csv("models/test_results_step3.csv", index=False)
+	df.to_csv("models/test_results_fusion.csv", index=False)
 
 	# count patients where fusion beats baseline
 	wins = int((df.fusion_120 < df.glucose_only_120).sum())
@@ -161,7 +161,7 @@ def main():
 	ax.legend()
 	fig.tight_layout()
 	fig.savefig("plots/fusion_vs_baseline.png", dpi=130)
-	print("Saved: models/fusion_lstm.pt, models/test_results_step3.csv, plots/fusion_vs_baseline.png")
+	print("Saved: models/fusion_lstm.pt, models/test_results_fusion.csv, plots/fusion_vs_baseline.png")
 
 
 if __name__ == "__main__":

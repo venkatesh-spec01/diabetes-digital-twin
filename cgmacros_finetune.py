@@ -139,8 +139,8 @@ def main():
     ehr_real = ehr_for(real)
     split = make_split(real, [s for s in files if s in real.index])
     pd.DataFrame({"person": list(split), "group": [real.loc[s, "group_real"] for s in split],
-                  "role": list(split.values())}).to_csv("models/step11_split.csv", index=False)
-    print("Split:", pd.Series(split).value_counts().to_dict(), "(saved to models/step11_split.csv)")
+                  "role": list(split.values())}).to_csv("models/cgmacros_split.csv", index=False)
+    print("Split:", pd.Series(split).value_counts().to_dict(), "(saved to models/cgmacros_split.csv)")
 
     people = load_people(files, real, ehr_real, split)
     Xtr, Ytr, _, Str = stack(people, split, "train")
@@ -196,8 +196,8 @@ def main():
     print(f"\nBest round on VALID people: {best:.2f} mg/dL. Saved {NEW_MODEL}")
 
     rows = report({"before (dashboard model)": before, "after fine-tuning": model}, people, split, real)
-    pd.DataFrame(rows).round(3).to_csv("models/real_finetune_step11b.csv", index=False)
-    print("\nSaved: models/real_finetune_step11.csv")
+    pd.DataFrame(rows).round(3).to_csv("models/cgmacros_finetune_results_b.csv", index=False)
+    print("\nSaved: models/cgmacros_finetune_results.csv")
     try:
         remedy_check({"before": before, "after": model})
     except Exception as e:

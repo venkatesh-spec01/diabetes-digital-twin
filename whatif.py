@@ -112,7 +112,7 @@ def main():
 					min_above_drop=above0[k] - above1[j],
 				))
 	df = pd.DataFrame(rows)
-	df.to_csv("models/remedy_results_step5.csv", index=False)
+	df.to_csv("models/whatif_results.csv", index=False)
 
 	print(f"Tested {df.groupby('remedy').size().max()} meals per remedy across {len(test_ids)} unseen patients\n")
 	# average results for each remedy
@@ -144,7 +144,7 @@ def main():
 	ax.legend(fontsize=8)
 	fig.tight_layout()
 	fig.savefig("plots/remedies.png", dpi=130)
-	print("\nSaved: models/remedy_results_step5.csv, plots/remedies.png")
+	print("\nSaved: models/whatif_results.csv, plots/remedies.png")
 
 
 if __name__ == "__main__":

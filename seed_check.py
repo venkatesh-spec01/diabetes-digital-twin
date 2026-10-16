@@ -83,7 +83,7 @@ def main():
 			  f"fusion wins {int((ef < eb).sum())} of {len(test_ids)} patients  ({time.time() - t0:.0f}s)")
 
 	df = pd.DataFrame(rows)
-	df.to_csv("models/seed_results_step8.csv", index=False)
+	df.to_csv("models/seed_results.csv", index=False)
 	# positive means fusion is better
 	diff = df.glucose_only - df.fusion
 	print("\n2-hour error on 10 unseen patients (mg/dL, lower is better)")
@@ -91,7 +91,7 @@ def main():
 	print(f"  fusion       : {df.fusion.mean():.2f} +/- {df.fusion.std():.2f}")
 	print(f"  fusion better in {int((diff > 0).sum())} of {len(df)} seeds; "
 		  f"average gain {diff.mean():.2f} mg/dL (spread {diff.std():.2f})")
-	print("\nSaved: models/seed_results_step8.csv")
+	print("\nSaved: models/seed_results.csv")
 
 
 if __name__ == "__main__":

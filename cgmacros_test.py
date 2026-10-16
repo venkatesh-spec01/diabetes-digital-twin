@@ -9,7 +9,7 @@
 #   steps from fitbit METs, hrv fixed at 40 ms, sleep from quiet time at night,
 #   GI fixed at 60, medicines and family history set to the training average.
 # the clock times in the dataset are shifted for privacy, so time of day is rough.
-# saves models/real_data_step10.csv and plots/real_data_example.png
+# saves models/cgmacros_results.csv and plots/real_data_example.png
 # run: python cgmacros_test.py
 import glob
 import os
@@ -259,7 +259,7 @@ def main():
                 rows.append(dict(group=grp, people=d["people"], windows=len(Y), model=name,
                                  rmse_30=e["30min"], rmse_60=e["60min"], rmse_120=e["120min"], **a))
     os.makedirs("plots", exist_ok=True)
-    pd.DataFrame(rows).round(3).to_csv("models/real_data_step10.csv", index=False)
+    pd.DataFrame(rows).round(3).to_csv("models/cgmacros_results.csv", index=False)
     print("\nFor comparison, the fusion twin on SYNTHETIC test patients: 2-hour RMSE about 18 mg/dL.")
 
     if example:
@@ -279,7 +279,7 @@ def main():
         ax.set_xlabel("hours"); ax.set_ylabel("glucose (mg/dL)")
         ax.set_title(f"Real T2D participant {sid:03d}: real glucose (gray) and 2-hour twin forecasts (red)")
         ax.legend(); fig.tight_layout(); fig.savefig("plots/real_data_example.png", dpi=130)
-    print("Saved: models/real_data_step10.csv, plots/real_data_example.png")
+    print("Saved: models/cgmacros_results.csv, plots/real_data_example.png")
 
 
 if __name__ == "__main__":

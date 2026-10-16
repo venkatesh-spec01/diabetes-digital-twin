@@ -101,7 +101,7 @@ def main():
 							 caught=tp, false_alarms=fp, missed=fn))
 
 	df = pd.DataFrame(rows)
-	df.to_csv("models/alert_results_step4.csv", index=False)
+	df.to_csv("models/alert_results.csv", index=False)
 
 	fig, axes = plt.subplots(1, 2, figsize=(11, 4), sharey=True)
 	for ax, kind in zip(axes, ("HIGH (>180)", "LOW (<70)")):
@@ -111,7 +111,7 @@ def main():
 		ax.tick_params(axis="x", rotation=25)
 	fig.tight_layout()
 	fig.savefig("plots/alert_quality.png", dpi=130)
-	print("\nSaved: models/alert_results_step4.csv, plots/alert_quality.png")
+	print("\nSaved: models/alert_results.csv, plots/alert_quality.png")
 
 
 if __name__ == "__main__":

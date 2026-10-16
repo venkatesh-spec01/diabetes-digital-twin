@@ -168,7 +168,7 @@ def main():
         print(f"  {pid}      {l['60min']:6.1f}   {m['60min']:6.1f}    {l['120min']:7.1f}   {m['120min']:7.1f}")
         rows.append(dict(patient_id=pid, lazy_60=l["60min"], model_60=m["60min"],
                          lazy_120=l["120min"], model_120=m["120min"]))
-    pd.DataFrame(rows).to_csv("models/test_results_step2.csv", index=False)
+    pd.DataFrame(rows).to_csv("models/test_results_baseline.csv", index=False)
 
     # plot one test patient as an example
     pid = "T03"
@@ -185,7 +185,7 @@ def main():
     ax.set_xlabel("hours since start"); ax.set_ylabel("glucose (mg/dL)")
     ax.set_title(f"{pid}: real glucose (gray) and 2-hour forecasts (red)")
     ax.legend(); fig.tight_layout(); fig.savefig("plots/forecast_T03.png", dpi=130)
-    print("\nSaved: models/baseline_lstm.pt, models/test_results_step2.csv, plots/forecast_T03.png")
+    print("\nSaved: models/baseline_lstm.pt, models/test_results_baseline.csv, plots/forecast_T03.png")
 
 
 if __name__ == "__main__":

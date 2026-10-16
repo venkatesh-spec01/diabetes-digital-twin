@@ -182,8 +182,8 @@ def main():
 
 	t_old["model"] = "old"
 	t_new["model"] = "new"
-	pd.concat([t_old, t_new]).to_csv("models/remedy_truth_step7.csv")
-	print("\nSaved: models/fusion_cf.pt, models/remedy_truth_step7.csv")
+	pd.concat([t_old, t_new]).to_csv("models/whatif_truth_finetuned.csv")
+	print("\nSaved: models/fusion_cf.pt, models/whatif_truth_finetuned.csv")
 
 
 if __name__ == "__main__":
