@@ -1,10 +1,10 @@
 # logic for the doctor dashboard panels (no streamlit in this file).
 #   zone_of: which glucose zone a value is in
-#   residual_sigma: how wrong the forecast usually is for this patient
-#   safety_status: alert status with an uncertainty band
-#   load_meds, save_meds: the medicine table
-#   load_diet, save_diet: the diet chart
-#   summary_stats, make_pdf: the one page patient summary
+#   residual sigma: how wrong the forecast usually is for this patient
+#   safety status: alert status with an uncertainty band
+#   load meds, save meds: the medicine table
+#   load diet, save diet: the diet chart
+#   summary stats, make pdf: the one page patient summary
 # all patients and medicines are synthetic samples.
 import io
 import json
