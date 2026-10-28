@@ -17,7 +17,7 @@ Built for the Happiest Health Digital Twin Challenge 2026.
 - **GitHub:** [venkatesh-spec01](https://github.com/venkatesh-spec01)
 
 ### College
-Shri Shankaracharya Mahavidyalaya
+St. Thomas College
 
 ### Project title
 Type 2 Diabetes Digital Twin: forecast glucose 2 hours ahead, warn early, test small changes
@@ -374,4 +374,4 @@ The scripts were built in this order, and the "step" numbers in this README foll
 
 ---
 
-Made by Venkatesh Shukla, team bloom, Shri Shankaracharya Mahavidyalaya.
+Made by Venkatesh Shukla, team bloom, St. Thomas College.
